@@ -17,20 +17,26 @@ export default function Match({
         {date}
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
-        <div className="flex justify-center">
-          <img src={home_logo} className="w-3/5" alt="home-logo" />{" "}
+        <div className="max-h-3/5">
+          <img src={home_logo} className="max-h-20 max-w-32" alt="home-logo" />{" "}
         </div>
-        <div>{home_name}</div>
+        <div className="text-base">{home_name}</div>
       </div>
-      <div className="w-1/6 items-center justify-center flex text-4xl">{home_score??0}</div>
-      <div className="w-1/6 items-center justify-center flex text-4xl">{away_score??0}</div>
-      <div className="w-1/4 flex justify-center items-center flex-col">
-      <div className="w-3/5 flex justify-center">
-          <img src={away_logo} className="w-3/5" alt="away-logo" />
+      <div className="w-1/6 items-center justify-center flex text-4xl">
+        {home_score ?? 0}
+      </div>
+      <div className="w-1/6 items-center justify-center flex text-4xl">
+        {away_score ?? 0}
+      </div>
+      <div className="flex flex-col justify-center items-center w-1/4">
+      <div className="max-h-3/5">
+          <img src={away_logo} className="max-h-20 max-w-32" alt="away-logo" />
         </div>
-        <div>{away_name}</div>
+        <div className="text-base">{away_name}</div>
       </div>
-      <div className="w-1/12 bg-white text-black flex items-center justify-center text-5xl">+</div>
+      <div className="w-1/12 bg-white text-black flex items-center justify-center text-5xl">
+        +
+      </div>
     </div>
   );
 }
