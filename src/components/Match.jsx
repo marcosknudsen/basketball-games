@@ -18,7 +18,7 @@ export default function Match({
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
         <div className="max-h-3/5">
-          <img src={home_logo} className="max-h-20 max-w-32" alt="home-logo" />{" "}
+          <img src={home_logo} className="max-h-20 max-w-32 text-xs" alt="home-logo" />{" "}
         </div>
         <div className="text-base">{home_name}</div>
       </div>
@@ -30,7 +30,7 @@ export default function Match({
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
       <div className="max-h-3/5">
-          <img src={away_logo} className="max-h-20 max-w-32" alt="away-logo" />
+          <img src={away_logo} className="max-h-20 max-w-32 text-xs" alt="away-logo" />
         </div>
         <div className="text-base">{away_name}</div>
       </div>
