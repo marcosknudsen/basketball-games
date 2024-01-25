@@ -4,8 +4,9 @@ import data from "../../matches.json";
 import { useLoaderData } from "react-router-dom";
 
 export async function loader() {
+const today=new Date(Date.now());
     let response = await fetch(
-    `https://v1.basketball.api-sports.io/games?date=2024-01-24&timezone=America/Argentina/Buenos_Aires`,
+    `https://v1.basketball.api-sports.io/games?date=${today.getFullYear()+"-"+(today.getMonth()+1).toString().padStart(2,"0")+"-"+today.getDate()}&timezone=America/Argentina/Buenos_Aires`,
     {
       method: "GET",
       headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
