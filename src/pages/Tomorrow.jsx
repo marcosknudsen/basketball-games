@@ -4,14 +4,15 @@ import data from "../../matches.json";
 import { useLoaderData } from "react-router-dom";
 
 export async function loader() {
-  const today = new Date(Date.now());
+  let tomorrow = new Date(Date.now());
+  tomorrow.setDate(tomorrow.getDate()+1)
   let response = await fetch(
     `https://v1.basketball.api-sports.io/games?date=${
-      today.getFullYear() +
+      tomorrow.getFullYear() +
       "-" +
-      padTwoDigits(today.getMonth() + 1) +
+      padTwoDigits(tomorrow.getMonth() + 1) +
       "-" +
-      today.getDate()
+      tomorrow.getDate()
     }&timezone=America/Argentina/Buenos_Aires`,
     {
       method: "GET",
@@ -37,7 +38,7 @@ export async function loader() {
   return response;
 }
 
-export default function Index() {
+export default function Tomorrow() {
   const matches = useLoaderData();
   return <ListadoLigas matches={matches} />;
 }
