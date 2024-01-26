@@ -22,7 +22,7 @@ export default function Match({
         {(status.short == "NS" && date) ||
           ((status.short == "FT" || status.short == "AOT") && "Finished") ||
           (status.short == "CANC" && "Cancelled") ||
-          status.short + (status.timer ? " " + status.timer + "'" : "")}
+          status.short + ((status.timer && status.timer>0) ? " " + status.timer + "'" : "")}
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
         <div className="max-h-3/5">
