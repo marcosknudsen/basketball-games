@@ -2,10 +2,11 @@ import ListadoLigas from "../components/ListadoLigas";
 
 import data from "../../matches.json";
 import { useLoaderData } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export async function loader() {
   let tomorrow = new Date(Date.now());
-  tomorrow.setDate(tomorrow.getDate()+1)
+  tomorrow.setDate(tomorrow.getDate() + 1);
   let response = await fetch(
     `https://v1.basketball.api-sports.io/games?date=${
       tomorrow.getFullYear() +
@@ -40,7 +41,18 @@ export async function loader() {
 
 export default function Tomorrow() {
   const matches = useLoaderData();
-  return <ListadoLigas matches={matches} />;
+  const navigate = useNavigate();
+  return (
+    <>
+      <button
+        className="bg-green-800 p-3 rounded-md text-yellow-400 w-20"
+        onClick={() => navigate("/")}
+      >
+        Hoy
+      </button>
+      <ListadoLigas matches={matches} />;
+    </>
+  );
 }
 
 function padTwoDigits(n) {
