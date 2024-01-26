@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <div className="bg-gray-400 min-h-screen flex flex-col items-center gap-5 pt-5">
-      <div className="flex items-center justify-center gap-5 sd:w-[300px] sm:gap-0">
+      <div className="flex items-center justify-center gap-5 sm:gap-0">
         <img src="https://cdn-icons-png.flaticon.com/512/889/889455.png" alt="basketball-icon" className="w-20 sm:w-10" />
         <p className="text-5xl uppercase font-bold sm:text-2xl">Promiedos Basketball</p>
       </div>
