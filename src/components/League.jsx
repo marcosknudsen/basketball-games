@@ -17,8 +17,7 @@ export default function League({ matches }) {
           <Match
             key={m.id}
             date={m.date}
-            status={m.status.short}
-            timer={m.status.timer}
+            status={m.status}
             home_name={m.home.name}
             away_name={m.away.name}
             home_logo={m.home.logo}

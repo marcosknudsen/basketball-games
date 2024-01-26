@@ -6,6 +6,7 @@ import Yesterday,{loader as yesterdayLoader} from "./pages/Yesterday";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./index.css";
+import "../Match.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

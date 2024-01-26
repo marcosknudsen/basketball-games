@@ -1,0 +1,19 @@
+.upcoming{
+    background-color: white;
+    color:black;
+    font-size: 22px;
+}
+
+.finished{
+    background-color: gray;
+}
+
+.playing{
+    background-color: red;
+    font-size: 22px;
+}
+
+.canceled{
+    background-color: gray;
+    font-size: 13px;
+}

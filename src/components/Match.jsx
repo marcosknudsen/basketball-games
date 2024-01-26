@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Match({
   date,
   status,
@@ -13,12 +11,26 @@ export default function Match({
 }) {
   return (
     <div className="flex items-stretch justify-between mb-1 bg-green-600 h-32">
-      <div className="bg-white w-1/12 text-black justify-center items-center flex text-xl">
-        {date}
+      <div
+        className={` w-1/12 justify-center items-center flex text-base font-semibold ${
+          (status.short == "NS" && "upcoming") ||
+          ((status.short == "FT" || status.short == "AOT") && "finished") ||
+          (status.short == "CANC" && "canceled") ||
+          "playing"
+        }`}
+      >
+        {(status.short == "NS" && date) ||
+          ((status.short == "FT" || status.short == "AOT") && "Finished") ||
+          (status.short == "CANC" && "Cancelled") ||
+          status.short + (status.timer ? " " + status.timer + "'" : "")}
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
         <div className="max-h-3/5">
-          <img src={home_logo} className="max-h-20 max-w-32 text-xs" alt="home-logo" />{" "}
+          <img
+            src={home_logo}
+            className="max-h-20 max-w-32 text-xs"
+            alt="home-logo"
+          />{" "}
         </div>
         <div className="text-base">{home_name}</div>
       </div>
@@ -29,8 +41,12 @@ export default function Match({
         {away_score ?? 0}
       </div>
       <div className="flex flex-col justify-center items-center w-1/4">
-      <div className="max-h-3/5">
-          <img src={away_logo} className="max-h-20 max-w-32 text-xs" alt="away-logo" />
+        <div className="max-h-3/5">
+          <img
+            src={away_logo}
+            className="max-h-20 max-w-32 text-xs"
+            alt="away-logo"
+          />
         </div>
         <div className="text-base">{away_name}</div>
       </div>
