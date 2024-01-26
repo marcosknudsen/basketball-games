@@ -29,7 +29,7 @@ export async function loader() {
         padTwoDigits(date.getHours()) + ":" + padTwoDigits(date.getMinutes()),
       status: m.status,
       league: m.league,
-      flag: m.country.flag,
+      country: m.country,
       home: m.teams.home,
       away: m.teams.away,
       scores: m.scores,
