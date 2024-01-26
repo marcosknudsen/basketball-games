@@ -1,19 +1,49 @@
-.upcoming{
-    background-color: white;
-    color:black;
-    font-size: 22px;
+.upcoming {
+  background-color: white;
+  color: black;
+  font-size: 22px;
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    min-width: 46px;
+  }
 }
 
-.finished{
-    background-color: gray;
+.finished {
+  background-color: gray;
+  @media screen and (max-width: 768px) {
+    font-size: 10px;
+    min-width: 46px;
+  }
 }
 
-.playing{
-    background-color: red;
-    font-size: 22px;
+.playing {
+  background-color: red;
+  font-size: 22px;
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    min-width: 46px;
+  }
 }
 
-.canceled{
-    background-color: gray;
-    font-size: 13px;
+.canceled {
+  background-color: gray;
+  font-size: 13px;
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    min-width: 46px;
+  }
+}
+
+.team_logo img {
+
+  @media screen and (max-width: 450px) {
+    height: 90%;
+  }
+}
+
+.team_logo p{
+  @media screen and (max-width: 450px) {
+    font-size: 3vw;
+    line-height: 12px;
+  }
 }

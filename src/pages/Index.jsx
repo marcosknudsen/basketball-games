@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export async function loader() {
   const today = new Date(Date.now());
-  let response = await fetch(
+/*   let response = await fetch(
     `https://v1.basketball.api-sports.io/games?date=${
       today.getFullYear() +
       "-" +
@@ -19,7 +19,8 @@ export async function loader() {
       headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
     }
   );
-  response = await response.json();
+  response = await response.json(); */
+  let response=data
   response = response.response;
   response = response.map(function (m) {
     const date = new Date(m.date);

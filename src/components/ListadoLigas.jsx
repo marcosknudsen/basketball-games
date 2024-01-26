@@ -2,7 +2,7 @@ import League from "./League";
 import order from "../../order.json";
 export default function ListadoLigas({ matches }) {
   return (
-    <div className="w-3/4 min-w-[600px] max-w-[800px]">
+    <div className="w-3/4 max-w-[800px] lg:w-full">
       {[...new Set(matches.map((m) => m.league.id))]
         .sort((a, b) => getOrder(a) - getOrder(b))
         .map((l) => (
