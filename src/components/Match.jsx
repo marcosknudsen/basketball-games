@@ -17,13 +17,15 @@ export default function Match({
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${
           (status.short == "NS" && "upcoming") ||
           ((status.short == "FT" || status.short == "AOT") && "finished") ||
-          (status.short == "CANC" && "canceled") ||
+          status.short == "CANC" ||
+          (status.short == "POST" && "canceled") ||
           "playing"
         }`}
       >
         {(status.short == "NS" && date) ||
           ((status.short == "FT" || status.short == "AOT") && "Finished") ||
           (status.short == "CANC" && "Cancelled") ||
+          (status.short == "POST" && "Postponed") ||
           status.short +
             (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
       </div>
