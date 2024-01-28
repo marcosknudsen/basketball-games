@@ -1,5 +1,3 @@
-import { FaSquarePlus } from "react-icons/fa6";
-
 export default function Match({
   date,
   status,
@@ -61,9 +59,6 @@ export default function Match({
           />
         </div>
         <p className="text-base">{away_name}</p>
-      </div>
-      <div className="flex items-center justify-center mr-2">
-        <FaSquarePlus />
       </div>
     </div>
   );
