@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export async function loader() {
   const today = new Date(Date.now());
-  let response = await fetch(
+let response = await fetch(
     `https://v1.basketball.api-sports.io/games?date=${
       today.getFullYear() +
       "-" +
@@ -46,7 +46,7 @@ export default function Index() {
         <button className="bg-green-800 p-3 rounded-md text-yellow-400 w-20" onClick={()=>navigate("/yesterday")}>Ayer</button>
         <button className="bg-green-800 p-3 rounded-md text-yellow-400 w-20" onClick={()=>navigate("/tomorrow")}>Mañana</button>
       </div>
-      <ListadoLigas matches={matches} />;
+      <ListadoLigas matches={matches} />
     </>
   );
 }
