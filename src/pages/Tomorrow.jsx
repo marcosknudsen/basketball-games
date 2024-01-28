@@ -1,6 +1,5 @@
 import ListadoLigas from "../components/ListadoLigas";
 
-import data from "../../matches.json";
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
