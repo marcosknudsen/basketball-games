@@ -12,19 +12,18 @@ export default function Match({
   away_score,
 }) {
   return (
-    <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px]">
+    <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-24">
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${
           (status.short == "NS" && "upcoming") ||
           ((status.short == "FT" || status.short == "AOT") && "finished") ||
-          status.short == "CANC" ||
-          (status.short == "POST" && "canceled") ||
+          ((status.short == "CANC" || status.short == "POST") && "canceled") ||
           "playing"
         }`}
       >
         {(status.short == "NS" && date) ||
           ((status.short == "FT" || status.short == "AOT") && "Finished") ||
-          (status.short == "CANC" && "Cancelled") ||
+          (status.short == "CANC" && "Canceled") ||
           (status.short == "POST" && "Postponed") ||
           status.short +
             (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
@@ -35,15 +34,23 @@ export default function Match({
             src={home_logo}
             className="max-h-20 max-w-32 text-xs md:max-h-10 md:max-w-20"
             alt="home-logo"
-          />{" "}
+          />
         </div>
         <p className="text-base">{home_name}</p>
       </div>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {home_score ?? 0}
+        {status.short == "NS" ||
+        status.short == "CANC" ||
+        status.short == "POST"
+          ? "-"
+          : home_score}
       </div>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {away_score ?? 0}
+        {status.short == "NS" ||
+        status.short == "CANC" ||
+        status.short == "POST"
+          ? "-"
+          : away_score}
       </div>
       <div className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20">
         <div className="max-h-3/5">
