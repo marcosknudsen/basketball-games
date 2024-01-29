@@ -16,16 +16,16 @@ export default function Index() {
     <>
       <div className="flex gap-5">
         <button
-          className="bg-green-800 p-3 rounded-md text-yellow-400 w-20"
+          className="bg-green-800 p-3 rounded-md text-yellow-400 w-28 uppercase"
           onClick={() => navigate("/yesterday")}
         >
-          Ayer
+          Yesterday
         </button>
         <button
-          className="bg-green-800 p-3 rounded-md text-yellow-400 w-20"
+          className="bg-green-800 p-3 rounded-md text-yellow-400 w-28 uppercase"
           onClick={() => navigate("/tomorrow")}
         >
-          Mañana
+          Tomorrow
         </button>
       </div>
       <ListadoLigas matches={matches} />
