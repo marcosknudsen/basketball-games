@@ -12,7 +12,7 @@ export default function Match({
   away_score,
 }) {
   return (
-    <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-24">
+    <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${
           (status.short == "NS" && "upcoming") ||
