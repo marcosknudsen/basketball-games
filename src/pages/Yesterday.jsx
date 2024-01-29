@@ -22,7 +22,7 @@ export default function Yesterday() {
       >
         Today
       </button>
-      <ListadoLigas matches={matches} />;
+      <ListadoLigas matches={matches} />
     </>
   );
 }

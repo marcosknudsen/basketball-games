@@ -21,7 +21,7 @@ export default function Tomorrow() {
       >
         Today
       </button>
-      <ListadoLigas matches={matches} />;
+      <ListadoLigas matches={matches} />
     </>
   );
 }
