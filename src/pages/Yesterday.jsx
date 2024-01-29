@@ -8,24 +8,7 @@ import getMatches from "../../helpers/getMatches";
 export async function loader() {
   const yesterday = new Date(Date.now());
   yesterday.setDate(yesterday.getDate()-1)
-  let response = await getMatches(yesterday);
-  response = await response.json();
-  response = response.response;
-  response = response.map(function (m) {
-    const date = new Date(m.date);
-    return {
-      id: m.id,
-      date:
-        date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0"),
-      status: m.status,
-      league: m.league,
-      country: m.country,
-      home: m.teams.home,
-      away: m.teams.away,
-      scores: m.scores,
-    };
-  });
-  return response;
+  return await getMatches(yesterday);
 }
 
 export default function Yesterday() {
