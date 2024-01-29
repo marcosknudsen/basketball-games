@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./index.css";
 import "../Match.css"
+import "../Layout.css"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
