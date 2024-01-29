@@ -2,23 +2,12 @@ import ListadoLigas from "../components/ListadoLigas";
 
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import getMatches from "../../helpers/getMatches";
 
 export async function loader() {
-  let tomorrow = new Date(Date.now());
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  let response = await fetch(
-    `https://v1.basketball.api-sports.io/games?date=${
-      tomorrow.getFullYear() +
-      "-" +
-      padTwoDigits(tomorrow.getMonth() + 1) +
-      "-" +
-      tomorrow.getDate()
-    }&timezone=America/Argentina/Buenos_Aires`,
-    {
-      method: "GET",
-      headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
-    }
-  );
+  const tomorrow = new Date(Date.now());
+  tomorrow.setDate(tomorrow.getDate()+1)
+  let response = await getMatches(tomorrow);
   response = await response.json();
   response = response.response;
   response = response.map(function (m) {
@@ -26,7 +15,7 @@ export async function loader() {
     return {
       id: m.id,
       date:
-        padTwoDigits(date.getHours()) + ":" + padTwoDigits(date.getMinutes()),
+        date.getHours().toString().padStart(2, "0") + ":" + date.getMinutes().toString().padStart(2, "0"),
       status: m.status,
       league: m.league,
       country: m.country,
@@ -52,8 +41,4 @@ export default function Tomorrow() {
       <ListadoLigas matches={matches} />;
     </>
   );
-}
-
-function padTwoDigits(n) {
-  return n.toString().padStart(2, "0");
 }
