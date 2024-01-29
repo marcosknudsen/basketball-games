@@ -27,6 +27,12 @@ export default function Layout() {
         como un proyecto personal con la única finalidad de fortalecer
         conocimeintos en las tecnologias implicadas.
       </p>
+      <p className="text-right w-full mr-5 text-white">
+        Powered by{" "}
+        <a href="https://linktr.ee/elk4nu" className="text-yellow-400">
+          Marcos Knudsen
+        </a>
+      </p>
     </div>
   );
 }
