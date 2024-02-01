@@ -5,7 +5,7 @@ export default async function getMatches(date) {
       "-" +
       (date.getMonth() + 1).toString().padStart(2, "0") +
       "-" +
-      date.getDate()
+      date.getDate().toString().padStart(2, "0")
     }&timezone=America/Argentina/Buenos_Aires`,
     {
       method: "GET",
