@@ -1,31 +1,34 @@
 import Match from "./Match";
+import { Link } from "react-router-dom";
 
 export default function League({ matches }) {
   return (
     <div className="m-3 text-center text-2xl">
-      <div className=" text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5">
-        {
-          <img
-            src={
-              matches[0].country.code != " "
-                ? matches[0].country.flag
-                : matches[0].league.logo
-            }
-            className="w-10"
-          />
-        }
-        {matches[0].league.name}
-        {
-          <img
-            src={
-              matches[0].country.code != " "
-                ? matches[0].country.flag
-                : matches[0].league.logo
-            }
-            className="w-10"
-          />
-        }
-      </div>
+      <Link to={"/league/"+matches[0].league.id}>
+        <div className=" text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5">
+          {
+            <img
+              src={
+                matches[0].country.code != " "
+                  ? matches[0].country.flag
+                  : matches[0].league.logo
+              }
+              className="w-10"
+            />
+          }
+          {matches[0].league.name}
+          {
+            <img
+              src={
+                matches[0].country.code != " "
+                  ? matches[0].country.flag
+                  : matches[0].league.logo
+              }
+              className="w-10"
+            />
+          }
+        </div>
+      </Link>
       <div className="text-white rounded-b-md bg-gray-600">
         {matches.map((m) => (
           <Match

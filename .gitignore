@@ -13,6 +13,8 @@ dist-ssr
 *.local
 .env
 matches.json
+standing.json
+standingarg.json
 
 # Editor directories and files
 .vscode/*
