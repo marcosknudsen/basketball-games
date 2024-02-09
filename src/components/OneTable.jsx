@@ -9,6 +9,7 @@ export default function OneTable({standing}) {
     <div className="bg-green-600 rounded-b-md">
       {standing.map((s) => (
         <div key={s.team.id} className="flex h-9 ">
+          <div className='w-8'>{s.position}°</div>
           <div className="w-20 flex justify-center">
             <img src={s.team.logo} className="max-h-10 max-w-16" />
           </div>

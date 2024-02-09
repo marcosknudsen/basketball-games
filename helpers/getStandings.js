@@ -13,7 +13,6 @@ export default async function getStandings(league) {
   }
   response=response[0];
   if (league == 12) {
-    response = response.filter((s) => s.group.name.includes("Conference"));
     return [
       response.filter((s) => s.group.name == "Western Conference"),
       response.filter((s) => s.group.name == "Eastern Conference"),

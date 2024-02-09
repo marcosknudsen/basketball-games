@@ -13,7 +13,7 @@ export default function Standing() {
   return (
     <>
       {standing.length ? (
-        <div className="h-[740px] flex gap-[150px] items-center">
+        <div className="min-h-[740px] flex gap-[150px] items-center">
           {standing.length > 1 ? (
             <>
               <TwoTables standing1={standing[0]} standing2={standing[1]}/>
