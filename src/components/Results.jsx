@@ -1,6 +1,6 @@
 import League from "./League";
 import order from "../../order.json";
-export default function ListadoLigas({ matches }) {
+export default function Results({ matches }) {
   return (
     <div className="w-3/4 max-w-[800px] lg:w-full">
       {[...new Set(matches.map((m) => m.league.id))]

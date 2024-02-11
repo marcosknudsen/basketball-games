@@ -35,15 +35,64 @@
 }
 
 .team_logo img {
-
   @media screen and (max-width: 450px) {
     height: 90%;
   }
 }
 
-.team_logo p{
+.team_logo p {
   @media screen and (max-width: 450px) {
     font-size: 3vw;
     line-height: 12px;
   }
+}
+
+Table.full {
+  width: 320px;
+}
+
+Table tr {
+  height: 45px;
+}
+
+Table.full tr > td {
+  width: 80px;
+}
+
+Table.full tr > td:first-of-type {
+  width: 36px;
+}
+
+Table.full tr > td:last-of-type {
+  width: 208px;
+}
+
+Table.full tr > img {
+  max-height: 40px;
+  max-width: 64px;
+}
+
+Table.half {
+  width: 80px;
+}
+
+Table tr {
+  height: 45px;
+}
+
+Table.half tr > td {
+  width: 80px;
+}
+
+Table.half tr > td:first-of-type {
+  width: 32px;
+}
+
+Table.half tr > td:last-of-type {
+  width: 180px;
+}
+
+Table.half tr > img {
+  max-height: 40px;
+  max-width: 64px;
 }

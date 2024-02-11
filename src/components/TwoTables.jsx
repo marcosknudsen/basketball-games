@@ -1,40 +1,16 @@
-import React from "react";
+import Table from "./Table";
 
-export default function TwoTables({ standing1, standing2 }) {
+export default function TwoTables({ standing1, standing2, className }) {
   return (
-    <>
-      <div className="text-base text-gray-200 text-center w-80">
-        <div className="text-center bg-green-800 rounded-t-md">
-          {standing1[0].group.name}
-        </div>
-        <div className="bg-green-600 rounded-b-md">
-          {standing1.map((s) => (
-            <div key={s.team.id} className="flex h-12 ">
-              <div className="w-8 flex items-center justify-center">{s.position}°</div>
-              <div className="w-20 flex justify-center">
-                <img src={s.team.logo} className="max-h-10 max-w-16" />
-              </div>
-              <div className="text-center flex items-center">{`${s.team.name}`}</div>
-            </div>
-          ))}
-        </div>
+    <div
+      className={`text-base text-gray-200 text-center flex justify-evenly w-5/6 md:flex-col md:gap-5 ${className??""} `}
+    >
+      <div className="flex justify-center">
+        <Table standing={standing1} className="half" />
       </div>
-      <div className="text-base text-gray-200 text-center w-80">
-        <div className="text-center bg-green-800 rounded-t-md">
-          {standing2[0].group.name}
-        </div>
-        <div className="bg-green-600 rounded-b-md">
-          {standing2.map((s) => (
-            <div key={s.team.id} className="flex h-12">
-              <div className="w-8 flex items-center justify-center">{s.position}°</div>
-              <div className="w-20 flex justify-center">
-                <img src={s.team.logo} className="max-h-10 max-w-16" />
-              </div>
-              <div className="text-center flex items-center">{`${s.team.name}`}</div>
-            </div>
-          ))}
-        </div>
+      <div className="flex justify-center">
+        <Table standing={standing2} className="half" />
       </div>
-    </>
+    </div>
   );
 }

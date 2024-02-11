@@ -1,4 +1,4 @@
-import ListadoLigas from "../components/ListadoLigas";
+import ListadoLigas from "../components/Results";
 
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
