@@ -30,5 +30,8 @@ export default async function getMatches(date) {
       scores: m.scores,
     };
   });
+  response=response.filter((m)=>m.status.short!=="POST")
+  response=response.filter((m)=>m.status.short!=="CANC")
+
   return response;
 }

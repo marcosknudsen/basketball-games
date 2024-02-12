@@ -19,14 +19,12 @@ export default function Match({
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${
           (status.short == "NS" && "upcoming") ||
           ((status.short == "FT" || status.short == "AOT") && "finished") ||
-          ((status.short == "CANC" || status.short == "POST") && "canceled") ||
           "playing"
         }`}
       >
         {(status.short == "NS" && date) ||
           ((status.short == "FT" || status.short == "AOT") && "Finished") ||
           (status.short == "CANC" && "Canceled") ||
-          (status.short == "POST" && "Postponed") ||
           status.short +
             (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
       </div>
@@ -44,16 +42,12 @@ export default function Match({
         <p className="text-base">{home_name}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status.short == "NS" ||
-        status.short == "CANC" ||
-        status.short == "POST"
+        {status.short == "NS" 
           ? "-"
           : home_score}
       </div>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status.short == "NS" ||
-        status.short == "CANC" ||
-        status.short == "POST"
+        {status.short == "NS" 
           ? "-"
           : away_score}
       </div>
