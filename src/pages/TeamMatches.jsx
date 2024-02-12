@@ -1,6 +1,7 @@
 import getMatchesByTeam from "../../helpers/getMatchesByTeam";
 import { useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export async function loader({ params }) {
   return await getMatchesByTeam(params.teamId);
@@ -9,10 +10,19 @@ export async function loader({ params }) {
 export default function TeamMatches() {
   const matches = useLoaderData();
   const { teamId } = useParams()
+  const navigate=useNavigate()
   const teamName = matches[0].teams.home.id === parseInt(teamId) ? matches[0].teams.home.name : matches[0].teams.away.name
 
   return (
     <>
+      <div>
+        <button
+          className="bg-green-800 p-3 rounded-md text-yellow-400 w-28 uppercase"
+          onClick={() => navigate("/")}
+        >
+          HOME
+        </button>
+      </div>
       <h1 className="uppercase text-white font-bold text-3xl">{teamName} Results</h1>
       <div className="w-full flex justify-center">
         <table className="w-1/2 border">
