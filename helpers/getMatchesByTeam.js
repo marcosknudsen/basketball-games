@@ -8,5 +8,8 @@ export default async function getMatchesbyTeam(team) {
   );
   response = await response.json();
   response = response.response;
+  if (team==293){
+    response=response.filter((m)=>m.league.id!=110)
+  }
   return response.filter((m)=>m.status.short!="POST"&&m.status.short!="ABD");
 }
