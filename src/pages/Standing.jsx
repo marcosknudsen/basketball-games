@@ -1,8 +1,8 @@
 import React from "react";
 import getStandings from "../../helpers/getStandings";
 import { useLoaderData } from "react-router-dom";
-import TwoTables from "./TwoTables";
-import OneTable from "./OneTable";
+import TwoTables from "../components/TwoTables";
+import OneTable from "../components/OneTable";
 import { useNavigate } from "react-router-dom";
 
 export async function loader({ params }) {

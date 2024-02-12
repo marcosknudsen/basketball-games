@@ -41,6 +41,8 @@ export default function League({ matches }) {
             away_logo={m.away.logo}
             home_score={m.scores.home.total}
             away_score={m.scores.away.total}
+            home_team_id={m.home.id}
+            away_team_id={m.away.id}
           />
         ))}
       </div>

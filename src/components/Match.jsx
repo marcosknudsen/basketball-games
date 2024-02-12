@@ -1,15 +1,17 @@
 import { FaSquarePlus } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function Match({
   date,
   status,
-  timer,
   home_name,
   away_name,
   home_logo,
   away_logo,
   home_score,
   away_score,
+  home_team_id,
+  away_team_id,
 }) {
   return (
     <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
@@ -28,7 +30,10 @@ export default function Match({
           status.short +
             (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
       </div>
-      <div className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20">
+      <Link
+        to={`/team/${home_team_id}`}
+        className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20"
+      >
         <div className="max-h-3/5">
           <img
             src={home_logo}
@@ -37,7 +42,7 @@ export default function Match({
           />
         </div>
         <p className="text-base">{home_name}</p>
-      </div>
+      </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
         {status.short == "NS" ||
         status.short == "CANC" ||
@@ -52,7 +57,7 @@ export default function Match({
           ? "-"
           : away_score}
       </div>
-      <div className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20">
+      <Link to={`/team/${away_team_id}`} className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20">
         <div className="max-h-3/5">
           <img
             src={away_logo}
@@ -61,7 +66,7 @@ export default function Match({
           />
         </div>
         <p className="text-base">{away_name}</p>
-      </div>
+      </Link>
       <div className="flex items-center justify-center mr-2">
         <FaSquarePlus />
       </div>
