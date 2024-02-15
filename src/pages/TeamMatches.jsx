@@ -2,6 +2,7 @@ import getMatchesByTeam from "../../helpers/getMatchesByTeam";
 import { useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export async function loader({ params }) {
   return await getMatchesByTeam(params.teamId);
@@ -10,7 +11,7 @@ export async function loader({ params }) {
 export default function TeamMatches() {
   const matches = useLoaderData();
   const { teamId } = useParams()
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const teamName = matches[0].teams.home.id === parseInt(teamId) ? matches[0].teams.home.name : matches[0].teams.away.name
 
   return (
@@ -49,12 +50,28 @@ export default function TeamMatches() {
               return (
                 <tr key={m.id} className={`flex justify-between p-5 ${result == "W" && "bg-green-600"} ${result == "L" && "bg-red-600"} text-white h-10 border items-center ${result == "N" && "bg-gray-600"}`}>
                   <td className={`font-bold ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
-                  <td className="h-10 w-20 flex justify-center"><img src={m.teams.home.logo} className="max-h-10"></img></td>
-                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>{m.teams.home.name}</td>
+                  <td className="h-10 w-20 flex justify-center">
+                    <Link to={"/team/" + m.teams.home.id}>
+                      <img src={m.teams.home.logo} className="max-h-10"></img>
+                    </Link>
+                  </td>
+                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>
+                    <Link to={"/team/" + m.teams.home.id}>
+                      {m.teams.home.name}
+                    </Link>
+                  </td>
                   <td className={`w-10 text-center font-bold ${live && "text-red-500"}`}>{m.scores.home.total}</td>
                   <td className={`w-10 text-center font-bold ${live && "text-red-500"}`}>{m.scores.away.total}</td>
-                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>{m.teams.away.name}</td>
-                  <td className="h-10 w-20 flex justify-center"><img src={m.teams.away.logo} className="max-h-10"></img></td>
+                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>
+                    <Link to={"/team/" + m.teams.away.id}>
+                      {m.teams.away.name}
+                    </Link>
+                  </td>
+                  <td className="h-10 w-20 flex justify-center">
+                    <Link to={"/team/" + m.teams.away.id}>
+                      <img src={m.teams.away.logo} className="max-h-10"></img>
+                    </Link>
+                  </td>
                 </tr>)
             })}
           </tbody>
