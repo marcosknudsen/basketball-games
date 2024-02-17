@@ -24,9 +24,9 @@ export default function TeamMatches() {
           HOME
         </button>
       </div>
-      <h1 className="uppercase text-white font-bold text-3xl">{teamName} Results</h1>
+      <h1 className="uppercase text-white font-bold text-3xl md:text-2xl">{teamName} Results</h1>
       <div className="w-full flex justify-center">
-        <table className="w-1/2 border">
+        <table className="w-1/2 xl:w-5/6 sm:w-11/12 border">
           <thead></thead>
           <tbody>
             {matches.map((m) => {
@@ -48,27 +48,27 @@ export default function TeamMatches() {
               fecha = fecha.getDate().toString() + "/" + (fecha.getMonth() + 1).toString()
 
               return (
-                <tr key={m.id} className={`flex justify-between p-5 ${result == "W" && "bg-green-600"} ${result == "L" && "bg-red-600"} text-white h-10 border items-center ${result == "N" && "bg-gray-600"}`}>
-                  <td className={`font-bold ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
-                  <td className="h-10 w-20 flex justify-center">
-                    <Link to={"/team/" + m.teams.home.id}>
+                <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == "W" && "bg-green-600"} ${result == "L" && "bg-red-600"} text-white h-10 border items-center ${result == "N" && "bg-gray-600"}`}>
+                  <td className={`font-bold w-[10%] sm:text-xs ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
+                  <td className="h-10 w-[10%] flex justify-center">
+                    <Link to={"/team/" + m.teams.home.id} className="justify-center items-center flex">
                       <img src={m.teams.home.logo} className="max-h-10"></img>
                     </Link>
                   </td>
-                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>
+                  <td className={`w-[20%] text-center font-bold sm:text-xs sm:leading-none ${live && "text-red-500"}`}>
                     <Link to={"/team/" + m.teams.home.id}>
                       {m.teams.home.name}
                     </Link>
                   </td>
-                  <td className={`w-10 text-center font-bold ${live && "text-red-500"}`}>{m.scores.home.total}</td>
-                  <td className={`w-10 text-center font-bold ${live && "text-red-500"}`}>{m.scores.away.total}</td>
-                  <td className={`w-52 text-center font-bold ${live && "text-red-500"}`}>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs mr-3 ${live && "text-red-500"}`}>{m.scores.home.total}</td>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs ${live && "text-red-500"}`}>{m.scores.away.total}</td>
+                  <td className={`w-[20%] text-center font-bold sm:text-xs sm:leading-none ${live && "text-red-500"}`}>
                     <Link to={"/team/" + m.teams.away.id}>
                       {m.teams.away.name}
                     </Link>
                   </td>
-                  <td className="h-10 w-20 flex justify-center">
-                    <Link to={"/team/" + m.teams.away.id}>
+                  <td className="h-10 w-[10%] flex justify-center">
+                  <Link to={"/team/" + m.teams.away.id} className="justify-center items-center flex">
                       <img src={m.teams.away.logo} className="max-h-10"></img>
                     </Link>
                   </td>
