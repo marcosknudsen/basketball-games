@@ -22,7 +22,8 @@ export default function Table({
                   src={s.team.logo}
                 />
               </td>
-              <td className="text-left">{s.team.name}</td>
+              <td className="text-left font-bold">{s.team.name}</td>
+              <td className="w-1/12 font-bold">{`${s.games.win.total}-${s.games.lose.total}`}</td>
             </tr>
           </Link>
         ))}

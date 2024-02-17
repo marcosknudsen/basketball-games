@@ -63,8 +63,18 @@ Table.full tr > td:first-of-type {
   width: 36px;
 }
 
-Table.full tr > td:last-of-type {
+Table.full tr > td:nth-child(3) {
   width: 208px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+Table.full tr > td:last-of-type {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 Table.full tr > img {
@@ -88,8 +98,18 @@ Table.half tr > td:first-of-type {
   width: 32px;
 }
 
-Table.half tr > td:last-of-type {
+Table.half tr > td:nth-child(3) {
   width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+Table.half tr > td:last-of-type {
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 Table.half tr > img {
