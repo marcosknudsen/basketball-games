@@ -24,7 +24,7 @@ export default function TeamMatches() {
           HOME
         </button>
       </div>
-      <h1 className="uppercase text-white font-bold text-3xl md:text-2xl">{teamName} Results</h1>
+      <h1 className="uppercase text-white font-bold text-3xl md:text-2xl text-center">{teamName} Results</h1>
       <div className="w-full flex justify-center">
         <table className="w-1/2 xl:w-5/6 sm:w-11/12 border">
           <thead></thead>
