@@ -22,7 +22,7 @@ export default function Table({
                   src={s.team.logo}
                 />
               </td>
-              <td className="text-left">{`${s.team.name}`}</td>
+              <td className="text-left">{s.team.name}</td>
             </tr>
           </Link>
         ))}
