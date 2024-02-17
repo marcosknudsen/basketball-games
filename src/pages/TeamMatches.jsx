@@ -60,8 +60,8 @@ export default function TeamMatches() {
                       {m.teams.home.name}
                     </Link>
                   </td>
-                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs mr-1 ${live && "text-red-500"}`}>{m.scores.home.total}</td>
-                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs ml-1 ${live && "text-red-500"}`}>{m.scores.away.total}</td>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs mr-1 text-xl ${live && "text-red-500"}`}>{m.scores.home.total}</td>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs ml-1 text-xl ${live && "text-red-500"}`}>{m.scores.away.total}</td>
                   <td className={`w-[20%] text-center font-bold sm:text-xs sm:leading-none ${live && "text-red-500"}`}>
                     <Link to={"/team/" + m.teams.away.id}>
                       {m.teams.away.name}
