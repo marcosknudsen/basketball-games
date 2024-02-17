@@ -50,7 +50,7 @@ export default function TeamMatches() {
               return (
                 <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == "W" && "bg-green-600"} ${result == "L" && "bg-red-600"} text-white h-10 border items-center ${result == "N" && "bg-gray-600"}`}>
                   <td className={`font-bold w-[10%] sm:text-xs ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
-                  <td className="h-10 w-[10%] flex justify-center">
+                  <td className="w-[10%] flex justify-center">
                     <Link to={"/team/" + m.teams.home.id} className="justify-center items-center flex">
                       <img src={m.teams.home.logo} className="max-h-10"></img>
                     </Link>
@@ -67,7 +67,7 @@ export default function TeamMatches() {
                       {m.teams.away.name}
                     </Link>
                   </td>
-                  <td className="h-10 w-[10%] flex justify-center">
+                  <td className="w-[10%] flex justify-center">
                   <Link to={"/team/" + m.teams.away.id} className="justify-center items-center flex">
                       <img src={m.teams.away.logo} className="max-h-10"></img>
                     </Link>
