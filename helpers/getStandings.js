@@ -7,9 +7,9 @@ export default async function getStandings(league) {
     }
   );
   response = await response.json();
-  response = response.response
-  if (!response.length){
-    return []
+  response = response.response;
+  if (!response.length) {
+    return null;
   }
   response=response[0];
   if (league == 12) {
