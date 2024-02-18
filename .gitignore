@@ -27,3 +27,5 @@ standingarg.json
 *.sln
 *.sw?
 teammatches.json
+leagueMatches.json
+leaguesData.json
