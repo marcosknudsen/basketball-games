@@ -11,11 +11,13 @@ export default async function getStandings(league) {
   if (!response.length) {
     return null;
   }
-  response=response[0];
-  if (league == 12) {
-    return [
-      response.filter((s) => s.group.name == "Western Conference"),
-      response.filter((s) => s.group.name == "Eastern Conference"),
+  response = response[0];
+  if (response[0].league.id == 12) {
+    return {
+      type: "season",
+      data: [
+        response.filter((s) => s.group.name == "Western Conference"),
+        response.filter((s) => s.group.name == "Eastern Conference"),
     ];
   }
   return [response];
