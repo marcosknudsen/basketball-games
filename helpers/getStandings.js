@@ -18,7 +18,11 @@ export default async function getStandings(league) {
       data: [
         response.filter((s) => s.group.name == "Western Conference"),
         response.filter((s) => s.group.name == "Eastern Conference"),
-    ];
+      ],
+    };
   }
-  return [response];
+  return {
+    type: "season",
+    data: [response],
+  };
 }
