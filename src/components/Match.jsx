@@ -30,7 +30,7 @@ export default function Match({
       </div>
       <Link
         to={`/team/${home_team_id}`}
-        className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20"
+        className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20 hover:bg-green-700 transition-colors hover:rounded-xl hover:my-1"
       >
         <div className="max-h-3/5">
           <img
@@ -51,7 +51,7 @@ export default function Match({
           ? "-"
           : away_score}
       </div>
-      <Link to={`/team/${away_team_id}`} className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20">
+      <Link to={`/team/${away_team_id}`} className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20 hover:bg-green-700 transition-colors hover:rounded-xl hover:my-1">
         <div className="max-h-3/5">
           <img
             src={away_logo}
