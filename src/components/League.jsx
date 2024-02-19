@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function League({ matches }) {
   return (
-    <div className="m-3 text-center text-2xl">
-      <Link to={"/league/"+matches[0].league.id}>
-        <div className=" text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5">
+    <div className="m-3 text-center text-2xl ">
+      <Link to={"/league/"+matches[0].league.id} >
+        <div className=" text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5 hover:bg-green-700 transition-all hover:gap-10">
           {
             <img
               src={
