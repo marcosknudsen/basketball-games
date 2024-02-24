@@ -1,5 +1,5 @@
 import React from 'react'
-import Week from './Week'
+import CupStage from './CupStage'
 
 export default function Playoffs({ matches }) {
 
@@ -7,7 +7,7 @@ export default function Playoffs({ matches }) {
     <div className="w-3/4 max-w-[800px] lg:w-full">
       {[...new Set(matches.map((m) => m.week))].reverse()
         .map((week) => (
-          <Week matches={matches.filter((m) => m.week == week)} key={week} />
+          <CupStage matches={matches.filter((m) => m.week == week)} key={week} />
         ))}
     </div>
   )

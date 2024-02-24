@@ -1,4 +1,4 @@
-import Match from "../components/Match"
+import Match from "./Match"
 export default function Week({ matches }) {
     return (<>
         <div className="font-bold text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5">
