@@ -15,6 +15,7 @@ dist-ssr
 matches.json
 standing.json
 standingarg.json
+leaguesData.json
 
 # Editor directories and files
 .vscode/*
