@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import getMatchesByTeam from "../../helpers/getMatchesByTeam";
 import { useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -8,11 +9,16 @@ export async function loader({ params }) {
   return await getMatchesByTeam(params.teamId);
 }
 
+
 export default function TeamMatches() {
   const matches = useLoaderData();
   const { teamId } = useParams()
   const navigate = useNavigate()
   const teamName = matches[0].teams.home.id === parseInt(teamId) ? matches[0].teams.home.name : matches[0].teams.away.name
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  })
 
   return (
     <>
@@ -68,7 +74,7 @@ export default function TeamMatches() {
                     </Link>
                   </td>
                   <td className="w-[10%] flex justify-center">
-                  <Link to={"/team/" + m.teams.away.id} className="justify-center items-center flex">
+                    <Link to={"/team/" + m.teams.away.id} className="justify-center items-center flex">
                       <img src={m.teams.away.logo} className="max-h-10"></img>
                     </Link>
                   </td>
