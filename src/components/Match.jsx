@@ -61,9 +61,6 @@ export default function Match({
         </div>
         <p className="text-base">{away_name}</p>
       </Link>
-      <div className="flex items-center justify-center mr-2">
-        <FaSquarePlus />
-      </div>
     </div>
   );
 }
