@@ -1,3 +1,6 @@
+import argentinoJuninLogo from "../src/argentino-junin.png"
+
+
 export default async function getStandings(league) {
   let response = await fetch(
     `https://v1.basketball.api-sports.io/standings?league=${league}&season=2023-2024`,
@@ -12,6 +15,11 @@ export default async function getStandings(league) {
     return null;
   }
   response = response[0];
+  response.map((pos)=>{
+    if (pos.team.id==280){
+      pos.team.logo=argentinoJuninLogo
+    }
+  })
   if (response[0].league.id == 12) {
     return {
       type: "season",

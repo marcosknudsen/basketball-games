@@ -1,3 +1,5 @@
+import argentinoJuninLogo from "../src/argentino-junin.png"
+
 export default async function getMatches(date) {
   let response = await fetch(
     `https://v1.basketball.api-sports.io/games?date=${
@@ -14,6 +16,14 @@ export default async function getMatches(date) {
   );
   response = await response.json();
   response = response.response;
+  response.map((m)=>{
+    if (m.teams.home.id==280){
+      m.teams.home.logo=argentinoJuninLogo
+    }
+    else if (m.teams.away.id==280){
+      m.teams.away.logo=argentinoJuninLogo
+    }
+  })
   response = response.map(function (m) {
     const date = new Date(m.date);
     return {
