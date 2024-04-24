@@ -1,5 +1,5 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
-
+import peñarolLogo from "../src/peñarol.png"
 
 export default async function getStandings(league) {
   let response = await fetch(
@@ -18,6 +18,12 @@ export default async function getStandings(league) {
   response.map((pos)=>{
     if (pos.team.id==280){
       pos.team.logo=argentinoJuninLogo
+    }
+  })
+  response.map((pos)=>{
+    if (pos.team.id==293){
+      pos.team.logo=peñarolLogo
+      pos.team.name="Peñarol"
     }
   })
   if (response[0].league.id == 12) {

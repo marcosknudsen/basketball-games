@@ -1,5 +1,5 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
-
+import peñarolLogo from "../src/peñarol.png"
 
 export default async function getMatchesbyTeam(team) {
   let response = await fetch(
@@ -20,6 +20,16 @@ export default async function getMatchesbyTeam(team) {
     }
     else if (m.teams.away.id==280){
       m.teams.away.logo=argentinoJuninLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==293){
+      m.teams.home.logo=peñarolLogo
+      m.teams.home.name="Peñarol"
+    }
+    else if (m.teams.away.id==293){
+      m.teams.away.logo=peñarolLogo
+      m.teams.away.name="Peñarol"
     }
   })
   return response.filter((m)=>m.status.short!="POST"&&m.status.short!="ABD");

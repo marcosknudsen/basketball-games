@@ -1,4 +1,5 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
+import peñarolLogo from "../src/peñarol.png"
 
 export default async function getMatches(date) {
   let response = await fetch(
@@ -24,6 +25,16 @@ export default async function getMatches(date) {
       m.teams.away.logo=argentinoJuninLogo
     }
   })
+  response.map((m)=>{
+    if (m.teams.home.id==293){
+      m.teams.home.logo=peñarolLogo
+      m.teams.name="Peñarol"
+    }
+    else if (m.teams.away.id==293){
+      m.teams.away.logo=peñarolLogo
+      m.teams.name="Peñarol"
+    }
+  })
   response = response.map(function (m) {
     const date = new Date(m.date);
     return {
@@ -42,6 +53,5 @@ export default async function getMatches(date) {
   });
   response=response.filter((m)=>m.status.short!=="POST")
   response=response.filter((m)=>m.status.short!=="CANC")
-
   return response;
 }
