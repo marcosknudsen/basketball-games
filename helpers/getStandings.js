@@ -1,5 +1,6 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
+import logger from "./logger.js"
 
 export default async function getStandings(league) {
   let response = await fetch(
@@ -11,6 +12,7 @@ export default async function getStandings(league) {
   );
   response = await response.json();
   response = response.response;
+  logger("Standings",league)
   if (!response.length) {
     return null;
   }

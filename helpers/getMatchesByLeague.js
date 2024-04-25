@@ -1,5 +1,6 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
+import logger from "./logger.js"
 
 export default async function (league) {
   let response = await fetch(
@@ -11,6 +12,7 @@ export default async function (league) {
   );
   response = await response.json();
   response = response.response;
+  logger("Matches by league",league)
   response.map((m)=>{
     if (m.home.id==280){
       m.home.logo=argentinoJuninLogo

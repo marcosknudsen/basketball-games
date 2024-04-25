@@ -1,5 +1,6 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
+import logger from "./logger.js"
 
 export default async function getMatchesbyTeam(team) {
   let response = await fetch(
@@ -11,6 +12,7 @@ export default async function getMatchesbyTeam(team) {
   );
   response = await response.json();
   response = response.response;
+  logger("Matches by team",team)
   if (team==293){
     response=response.filter((m)=>m.league.id!=110)
   }
