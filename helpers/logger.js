@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default function log(action,params) {
+  return null
   axios
     .request({
       method: "post",
