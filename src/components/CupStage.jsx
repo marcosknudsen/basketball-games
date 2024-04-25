@@ -2,7 +2,7 @@ import Match from "./Match"
 export default function Week({ matches }) {
     return (<>
         <div className="font-bold text-yellow-400 rounded-t-md bg-green-800 flex items-center justify-center gap-5">
-            {matches[0].week.replaceAll(`${matches[0].league.name} - `,"")}
+            {matches[0].week?.replaceAll(`${matches[0].league.name} - `,"")}
         </div>
         <div className="mb-3 text-center text-2xl text-white rounded-b-md bg-gray-600">
             {matches.map(m => <Match

@@ -40,7 +40,7 @@ export default function Standing() {
             )}
           </div>
         </>
-      ) : <Playoffs league={leagueId} matches={standing.data}/>
+      ) : <p className="uppercase text-white text-2xl font-bold mb-20">No se ha encontrado la informacion solicitada</p>
       }
     </>
   );

@@ -14,19 +14,19 @@ export default async function (league) {
   response = response.response;
   logger("Matches by league",league)
   response.map((m)=>{
-    if (m.home.id==280){
+    if (m.home?.id==280){
       m.home.logo=argentinoJuninLogo
     }
-    else if (m.away.id==280){
+    else if (m.away?.id==280){
       m.away.logo=argentinoJuninLogo
     }
   })
   response.map((m)=>{
-    if (m.home.id==293){
+    if (m.home?.id==293){
       m.home.logo=peñarolLogo
       m.home.name="Peñarol"
     }
-    else if (m.away.id==293){
+    else if (m.away?.id==293){
       m.away.logo=peñarolLogo
       m.away.name="Peñarol"
     }

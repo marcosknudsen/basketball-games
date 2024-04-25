@@ -17,10 +17,10 @@ export default async function getMatchesbyTeam(team) {
     response=response.filter((m)=>m.league.id!=110)
   }
   response.map((m)=>{
-    if (m.teams.home.id==280){
+    if (m.teams.home?.id==280){
       m.teams.home.logo=argentinoJuninLogo
     }
-    else if (m.teams.away.id==280){
+    else if (m.teams.away?.id==280){
       m.teams.away.logo=argentinoJuninLogo
     }
   })
