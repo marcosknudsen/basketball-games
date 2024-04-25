@@ -28,7 +28,8 @@ export default function Index() {
           Tomorrow
         </button>
       </div>
-      <ListadoLigas matches={matches} />
+      {matches &&<ListadoLigas matches={matches} />}
+      {!matches && null}
     </>
   );
 }
