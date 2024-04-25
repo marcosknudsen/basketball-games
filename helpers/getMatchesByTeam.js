@@ -1,6 +1,8 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
 import logger from "./logger.js"
+import zarateLogo from "../src/zarate.png"
+import independienteOlivaLogo from "../src/independiente-oliva.png"
 
 export default async function getMatchesbyTeam(team) {
   let response = await fetch(
@@ -17,10 +19,10 @@ export default async function getMatchesbyTeam(team) {
     response=response.filter((m)=>m.league.id!=110)
   }
   response.map((m)=>{
-    if (m.teams.home?.id==280){
+    if (m.teams.home.id==280){
       m.teams.home.logo=argentinoJuninLogo
     }
-    else if (m.teams.away?.id==280){
+    else if (m.teams.away.id==280){
       m.teams.away.logo=argentinoJuninLogo
     }
   })
@@ -32,6 +34,22 @@ export default async function getMatchesbyTeam(team) {
     else if (m.teams.away.id==293){
       m.teams.away.logo=peñarolLogo
       m.teams.away.name="Peñarol"
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==6125){
+      m.teams.home.logo=zarateLogo
+    }
+    else if (m.teams.away.id==6125){
+      m.teams.away.logo=zarateLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==5593){
+      m.teams.home.logo=independienteOlivaLogo
+    }
+    else if (m.teams.away.id==5593){
+      m.teams.away.logo=independienteOlivaLogo
     }
   })
   return response.filter((m)=>m.status.short!="POST"&&m.status.short!="ABD");

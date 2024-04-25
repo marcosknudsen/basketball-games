@@ -1,5 +1,7 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
+import zarateLogo from "../src/zarate.png"
+import independienteOlivaLogo from "../src/independiente-oliva.png"
 import logger from "./logger.js"
 
 export default async function getStandings(league) {
@@ -27,6 +29,17 @@ export default async function getStandings(league) {
       pos.team.logo=peñarolLogo
       pos.team.name="Peñarol"
     }
+  })
+  response.map((pos)=>{
+    if (pos.team.id==6125){
+      pos.team.logo=zarateLogo
+    }
+  })
+  response.map((pos)=>{
+    if (pos.team.id==5593){
+      pos.team.logo=independienteOlivaLogo
+    }
+  
   })
   if (response[0].league.id == 12) {
     return {

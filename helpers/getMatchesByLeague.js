@@ -1,6 +1,8 @@
 import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
 import logger from "./logger.js"
+import zarateLogo from "../src/zarate.png"
+import independienteOlivaLogo from "../src/independiente-oliva.png"
 
 export default async function (league) {
   let response = await fetch(
@@ -29,6 +31,22 @@ export default async function (league) {
     else if (m.away?.id==293){
       m.away.logo=peñarolLogo
       m.away.name="Peñarol"
+    }
+  })
+  response.map((m)=>{
+    if (m.home?.id==6125){
+      m.home.logo=zarateLogo
+    }
+    else if (m.away?.id==6125){
+      m.away.logo=zarateLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.home?.id==5593){
+      m.home.logo=independienteOlivaLogo
+    }
+    else if (m.away?.id==5593){
+      m.away.logo=independienteOlivaLogo
     }
   })
   if (!response) {
