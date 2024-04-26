@@ -2,7 +2,9 @@ import argentinoJuninLogo from "../src/argentino-junin.png"
 import peñarolLogo from "../src/peñarol.png"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
+import riachueloLogo from  "../src/riachuelo.png"
 import logger from "./logger.js"
+import { Mms } from "@mui/icons-material"
 
 export default async function getMatches(date) {
   let response = await fetch(
@@ -56,6 +58,14 @@ export default async function getMatches(date) {
     }
     else if (m.teams.away.id==5593){
       m.teams.away.logo=independienteOlivaLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==3114){
+      m.teams.home.logo=riachueloLogo
+    }
+    else if (m.teams.away.id==3114){
+      m.teams.away.logo=riachueloLogo
     }
   })
   response = response.map(function (m) {

@@ -3,6 +3,7 @@ import peñarolLogo from "../src/peñarol.png"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
 import logger from "./logger.js"
+import riachueloLogo from  "../src/riachuelo.png"
 
 export default async function getStandings(league) {
   let response = await fetch(
@@ -39,7 +40,11 @@ export default async function getStandings(league) {
     if (pos.team.id==5593){
       pos.team.logo=independienteOlivaLogo
     }
-  
+  })
+  response.map((pos)=>{
+    if (pos.team.id==3114){
+      pos.team.logo=riachueloLogo
+    }
   })
   if (response[0].league.id == 12) {
     return {

@@ -3,6 +3,7 @@ import peñarolLogo from "../src/peñarol.png"
 import logger from "./logger.js"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
+import riachueloLogo from  "../src/riachuelo.png"
 
 export default async function (league) {
   let response = await fetch(
@@ -47,6 +48,14 @@ export default async function (league) {
     }
     else if (m.away?.id==5593){
       m.away.logo=independienteOlivaLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.home?.id==3114){
+      m.home.logo=riachueloLogo
+    }
+    else if (m.away?.id==3114){
+      m.away.logo=riachueloLogo
     }
   })
   if (!response) {
