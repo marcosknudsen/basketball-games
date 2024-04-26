@@ -1,8 +1,10 @@
 import { FaSquarePlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-export default function Match({
+export default function MatchCard({
   date,
+  id,
+  league_id,
   status,
   home_name,
   away_name,
@@ -16,17 +18,16 @@ export default function Match({
   return (
     <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
       <div
-        className={`w-1/12 justify-center items-center flex text-base font-semibold ${
-          (status.short == "NS" && "upcoming") ||
+        className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == "NS" && "upcoming") ||
           ((status.short == "FT" || status.short == "AOT") && "finished") ||
           "playing"
-        }`}
+          }`}
       >
         {(status.short == "NS" && date) ||
           ((status.short == "FT" || status.short == "AOT") && "Finished") ||
           (status.short == "CANC" && "Canceled") ||
           status.short +
-            (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
+          (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
       </div>
       <Link
         to={`/team/${home_team_id}`}
@@ -42,12 +43,12 @@ export default function Match({
         <p className="text-base">{home_name}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status.short == "NS" 
+        {status.short == "NS"
           ? "-"
           : home_score}
       </div>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status.short == "NS" 
+        {status.short == "NS"
           ? "-"
           : away_score}
       </div>
@@ -61,6 +62,11 @@ export default function Match({
         </div>
         <p className="text-base">{away_name}</p>
       </Link>
+      {league_id == 12 && <div className="flex justify-center items-center w-14">
+        <Link to={`/game/${id}`}>
+          <FaSquarePlus className="text-2xl" />
+        </Link>
+      </div>}
     </div>
   );
 }

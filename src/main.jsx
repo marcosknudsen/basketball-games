@@ -5,6 +5,7 @@ import Tomorrow, { loader as tomorrowLoader } from "./pages/Tomorrow";
 import Yesterday, { loader as yesterdayLoader } from "./pages/Yesterday";
 import Standing, { loader as standingLoader } from "./pages/Standing";
 import TeamMatches, { loader as teamMatchesLoader } from "./pages/TeamMatches";
+import Match, { loader as gameStatsLoader } from "./pages/Match";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./pages/Layout";
 import "./index.css";
@@ -44,6 +45,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               element: <TeamMatches />,
               loader: teamMatchesLoader,
             },
+            {
+              path: "/game/:gameId/",
+              element: <Match />,
+              loader: gameStatsLoader,
+            }
           ],
         },
       ])}

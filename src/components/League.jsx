@@ -1,4 +1,4 @@
-import Match from "./Match";
+import MatchCard from "./MatchCard";
 import { Link } from "react-router-dom";
 
 export default function League({ matches }) {
@@ -31,8 +31,10 @@ export default function League({ matches }) {
       </Link>
       <div className="text-white rounded-b-md bg-gray-600">
         {matches.map((m) => (
-          <Match
+          <MatchCard
             key={m.id}
+            id={m.id}
+            league_id={m.league.id}
             date={m.date}
             status={m.status}
             home_name={m.home.name}
