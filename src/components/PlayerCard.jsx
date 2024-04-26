@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function PlayerCard({ firstName, LastName, points, minutes, fg3a, fg3m, oreb, dreb, ast, stl, fgm, fga, fg_pct, fg3_pct, ftm, fta, ft_pct, pf, turnover, blk, reb }) {
+export default function PlayerCard({ firstName, LastName, points, minutes, fg3a, fg3m, oreb, dreb, ast, stl, fgm, fga, fg_pct, fg3_pct, ftm, fta, ft_pct, pf, turnover, blk, reb,number }) {
   return (
     <tr className='font-medium last:border-t-2 text-md lg:text-sm md:text-xs'>
-      <td className='text-center border'>{firstName + " " + LastName}</td>
+      <td className='text-center border'>{firstName + " " + LastName+" #"+number}</td>
       <td className='text-center border'>{parseInt(minutes)}</td>
       <td className='text-center border'>{fgm}</td>
       <td className='text-center border'>{fga}</td>

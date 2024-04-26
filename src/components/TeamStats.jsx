@@ -1,16 +1,5 @@
 import PlayerCard from "./PlayerCard"
 
-import {
-    Table,
-    Header,
-    HeaderRow,
-    Body,
-    Row,
-    HeaderCell,
-    Cell,
-} from "@table-library/react-table-library/table";
-
-
 export default function TeamStats({ players, logo }) {
     return (
         <>
@@ -70,6 +59,7 @@ export default function TeamStats({ players, logo }) {
                                 blk={p.blk}
                                 turnover={p.turnover}
                                 pf={p.pf}
+                                number={p.player.jersey_number}
                             />
                         ))}
                     </tbody>
