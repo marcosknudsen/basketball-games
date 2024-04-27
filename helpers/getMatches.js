@@ -37,11 +37,11 @@ export default async function getMatches(date) {
   response.map((m)=>{
     if (m.teams.home.id==293){
       m.teams.home.logo=peñarolLogo
-      m.teams.name="Peñarol"
+      m.teams.home.name="Peñarol"
     }
     else if (m.teams.away.id==293){
       m.teams.away.logo=peñarolLogo
-      m.teams.name="Peñarol"
+      m.teams.away.name="Peñarol"
     }
   })
   response.map((m)=>{
