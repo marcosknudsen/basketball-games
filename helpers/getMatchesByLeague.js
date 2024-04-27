@@ -4,6 +4,7 @@ import logger from "./logger.js"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
 import riachueloLogo from  "../src/riachuelo.png"
+import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 
 export default async function (league) {
   let response = await fetch(
@@ -56,6 +57,14 @@ export default async function (league) {
     }
     else if (m.away?.id==3114){
       m.away.logo=riachueloLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.home?.id==286){
+      m.home.logo=gimnasiaComodoroLogo
+    }
+    else if (m.away?.id==286){
+      m.away.logo=gimnasiaComodoroLogo
     }
   })
   if (!response) {

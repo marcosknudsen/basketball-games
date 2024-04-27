@@ -4,6 +4,7 @@ import logger from "./logger.js"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
 import riachueloLogo from  "../src/riachuelo.png"
+import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 
 export default async function getMatchesbyTeam(team) {
   let response = await fetch(
@@ -59,6 +60,14 @@ export default async function getMatchesbyTeam(team) {
     }
     else if (m.teams.away.id==3114){
       m.teams.away.logo=riachueloLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==286){
+      m.teams.home.logo=gimnasiaComodoroLogo
+    }
+    else if (m.teams.away.id==286){
+      m.teams.away.logo=gimnasiaComodoroLogo
     }
   })
   return response.filter((m)=>m.status.short!="POST"&&m.status.short!="ABD");

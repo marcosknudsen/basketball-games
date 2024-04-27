@@ -4,6 +4,7 @@ import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
 import logger from "./logger.js"
 import riachueloLogo from  "../src/riachuelo.png"
+import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 
 export default async function getStandings(league) {
   let response = await fetch(
@@ -44,6 +45,11 @@ export default async function getStandings(league) {
   response.map((pos)=>{
     if (pos.team.id==3114){
       pos.team.logo=riachueloLogo
+    }
+  })
+  response.map((pos)=>{
+    if (pos.team.id==286){
+      pos.team.logo=gimnasiaComodoroLogo
     }
   })
   if (response[0].league.id == 12) {

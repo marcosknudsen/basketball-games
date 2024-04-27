@@ -3,6 +3,7 @@ import peñarolLogo from "../src/peñarol.png"
 import zarateLogo from "../src/zarate.png"
 import independienteOlivaLogo from "../src/independiente-oliva.png"
 import riachueloLogo from  "../src/riachuelo.png"
+import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 import logger from "./logger.js"
 import { Mms } from "@mui/icons-material"
 
@@ -66,6 +67,14 @@ export default async function getMatches(date) {
     }
     else if (m.teams.away.id==3114){
       m.teams.away.logo=riachueloLogo
+    }
+  })
+  response.map((m)=>{
+    if (m.teams.home.id==286){
+      m.teams.home.logo=gimnasiaComodoroLogo
+    }
+    else if (m.teams.away.id==286){
+      m.teams.away.logo=gimnasiaComodoroLogo
     }
   })
   response = response.map(function (m) {
