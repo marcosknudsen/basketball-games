@@ -5,7 +5,6 @@ import TwoTables from "../components/TwoTables";
 import OneTable from "../components/OneTable";
 import { useNavigate } from "react-router-dom";
 import leaguesData from "../../leaguesData.json"
-import Playoffs from "../components/Playoffs";
 import getMatchesByLeague from "../../helpers/getMatchesByLeague";
 import standingDivisions from "../../standingDivisions.json"
 
