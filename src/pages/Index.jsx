@@ -1,4 +1,4 @@
-import ListadoLigas from "../components/Results";
+import Results from "../components/Results";
 
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -28,7 +28,7 @@ export default function Index() {
           Mañana
         </button>
       </div>
-      {matches &&<ListadoLigas matches={matches} />}
+      {matches && <Results matches={matches} />}
       {!matches && null}
     </>
   );
