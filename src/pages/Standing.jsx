@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import leaguesData from "../../leaguesData.json"
 import Playoffs from "../components/Playoffs";
 import getMatchesByLeague from "../../helpers/getMatchesByLeague";
+import standingDivisions from "../../standingDivisions.json"
 
 export async function loader({ params }) {
   return await getStandings(params.leagueId)??await getMatchesByLeague(params.leagueId);
@@ -33,10 +34,10 @@ export default function Standing() {
           <div className="min-h-[740px] flex gap-[150px] items-center w-full justify-center">
             {standing.data.length > 1 ? (
               <>
-                <TwoTables standing1={standing.data[0]} standing2={standing.data[1]} />
+                <TwoTables standing1={standing.data[0]} standing2={standing.data[1]} qualifyArray={standingDivisions[leagueId]}/>
               </>
             ) : (
-              <OneTable standing={standing.data[0]} />
+              <OneTable standing={standing.data[0]} qualifyArray={standingDivisions[leagueId]} />
             )}
           </div>
         </>

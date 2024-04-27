@@ -1,5 +1,5 @@
 import Table from "./Table";
 
-export default function OneTable({ standing }) {
-  return (<Table standing={standing} className="full"/>);
+export default function OneTable({ standing,qualifyArray }) {
+  return (<Table standing={standing} className="full" qualifyArray={qualifyArray}/>);
 }

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 export default function Table({
   standing,
-  className
+  className,
+  qualifyArray
 }) {
   return (
     <table
@@ -10,11 +11,11 @@ export default function Table({
       <thead className="text-center bg-green-800 rounded-t-md">
         {standing[0].group.name}
       </thead>
-      <tbody className="bg-green-600 rounded-b-md p-1">
-        {standing.map((s) => (
+      <tbody className="bg-gray-500 rounded-b-md p-1">
+        {standing.map((s, index) => (
           <Link to={`/team/${s.team.id}`} key={s.team.id}>
             <tr
-              className={`flex border first-of-type:border-t-2`}
+              className={`flex border first-of-type:border-t-2 ${qualifyArray ? qualifyArray[index] ?? "" : "bg-green-600"}`}
             >
               <td>{s.position}°</td>
               <td className="justify flex justify-center">
