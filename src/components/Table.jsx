@@ -15,7 +15,7 @@ export default function Table({
         {standing.map((s, index) => (
           <Link to={`/team/${s.team.id}`} key={s.team.id}>
             <tr
-              className={`flex border first-of-type:border-t-2 ${qualifyArray ? qualifyArray[index] ?? "" : "bg-green-600"}`}
+              className={"flex border first-of-type:border-t-2"} style={{backgroundColor:`${qualifyArray ? qualifyArray[index] ?? "" : "bg-green-600"}`}}
             >
               <td>{s.position}°</td>
               <td className="justify flex justify-center">
