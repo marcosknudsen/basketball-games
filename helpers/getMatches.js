@@ -72,9 +72,11 @@ export default async function getMatches(date) {
   response.map((m)=>{
     if (m.teams.home.id==286){
       m.teams.home.logo=gimnasiaComodoroLogo
+      m.teams.home.name="Gimnasia (CR)"
     }
     else if (m.teams.away.id==286){
       m.teams.away.logo=gimnasiaComodoroLogo
+      m.teams.away.name="Gimnasia (CR)"
     }
   })
   response = response.map(function (m) {

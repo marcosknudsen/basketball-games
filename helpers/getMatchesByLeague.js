@@ -62,9 +62,11 @@ export default async function (league) {
   response.map((m)=>{
     if (m.home?.id==286){
       m.home.logo=gimnasiaComodoroLogo
+      m.home.name="Gimnasia (CR)"
     }
     else if (m.away?.id==286){
       m.away.logo=gimnasiaComodoroLogo
+      m.away.name="Gimnasia (CR)"
     }
   })
   if (!response) {

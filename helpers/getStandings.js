@@ -50,6 +50,7 @@ export default async function getStandings(league) {
   response.map((pos)=>{
     if (pos.team.id==286){
       pos.team.logo=gimnasiaComodoroLogo
+      pos.team.name="Gimnasia (CR)"
     }
   })
   if (response[0].league.id == 12) {
