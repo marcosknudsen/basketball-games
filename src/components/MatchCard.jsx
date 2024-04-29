@@ -62,11 +62,11 @@ export default function MatchCard({
         </div>
         <p className="text-base">{away_name}</p>
       </Link>
-      {(league_id == 12 && (status.short != "NS")) && <div className="flex justify-center items-center w-14">
+{/*       {(league_id == 12 && (status.short != "NS")) && <div className="flex justify-center items-center w-14">
         <Link to={`/game/${id}`}>
           <FaSquarePlus className="text-2xl" />
         </Link>
-      </div>}
+      </div>} */}
     </div>
   );
 }
