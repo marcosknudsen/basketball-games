@@ -5,14 +5,14 @@ export default function PlayerCard({ firstName, LastName, points, minutes, fg3a,
     <tr className='font-medium last:border-t-2 text-md lg:text-sm md:text-xs'>
       <td className='text-center border'>{firstName + " " + LastName+" #"+number}</td>
       <td className='text-center border'>{parseInt(minutes)}</td>
-      <td className='text-center border'>{fgm}</td>
       <td className='text-center border'>{fga}</td>
+      <td className='text-center border'>{fgm}</td>
       <td className='text-center border'>{parseFloat((fg_pct * 100).toFixed(2))}%</td>
       <td className='text-center border'>{fg3a}</td>
       <td className='text-center border'>{fg3m}</td>
       <td className='text-center border'>{parseFloat((fg3_pct * 100).toFixed(2))}%</td>
-      <td className='text-center border'>{ftm}</td>
       <td className='text-center border'>{fta}</td>
+      <td className='text-center border'>{ftm}</td>
       <td className='text-center border'>{parseFloat((ft_pct * 100).toFixed(2))}%</td>
       <td className='text-center border'>{oreb}</td>
       <td className='text-center border'>{dreb}</td>

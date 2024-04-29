@@ -14,14 +14,14 @@ export default function TeamStats({ players, logo }) {
                         <tr className="uppercase text-md lg:text-xs border-y-2 font-semibold italic">
                             <td className="text-center">Jugador</td>
                             <td className="text-center">Min</td>
-                            <td className="text-center">fgm</td>
                             <td className="text-center">fga</td>
+                            <td className="text-center">fgm</td>
                             <td className="text-center">fg%</td>
                             <td className="text-center">fg3a</td>
                             <td className="text-center">fg3m</td>
                             <td className="text-center">fg3%</td>
-                            <td className="text-center">ftm</td>
                             <td className="text-center">fta</td>
+                            <td className="text-center">ftm</td>
                             <td className="text-center">ft%</td>
                             <td className="text-center">oreb</td>
                             <td className="text-center">dreb</td>
