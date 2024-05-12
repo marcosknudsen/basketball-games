@@ -6,7 +6,7 @@ export default function log(action, params) {
     ip: "string",
     endpoint: action,
     parameters: params?.length?[...params]:[],
-    date: "2024-05-12T01:03:44.682Z",
+    date: new Date(),
   });
 
   let config = {
