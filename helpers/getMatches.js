@@ -5,7 +5,6 @@ import independienteOlivaLogo from "../src/independiente-oliva.png"
 import riachueloLogo from  "../src/riachuelo.png"
 import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 import logger from "./logger.js"
-import { Mms } from "@mui/icons-material"
 
 export default async function getMatches(date) {
   let response = await fetch(

@@ -3,7 +3,7 @@ import logger from "./logger.js"
 
 export default async function getMatchStats(id) {
 
-  logger("Match stats", [id]);
+  logger("Match stats", id);
   
   let responseBasketballApi = await fetch(
     "https://v1.basketball.api-sports.io/games?id=" + id,

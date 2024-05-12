@@ -5,7 +5,7 @@ export default function log(action, params) {
     id: 0,
     ip: "string",
     endpoint: action,
-    parameters: params?.length?[...params]:[],
+    parameters: params??"",
     date: new Date(),
   });
 
