@@ -92,6 +92,7 @@ export default async function getMatches(date) {
       home: m.teams.home,
       away: m.teams.away,
       scores: m.scores,
+      week:m.week
     };
   });
   response=response.filter((m)=>m.status.short!=="POST")

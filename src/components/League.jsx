@@ -45,6 +45,7 @@ export default function League({ matches }) {
             away_score={m.scores.away.total}
             home_team_id={m.home.id}
             away_team_id={m.away.id}
+            week={m.week}
           />
         ))}
       </div>
