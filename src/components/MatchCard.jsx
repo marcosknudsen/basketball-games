@@ -22,7 +22,7 @@ export default function MatchCard({
   const [away_streak, setAwayStreak] = useState(null)
 
   useEffect(() => {
-    if (league_id == 12) {
+    if (league_id == 12 || league_id == 18) {
       fetch(`https://v1.basketball.api-sports.io/games?team=${home_team_id}&timezone=America/Argentina/Buenos_Aires&season=2023-2024`, {
         headers: { "x-apisports-key": import.meta.env.VITE_TOKEN }
       })
