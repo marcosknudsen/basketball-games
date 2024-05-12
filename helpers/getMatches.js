@@ -26,7 +26,7 @@ export default async function getMatches(date) {
   if (response.length === 0) {
     return [];
   }
-  logger("Matches by date",`${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")}`)
+  logger("Matches by date")
   response.map((m)=>{
     if (m.teams.home.id==280){
       m.teams.home.logo=argentinoJuninLogo

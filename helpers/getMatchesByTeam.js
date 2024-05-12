@@ -16,7 +16,7 @@ export default async function getMatchesbyTeam(team) {
   );
   response = await response.json();
   response = response.response;
-  logger("Matches by team",team)
+  logger("Matches by team",[team])
   if (team==293){
     response=response.filter((m)=>m.league.id!=110)
   }

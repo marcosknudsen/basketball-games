@@ -16,7 +16,7 @@ export default async function (league) {
   );
   response = await response.json();
   response = response.response;
-  logger("Matches by league",league)
+  logger("Matches by league",[league])
   response.map((m)=>{
     if (m.home?.id==280){
       m.home.logo=argentinoJuninLogo
