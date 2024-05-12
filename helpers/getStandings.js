@@ -16,7 +16,7 @@ export default async function getStandings(league) {
   );
   response = await response.json();
   response = response.response;
-  logger("Standings",league)
+  logger("Standings",[league])
   if (!response.length) {
     return null;
   }

@@ -1,24 +1,26 @@
 import axios from "axios";
 
-export default function log(action,params) {
-  return null
+export default function log(action, params) {
+  let data = JSON.stringify({
+    id: 0,
+    ip: "string",
+    endpoint: action,
+    parameters: params?.length?[...params]:[],
+    date: "2024-05-12T01:03:44.682Z",
+  });
+
+  let config = {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: "https://promiedos-basquet-logger20240511205053.azurewebsites.net/api/requests",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
   axios
-    .request({
-      method: "post",
-      maxBodyLength: Infinity,
-      url: "https://promiedos-basquet-log-api.netlify.app/.netlify/functions/server/log",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: JSON.stringify({
-        date:new Date(),
-        action,
-        params,
-      }),
-    })
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-    })
+    .request(config)
     .catch((error) => {
       console.log(error);
     });
