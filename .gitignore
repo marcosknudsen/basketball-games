@@ -12,10 +12,7 @@ dist
 dist-ssr
 *.local
 .env
-matches.json
-standing.json
-standingarg.json
-leaguesData.json
+test_data
 
 # Editor directories and files
 .vscode/*
@@ -27,6 +24,3 @@ leaguesData.json
 *.njsproj
 *.sln
 *.sw?
-teammatches.json
-leagueMatches.json
-stats.json
