@@ -1,4 +1,3 @@
-import TeamStats from "../src/components/TeamStats";
 import logger from "./logger.js"
 
 export default async function getMatchStats(id) {
