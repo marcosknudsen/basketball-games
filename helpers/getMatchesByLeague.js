@@ -1,10 +1,10 @@
-import argentinoJuninLogo from "../src/argentino-junin.png"
-import peñarolLogo from "../src/peñarol.png"
+import argentinoJuninLogo from "../src/images/team_logos/argentino-junin.png"
+import peñarolLogo from "../src/images/team_logos/peñarol.png"
+import zarateLogo from "../src/images/team_logos/zarate.png"
+import independienteOlivaLogo from "../src/images/team_logos/independiente-oliva.png"
+import riachueloLogo from  "../src/images/team_logos/riachuelo.png"
+import gimnasiaComodoroLogo from "../src/images/team_logos/gimnasia-comodoro.png"
 import logger from "./logger.js"
-import zarateLogo from "../src/zarate.png"
-import independienteOlivaLogo from "../src/independiente-oliva.png"
-import riachueloLogo from  "../src/riachuelo.png"
-import gimnasiaComodoroLogo from "../src/gimnasia-comodoro.png"
 
 export default async function (league) {
   let response = await fetch(
