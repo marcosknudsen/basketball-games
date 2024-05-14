@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import getMatchesByTeam from "../../helpers/getMatchesByTeam";
+import getMatchesByTeam from "../helpers/getMatchesByTeam";
 import { useLoaderData } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";

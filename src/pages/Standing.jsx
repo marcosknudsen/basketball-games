@@ -1,11 +1,11 @@
 import React from "react";
-import getStandings from "../../helpers/getStandings";
+import getStandings from "../helpers/getStandings";
 import { useLoaderData, useParams } from "react-router-dom";
 import TwoTables from "../components/TwoTables";
 import OneTable from "../components/OneTable";
 import { useNavigate } from "react-router-dom";
 import leaguesData from "../../leaguesData.json"
-import getMatchesByLeague from "../../helpers/getMatchesByLeague";
+import getMatchesByLeague from "../helpers/getMatchesByLeague";
 import standingDivisions from "../../standingDivisions.json"
 
 export async function loader({ params }) {

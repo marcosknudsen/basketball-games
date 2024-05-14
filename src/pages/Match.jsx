@@ -1,4 +1,4 @@
-import getMatchStats from "../../helpers/getMatchStats.js"
+import getMatchStats from "../helpers/getMatchStats.js"
 import TeamStats from "../components/TeamStats"
 import { useLoaderData, useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"

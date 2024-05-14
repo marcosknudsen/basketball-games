@@ -2,7 +2,7 @@ import ListadoLigas from "../components/Results";
 
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import getMatches from "../../helpers/getMatches";
+import getMatches from "../helpers/getMatches";
 
 
 export async function loader() {
