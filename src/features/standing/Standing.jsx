@@ -1,7 +1,6 @@
 import { useLoaderData, useParams,useNavigate } from "react-router-dom";
-import TwoTables from "@/components/TwoTables";
-import OneTable from "@/components/OneTable";
-import leaguesData from "@/test_data/leaguesData.json"//TODO eliminar dependencia
+import TwoTables from "@components/TwoTables";
+import OneTable from "@components/OneTable";
 import standingDivisions from "@/standingDivisions.json"
 
 export default function Standing() {
@@ -11,7 +10,7 @@ export default function Standing() {
 
   return (
     <>
-      {<p className="text-yellow-400 text-3xl font-bold">{leaguesData.data.filter(l => l.id == leagueId)[0].name}</p>}
+      {<p className="text-yellow-400 text-3xl font-bold">{standing.data[0][0].league.name}</p>}
       {standing.type == "season" ? (
         <>
           <div>
