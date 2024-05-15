@@ -1,9 +1,9 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import TwoTables from "../components/TwoTables";
-import OneTable from "../components/OneTable";
+import TwoTables from "@/components/TwoTables";
+import OneTable from "@/components/OneTable";
 import { useNavigate } from "react-router-dom";
-import leaguesData from "../../leaguesData.json"
-import standingDivisions from "../../standingDivisions.json"
+import leaguesData from "@/test_data/leaguesData.json"
+import standingDivisions from "@/standingDivisions.json"
 
 export default function Standing() {
   const standing = useLoaderData();

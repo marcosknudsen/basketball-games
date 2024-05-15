@@ -1,17 +1,9 @@
-import ListadoLigas from "../components/Results";
-
+import ListadoLigas from "../../components/Results";
 import { useLoaderData } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import getMatches from "../helpers/getMatches";
 
 
-export async function loader() {
-  const yesterday = new Date(Date.now());
-  yesterday.setDate(yesterday.getDate()-1)
-  return await getMatches(yesterday);
-}
-
-export default function Yesterday() {
+export default function Tomorrow() {
   const matches = useLoaderData();
   const navigate = useNavigate();
   return (

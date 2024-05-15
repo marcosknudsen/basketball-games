@@ -1,11 +1,6 @@
-import getMatchStats from "../helpers/getMatchStats.js"
-import TeamStats from "../components/TeamStats"
+import TeamStats from "../../components/TeamStats.jsx"
 import { useLoaderData, useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
-
-export async function loader({ params }) {
-    return await getMatchStats(params.gameId)
-}
 
 export default function Match() {
     let { stats, teamsLogos } = useLoaderData()

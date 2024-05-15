@@ -4,7 +4,7 @@ import zarateLogo from "../images/team_logos/zarate.png"
 import independienteOlivaLogo from "../images/team_logos/independiente-oliva.png"
 import riachueloLogo from "../images/team_logos/riachuelo.png"
 import gimnasiaComodoroLogo from "../images/team_logos/gimnasia-comodoro.png"
-import logger from "../../helpers/logger.js"
+import logger from "@/services/logger.js"
 
 export default async function getStandings(league) {
   let response = await fetch(
