@@ -1,5 +1,5 @@
-import MatchCard from "./MatchCard";
 import { Link } from "react-router-dom";
+import MatchCard from "@components/MatchCard";
 
 export default function League({ matches }) {
   return (

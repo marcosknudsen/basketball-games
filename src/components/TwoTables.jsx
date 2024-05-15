@@ -1,4 +1,4 @@
-import Table from "./Table";
+import Table from "@components/Table";
 
 export default function TwoTables({ standing1, standing2, className,qualifyArray }) {
   return (

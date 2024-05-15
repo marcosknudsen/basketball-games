@@ -1,14 +1,6 @@
-import ListadoLigas from "../components/Results";
+import { useLoaderData,useNavigate } from "react-router-dom";
+import ListadoLigas from "@components/Results";
 
-import { useLoaderData } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import getMatches from "../../helpers/getMatches";
-
-export async function loader() {
-  const tomorrow = new Date(Date.now());
-  tomorrow.setDate(tomorrow.getDate()+1)
-  return await getMatches(tomorrow);
-}
 
 export default function Tomorrow() {
   const matches = useLoaderData();

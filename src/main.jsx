@@ -1,16 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import Index, { loader as todayLoader } from "./pages/Index";
-import Tomorrow, { loader as tomorrowLoader } from "./pages/Tomorrow";
-import Yesterday, { loader as yesterdayLoader } from "./pages/Yesterday";
-import Standing, { loader as standingLoader } from "./pages/Standing";
-import TeamMatches, { loader as teamMatchesLoader } from "./pages/TeamMatches";
-import Match, { loader as gameStatsLoader } from "./pages/Match";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Layout from "./pages/Layout";
-import "./index.css";
-import "../Match.css";
-import "../Layout.css";
+import ReactDOM from "react-dom/client";
+import Index from "@/features/index/Index"
+import todayLoader from "@/features/index/loader.js"
+import Tomorrow from "@/features/tomorrow/Tomorrow"
+import tomorrowLoader from "@/features/tomorrow/loader.js"
+import Yesterday from "@/features/yesterday/Yesterday"
+import yesterdayLoader from "@/features/yesterday/loader.js"
+import TeamMatches from "@/features/teammatches/Teammatches"
+import teamMatchesLoader from "@/features/teammatches/loader.js"
+import Match from "@/features/match/Match"
+import gameStatsLoader from "@/features/match/loader.js"
+import Layout from "./features/layout/Layout";
+import "@/index.css";
+import "@/assets/Match.css";
+import "@/assets/Layout.css";
+import Standing from "@/features/standing/Standing"
+import { loader as standingLoader } from "@/features/standing/loader"
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

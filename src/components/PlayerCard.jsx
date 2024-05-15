@@ -1,4 +1,3 @@
-import React from 'react'
 
 export default function PlayerCard({ firstName, LastName, points, minutes, fg3a, fg3m, oreb, dreb, ast, stl, fgm, fga, fg_pct, fg3_pct, ftm, fta, ft_pct, pf, turnover, blk, reb,number }) {
   return (

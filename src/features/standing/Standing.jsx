@@ -1,26 +1,18 @@
-import React from "react";
-import getStandings from "../../helpers/getStandings";
-import { useLoaderData, useParams } from "react-router-dom";
-import TwoTables from "../components/TwoTables";
-import OneTable from "../components/OneTable";
-import { useNavigate } from "react-router-dom";
-import leaguesData from "../../leaguesData.json"
-import getMatchesByLeague from "../../helpers/getMatchesByLeague";
-import standingDivisions from "../../standingDivisions.json"
-
-export async function loader({ params }) {
-  return await getStandings(params.leagueId)??await getMatchesByLeague(params.leagueId);
-}
+import { useLoaderData, useParams,useNavigate } from "react-router-dom";
+import TwoTables from "@/components/TwoTables";
+import OneTable from "@/components/OneTable";
+import leaguesData from "@/test_data/leaguesData.json"//TODO eliminar dependencia
+import standingDivisions from "@/standingDivisions.json"
 
 export default function Standing() {
   const standing = useLoaderData();
-  const {leagueId} = useParams()
+  const { leagueId } = useParams()
   const navigate = useNavigate();
 
   return (
     <>
       {<p className="text-yellow-400 text-3xl font-bold">{leaguesData.data.filter(l => l.id == leagueId)[0].name}</p>}
-      {standing.type=="season"? (
+      {standing.type == "season" ? (
         <>
           <div>
             <button
@@ -33,7 +25,7 @@ export default function Standing() {
           <div className="min-h-[740px] flex gap-[150px] items-center w-full justify-center">
             {standing.data.length > 1 ? (
               <>
-                <TwoTables standing1={standing.data[0]} standing2={standing.data[1]} qualifyArray={standingDivisions[leagueId]}/>
+                <TwoTables standing1={standing.data[0]} standing2={standing.data[1]} qualifyArray={standingDivisions[leagueId]} />
               </>
             ) : (
               <OneTable standing={standing.data[0]} qualifyArray={standingDivisions[leagueId]} />
