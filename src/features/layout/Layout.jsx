@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
-import { FaArrowUpLong } from "react-icons/fa6";
+import { Outlet,FaArrowUpLong } from "react-router-dom";
 
 export default function Layout() {
   const [scrollPosition, setScrollPosition] = useState(0)

@@ -1,6 +1,5 @@
-import Results from "../../components/Results";
-import { useLoaderData } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import Results from "@components/Results";
+import { useLoaderData,useNavigate } from "react-router-dom";
 
 export default function Index() {
   const matches = useLoaderData();

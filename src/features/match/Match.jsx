@@ -1,6 +1,5 @@
-import TeamStats from "../../components/TeamStats.jsx"
-import { useLoaderData, useParams } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
+import TeamStats from "@components/TeamStats.jsx"
+import { useLoaderData, useParams,useNavigate } from "react-router-dom"
 
 export default function Match() {
     let { stats, teamsLogos } = useLoaderData()

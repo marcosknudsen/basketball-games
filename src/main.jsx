@@ -1,6 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ReactDOM from "react-dom/client";
 import Index from "@/features/index/Index"
 import todayLoader from "@/features/index/loader.js"
 import Tomorrow from "@/features/tomorrow/Tomorrow"
@@ -12,7 +11,7 @@ import teamMatchesLoader from "@/features/teammatches/loader.js"
 import Match from "@/features/match/Match"
 import gameStatsLoader from "@/features/match/loader.js"
 import Layout from "./features/layout/Layout";
-import "./index.css";
+import "@/index.css";
 import "@/assets/Match.css";
 import "@/assets/Layout.css";
 import Standing from "@/features/standing/Standing"

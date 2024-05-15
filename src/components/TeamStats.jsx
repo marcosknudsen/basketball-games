@@ -1,4 +1,4 @@
-import PlayerCard from "./PlayerCard"
+import PlayerCard from "@components/PlayerCard"
 
 export default function TeamStats({ players, logo }) {
     return (

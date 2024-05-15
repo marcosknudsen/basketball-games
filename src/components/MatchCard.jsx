@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { FaSquarePlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { FaSquarePlus } from "react-icons/fa6";
 
 export default function MatchCard({
   date,

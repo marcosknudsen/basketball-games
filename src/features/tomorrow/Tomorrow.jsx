@@ -1,6 +1,5 @@
-import ListadoLigas from "../../components/Results";
-import { useLoaderData } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData,useNavigate } from "react-router-dom";
+import ListadoLigas from "@components/Results";
 
 
 export default function Tomorrow() {

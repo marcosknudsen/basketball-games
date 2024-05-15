@@ -1,8 +1,7 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams,useNavigate } from "react-router-dom";
 import TwoTables from "@/components/TwoTables";
 import OneTable from "@/components/OneTable";
-import { useNavigate } from "react-router-dom";
-import leaguesData from "@/test_data/leaguesData.json"
+import leaguesData from "@/test_data/leaguesData.json"//TODO eliminar dependencia
 import standingDivisions from "@/standingDivisions.json"
 
 export default function Standing() {

@@ -1,5 +1,6 @@
-import League from "./League";
+import League from "@components/League";
 import order from "@/order.json";
+
 export default function Results({ matches }) {
   return (
     <div className="w-3/4 max-w-[800px] lg:w-full">
