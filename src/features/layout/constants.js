@@ -1,0 +1,2 @@
+export const SCROLL_POSITION_SHOW_BUTTON = 500;
+export const ARROW_SIZE=40;

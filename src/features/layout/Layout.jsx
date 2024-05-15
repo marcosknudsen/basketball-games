@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { FaArrowUpLong } from "react-icons/fa6";
+import {SCROLL_POSITION_SHOW_BUTTON,ARROW_SIZE} from "./constants.js"
 
 export default function Layout() {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -23,9 +24,9 @@ export default function Layout() {
 
   return (
     <div className="bg-cyan-700 min-h-screen flex flex-col items-center gap-5 pt-5">
-      {scrollPosition > 500 &&
+      {scrollPosition > SCROLL_POSITION_SHOW_BUTTON &&
         <button onClick={handleClick} className="fixed right-16 bottom-10 py-4 px-8 rounded-lg text-2xl hover:bg-green-800 transition-all text-yellow-400 font-bold uppercase bg-green-700">
-          <FaArrowUpLong fontSize={40} />
+          <FaArrowUpLong fontSize={ARROW_SIZE} />
         </button>
       }
       <div className="flex items-center justify-center gap-5 sm:gap-2 w-full">
