@@ -8,7 +8,7 @@ import tomorrowLoader from "@/features/tomorrow/loader.js"
 import Yesterday from "@/features/yesterday/Yesterday"
 import yesterdayLoader from "@/features/yesterday/loader.js"
 import TeamMatches from "@/features/teamMatches/TeamMatches"
-import teamMatchesLoader from "@/features/teammatches/loader.js"
+import teamMatchesLoader from "@/features/teamMatches/loader.js"
 import Match from "@/features/match/Match"
 import gameStatsLoader from "@/features/match/loader.js"
 import Layout from "./features/layout/Layout";
