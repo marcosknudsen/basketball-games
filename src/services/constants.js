@@ -1,0 +1,5 @@
+export const SHORT_CODE_POSTPONED="POST"
+export const SHORT_CODE_CANCELED="CANC"
+export const API_BASKETBALL_URL="https://v1.basketball.api-sports.io/"
+export const GAMES_ENDPOINT="games"
+export const MATCHES_LOG_STRING="Matches by date"
