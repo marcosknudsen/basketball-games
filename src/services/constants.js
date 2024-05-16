@@ -1,6 +1,8 @@
 export const SHORT_CODE_POSTPONED="POST"
 export const SHORT_CODE_CANCELED="CANC"
 export const API_BASKETBALL_URL="https://v1.basketball.api-sports.io/"
+export const API_STATS_URL="https://api.balldontlie.io/v1/"
 export const GAMES_ENDPOINT="games"
 export const MATCHES_LOG_STRING="Matches by date"
 export const TEAM_MATCHES_LOG_STRING="Matches by team"
+export const STATS_ENDPOINT="teams"
