@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useLoaderData,useParams,useNavigate,Link } from "react-router-dom";
+import { SCROLL_INITIAL_POSITION } from "@/features/constants.js";
+import { LOSE_RESULT, NOT_PLAYED_RESULT, WIN_RESULT,SHORT_CODE_FINISHED,SHORT_AFTER_OVERTIME,SHORT_CODE_NOT_STARTED } from "./constant";
 
 export default function TeamMatches() {
   const matches = useLoaderData();
@@ -8,7 +10,7 @@ export default function TeamMatches() {
   const teamName = matches[0].teams.home.id === parseInt(teamId) ? matches[0].teams.home.name : matches[0].teams.away.name
 
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(SCROLL_INITIAL_POSITION.x, SCROLL_INITIAL_POSITION.y)
   })
 
   return (
@@ -27,17 +29,17 @@ export default function TeamMatches() {
           <thead></thead>
           <tbody>
             {matches.map((m) => {
-              let result = "N"
+              let result = NOT_PLAYED_RESULT
               let live = false
-              if (m.status.short == "FT" || m.status.short == "AOT") {
+              if (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_AFTER_OVERTIME) {
                 if (m.teams.home.id === parseInt(teamId)) {
-                  result = m.scores.home.total > m.scores.away.total ? "W" : "L"
+                  result = m.scores.home.total > m.scores.away.total ? WIN_RESULT : LOSE_RESULT
                 }
                 else {
-                  result = m.scores.home.total > m.scores.away.total ? "L" : "W"
+                  result = m.scores.home.total > m.scores.away.total ? LOSE_RESULT : WIN_RESULT
                 }
               }
-              else if (m.status.short != "NS") {
+              else if (m.status.short != SHORT_CODE_NOT_STARTED) {
                 live = true
               }
 
@@ -45,7 +47,7 @@ export default function TeamMatches() {
               fecha = fecha.getDate().toString() + "/" + (fecha.getMonth() + 1).toString()
 
               return (
-                <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == "W" && "bg-green-600"} ${result == "L" && "bg-red-600"} text-white h-10 border items-center ${result == "N" && "bg-gray-600"}`}>
+                <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == WIN_RESULT && "bg-green-600"} ${result == LOSE_RESULT && "bg-red-600"} text-white h-10 border items-center ${result == NOT_PLAYED_RESULT && "bg-gray-600"}`}>
                   <td className={`font-bold w-[10%] sm:text-xs ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
                   <td className="w-[10%] flex justify-center">
                     <Link to={"/team/" + m.teams.home.id} className="justify-center items-center flex">
