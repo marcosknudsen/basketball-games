@@ -2,6 +2,7 @@ import { useLoaderData, useParams,useNavigate } from "react-router-dom";
 import TwoTables from "@components/TwoTables";
 import OneTable from "@components/OneTable";
 import standingDivisions from "@/standingDivisions.json"
+import {STANDING_SEASON_TYPE} from "./constants.js"
 
 export default function Standing() {
   const standing = useLoaderData();
@@ -11,7 +12,7 @@ export default function Standing() {
   return (
     <>
       {<p className="text-yellow-400 text-3xl font-bold">{standing.data[0][0].league.name}</p>}
-      {standing.type == "season" ? (
+      {standing.type == STANDING_SEASON_TYPE ? (
         <>
           <div>
             <button
