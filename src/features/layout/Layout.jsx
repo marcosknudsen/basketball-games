@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { FaArrowUpLong } from "react-icons/fa6";
 import {SCROLL_POSITION_SHOW_BUTTON,ARROW_SIZE} from "./constants.js"
+import {SCROLL_INITIAL_POSITION} from "@/features/constants.js"
 
 export default function Layout() {
   const [scrollPosition, setScrollPosition] = useState(0)
@@ -12,7 +13,7 @@ export default function Layout() {
   }
 
   const handleClick = () => {
-    window.scrollTo(0, 0)
+    window.scrollTo(SCROLL_INITIAL_POSITION.x, SCROLL_INITIAL_POSITION.y)
   }
 
   useEffect(() => {
