@@ -5,10 +5,11 @@ import independienteOlivaLogo from "@/images/team_logos/independiente-oliva.png"
 import riachueloLogo from "@/images/team_logos/riachuelo.png"
 import gimnasiaComodoroLogo from "@/images/team_logos/gimnasia-comodoro.png"
 import logger from "@/services/logger.js"
+import { API_BASKETBALL_URL, STANDINGS_LOG_STRING } from "./constants"
 
 export default async function getStandings(league) {
   let response = await fetch(
-    `https://v1.basketball.api-sports.io/standings?league=${league}&season=2023-2024`,
+    API_BASKETBALL_URL+`league=${league}&season=2023-2024`,
     {
       method: "GET",
       headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
@@ -16,7 +17,7 @@ export default async function getStandings(league) {
   );
   response = await response.json();
   response = response.response;
-  logger("Standings", league)
+  logger(STANDINGS_LOG_STRING, league)
   if (!response.length) {
     return null;
   }

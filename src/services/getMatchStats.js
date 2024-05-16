@@ -1,9 +1,9 @@
 import logger from "@/services/logger.js"
-import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, STATS_ENDPOINT } from "./constants";
+import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, MATCH_STATS_LOG_API, STATS_ENDPOINT } from "./constants";
 
 export default async function getMatchStats(id) {
 
-  logger("Match stats", id);
+  logger(MATCH_STATS_LOG_API, id);
   
   let responseBasketballApi = await fetch(
     API_BASKETBALL_URL+GAMES_ENDPOINT+"?id=" + id,
