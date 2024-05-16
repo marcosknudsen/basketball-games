@@ -1,5 +1,5 @@
 import Results from "@components/Results";
-import { useLoaderData,useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 export default function Index() {
   const matches = useLoaderData();
@@ -20,8 +20,7 @@ export default function Index() {
           Mañana
         </button>
       </div>
-      {matches && <Results matches={matches} />}
-      {!matches && null}
+      {matches ? <Results matches={matches} /> : null}
     </>
   );
 }
