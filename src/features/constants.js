@@ -1,0 +1,1 @@
+export const SCROLL_INITIAL_POSITION = { x: 0, y: 0 };

@@ -5,6 +5,7 @@ import independienteOlivaLogo from "@/images/team_logos/independiente-oliva.png"
 import riachueloLogo from  "@/images/team_logos/riachuelo.png"
 import gimnasiaComodoroLogo from "@/images/team_logos/gimnasia-comodoro.png"
 import logger from "@/services/logger.js"
+import { TEAM_MATCHES_LOG_STRING } from "./constants"
 
 export default async function getMatchesbyTeam(team) {
   let response = await fetch(
@@ -16,7 +17,7 @@ export default async function getMatchesbyTeam(team) {
   );
   response = await response.json();
   response = response.response;
-  logger("Matches by team",team)
+  logger(TEAM_MATCHES_LOG_STRING,team)
   if (team==293){
     response=response.filter((m)=>m.league.id!=110)
   }

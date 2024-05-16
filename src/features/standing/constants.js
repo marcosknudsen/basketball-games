@@ -1,0 +1,1 @@
+export const STANDING_SEASON_TYPE="season"

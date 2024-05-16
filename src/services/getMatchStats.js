@@ -1,11 +1,12 @@
 import logger from "@/services/logger.js"
+import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, MATCH_STATS_LOG_API, STATS_ENDPOINT } from "./constants";
 
 export default async function getMatchStats(id) {
 
-  logger("Match stats", id);
+  logger(MATCH_STATS_LOG_API, id);
   
   let responseBasketballApi = await fetch(
-    "https://v1.basketball.api-sports.io/games?id=" + id,
+    API_BASKETBALL_URL+GAMES_ENDPOINT+"?id=" + id,
     {
       method: "GET",
       headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
@@ -15,7 +16,7 @@ export default async function getMatchStats(id) {
   responseBasketballApi = responseBasketballApi.response[0];
   let date = new Date(responseBasketballApi.date);
 
-  let ballDontLieTeam = await fetch("https://api.balldontlie.io/v1/teams", {
+  let ballDontLieTeam = await fetch(API_STATS_URL+STATS_ENDPOINT, {
     method: "GET",
     headers: { Authorization: import.meta.env.VITE_TOKEN_BALL_DONT_LIE },
   });
@@ -37,7 +38,7 @@ export default async function getMatchStats(id) {
     .map((t) => t.id);
 
   let ballDontLieGame = await fetch(
-    "https://api.balldontlie.io/v1/games?team_ids[]=" +
+    API_STATS_URL+"games?team_ids[]=" +
       teamids[0] +
       "&team_ids[]=" +
       teamids[1] +
@@ -64,7 +65,7 @@ export default async function getMatchStats(id) {
   ballDontLieGame = ballDontLieGame.data[0];
 
   let ballDontLieStats = await fetch(
-    "https://api.balldontlie.io/v1/stats?game_ids[]=" + ballDontLieGame.id,
+    API_STATS_URL+"stats?game_ids[]=" + ballDontLieGame.id,
     {
       method: "GET",
       headers: {
