@@ -56,7 +56,6 @@ export default function Table({
 
 
 function partialResult(matches, team_id) {
-  console.log(matches)
   let match = matches.filter(m => m.teams.home.id == team_id || m.teams.away.id == team_id)[0]
 
   if (match) {
