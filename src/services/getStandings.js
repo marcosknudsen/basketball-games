@@ -1,59 +1,25 @@
-import argentinoJuninLogo from "@/images/team_logos/argentino-junin.png"
-import peñarolLogo from "@/images/team_logos/peñarol.png"
-import zarateLogo from "@/images/team_logos/zarate.png"
-import independienteOlivaLogo from "@/images/team_logos/independiente-oliva.png"
-import riachueloLogo from "@/images/team_logos/riachuelo.png"
-import gimnasiaComodoroLogo from "@/images/team_logos/gimnasia-comodoro.png"
-import logger from "@/services/logger.js"
-import { API_BASKETBALL_URL, STANDINGS_LOG_STRING } from "./constants"
+import { fixClubs } from "@/services/constants.js";
+import logger from "@/services/logger.js";
+import { API_BASKETBALL_URL, STANDINGS_LOG_STRING } from "./constants";
 
 export default async function getStandings(league) {
   let response = await fetch(
-    API_BASKETBALL_URL+`league=${league}&season=2023-2024`,
+    API_BASKETBALL_URL + `standings?league=${league}&season=2023-2024`,
     {
       method: "GET",
       headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
     }
   );
+
   response = await response.json();
   response = response.response;
-  logger(STANDINGS_LOG_STRING, league)
+  logger(STANDINGS_LOG_STRING, league);
   if (!response.length) {
     return null;
   }
   response = response[0];
-  response.map((pos) => {
-    if (pos.team.id == 280) {
-      pos.team.logo = argentinoJuninLogo
-    }
-  })
-  response.map((pos) => {
-    if (pos.team.id == 293) {
-      pos.team.logo = peñarolLogo
-      pos.team.name = "Peñarol"
-    }
-  })
-  response.map((pos) => {
-    if (pos.team.id == 6125) {
-      pos.team.logo = zarateLogo
-    }
-  })
-  response.map((pos) => {
-    if (pos.team.id == 5593) {
-      pos.team.logo = independienteOlivaLogo
-    }
-  })
-  response.map((pos) => {
-    if (pos.team.id == 3114) {
-      pos.team.logo = riachueloLogo
-    }
-  })
-  response.map((pos) => {
-    if (pos.team.id == 286) {
-      pos.team.logo = gimnasiaComodoroLogo
-      pos.team.name = "Gimnasia (CR)"
-    }
-  })
+  response.map((pos) => fixClubs(pos.team));
+
   if (response[0].league.id == 12) {
     return {
       type: "season",
@@ -66,5 +32,5 @@ export default async function getStandings(league) {
   return {
     type: "season",
     data: [response],
-  }
+  };
 }
