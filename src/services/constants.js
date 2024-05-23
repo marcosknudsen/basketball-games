@@ -7,6 +7,7 @@ import gimnasiaComodoroLogo from "@/images/team_logos/gimnasia-comodoro.png";
 
 
 export const SHORT_CODE_POSTPONED = "POST";
+export const SHORT_CODE_ABD = "ABD";
 export const SHORT_CODE_CANCELED = "CANC";
 export const API_BASKETBALL_URL = "https://v1.basketball.api-sports.io/";
 export const API_STATS_URL = "https://api.balldontlie.io/v1/";
@@ -16,6 +17,8 @@ export const TEAM_MATCHES_LOG_STRING = "Matches by team";
 export const STATS_ENDPOINT = "teams";
 export const MATCH_STATS_LOG_API = "Match stats";
 export const STANDINGS_LOG_STRING = "Standings";
+export const TEAM_ID_PEÑAROL = 293;
+export const LEAGUE_ID_URY = 110;
 
 export function fixClubs(team) {
   switch (team.id) {
