@@ -1,0 +1,6 @@
+export const SHORT_CODE_FINISHED="FT"
+export const SHORT_CODE_AFTER_OVERTIME="AOT"
+export const SHORT_CODE_NOT_STARTED="NS"
+export const SHORT_CODE_CANCELED="CANC"
+export const LEAGUE_ID_NBA=12
+export const LEAGUE_ID_ARG=18
