@@ -29,7 +29,7 @@ export default function MatchCard({
           headers: { "x-apisports-key": import.meta.env.VITE_TOKEN }
         })
         matches = await matches.json()
-        matches = matches.response.filter(m => m.week == week && m.status.short == SHORT_CODE_FINISHED)
+        matches = matches.response.filter(m => m.week == week && (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_CODE_AFTER_OVERTIME))
         setHomeStreak(matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
         setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length) 
       }
