@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_AFTER_OVERTIME, SHORT_CODE_CANCELED, SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED,LEAGUE_ID_NBA,LEAGUE_ID_ARG } from "./constants";
+import { SHORT_CODE_AFTER_OVERTIME, SHORT_CODE_CANCELED, SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG } from "./constants";
 
 export default function MatchCard({
   date,
@@ -30,10 +30,8 @@ export default function MatchCard({
         })
         matches = await matches.json()
         matches = matches.response.filter(m => m.week == week && m.status.short == SHORT_CODE_FINISHED)
-        let home=matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length
-        let away=matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length
-        setHomeStreak(home!=0?home:null)
-        setAwayStreak(away!=0?away:null)
+        setHomeStreak(matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
+        setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length) 
       }
     }
     fetchMatch()
@@ -64,7 +62,7 @@ export default function MatchCard({
             alt="home-logo"
           />
         </div>
-        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA ? ` (${home_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak!=null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA ? ` (${home_streak})` : ""}</span>}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
         {status.short == SHORT_CODE_NOT_STARTED
@@ -84,7 +82,7 @@ export default function MatchCard({
             alt="away-logo"
           />
         </div>
-        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA ? ` (${away_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak!=null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA ? ` (${away_streak})` : ""}</span>}</p>
       </Link>
       {(league_id == LEAGUE_ID_NBA && (status.short != SHORT_CODE_NOT_STARTED)) && <div className="flex justify-center items-center w-14">
         <Link to={`/game/${id}`}>
