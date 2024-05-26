@@ -36,7 +36,6 @@ export default function MatchCard({
         else{
           matches=matches.filter(m=>m.date>new Date("2024-05-25"))
         }
-        console.log(matches)
         setHomeStreak(matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
         setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length) 
       }
