@@ -8,7 +8,7 @@ import {
   MATCHES_LOG_STRING,
 } from "./constants";
 
-export default async function getMatches(date) {
+export default async function getMatches(date) {//TODO fix complete logos load
   let response = await fetch(
     API_BASKETBALL_URL +
       GAMES_ENDPOINT +
