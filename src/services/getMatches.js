@@ -29,10 +29,7 @@ export default async function getMatches(date) {//TODO fix complete logos load
     const date = new Date(m.date);
     return {
       id: m.id,
-      date:
-        date.getHours().toString().padStart(2, "0") +
-        ":" +
-        date.getMinutes().toString().padStart(2, "0"),
+      date:m.date,
       status: m.status,
       league: m.league,
       country: m.country,

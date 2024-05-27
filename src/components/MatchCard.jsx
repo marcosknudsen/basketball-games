@@ -21,10 +21,12 @@ export default function MatchCard({
 
   const [home_streak, setHomeStreak] = useState(null)
   const [away_streak, setAwayStreak] = useState(null)
+  
+  let matchDate=new Date(date)
 
   useEffect(() => {
     async function fetchMatch() {
-      if ((league_id == LEAGUE_ID_NBA && week != null) || (league_id == LEAGUE_ID_ARG)) {//TODO fix arg date by date diff
+      if ((league_id == LEAGUE_ID_NBA && week != null) || (league_id == LEAGUE_ID_ARG && new Date(matchDate) > new Date("2024-05-25"))) {
         let matches = await fetch(`https://v1.basketball.api-sports.io/games?h2h=${home_team_id}-${away_team_id}&season=2023-2024`, {
           headers: { "x-apisports-key": import.meta.env.VITE_TOKEN }
         })
@@ -51,7 +53,9 @@ export default function MatchCard({
           "playing"
           }`}
       >
-        {(status.short == SHORT_CODE_NOT_STARTED && date) ||
+        {(status.short == SHORT_CODE_NOT_STARTED && matchDate.getHours().toString().padStart(2, "0") +
+          ":" +
+          matchDate.getMinutes().toString().padStart(2, "0")) ||
           ((status.short == SHORT_CODE_FINISHED || status.short == SHORT_CODE_AFTER_OVERTIME) && "Finished") ||
           (status.short == SHORT_CODE_CANCELED && "Canceled") ||
           status.short +
