@@ -4,6 +4,7 @@ import zarateLogo from "@/images/team_logos/zarate.png";
 import independienteOlivaLogo from "@/images/team_logos/independiente-oliva.png";
 import riachueloLogo from "@/images/team_logos/riachuelo.png";
 import gimnasiaComodoroLogo from "@/images/team_logos/gimnasia-comodoro.png";
+import oberaLogo from "@/images/team_logos/obera.png";
 
 
 export const SHORT_CODE_POSTPONED = "POST";
@@ -41,6 +42,9 @@ export function fixClubs(team) {
     case 286:
       team.logo = gimnasiaComodoroLogo;
       team.name = "Gimnasia (CR)";
+      break;
+    case 2366:
+      team.logo = oberaLogo;
       break;
     default:
       break;
