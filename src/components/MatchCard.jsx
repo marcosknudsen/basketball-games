@@ -24,20 +24,20 @@ export default function MatchCard({
 
   useEffect(() => {
     async function fetchMatch() {
-      if ((league_id == LEAGUE_ID_NBA && week!=null) || (league_id == LEAGUE_ID_ARG)) {//TODO fix arg date by date diff
+      if ((league_id == LEAGUE_ID_NBA && week != null) || (league_id == LEAGUE_ID_ARG)) {//TODO fix arg date by date diff
         let matches = await fetch(`https://v1.basketball.api-sports.io/games?h2h=${home_team_id}-${away_team_id}&season=2023-2024`, {
           headers: { "x-apisports-key": import.meta.env.VITE_TOKEN }
         })
         matches = await matches.json()
-        matches=matches.response
-        if (league_id==LEAGUE_ID_NBA){
+        matches = matches.response
+        if (league_id == LEAGUE_ID_NBA) {
           matches = matches.filter(m => m.week == week && (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_CODE_AFTER_OVERTIME))
         }
-        else{
-          matches=matches.filter(m=>m.date>new Date("2024-05-25"))
+        else {
+          matches = matches.filter(m => new Date(m.date) > new Date("2024-05-25") && (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_CODE_AFTER_OVERTIME))
         }
         setHomeStreak(matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
-        setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length) 
+        setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
       }
     }
     fetchMatch()
@@ -68,7 +68,7 @@ export default function MatchCard({
             alt="home-logo"
           />
         </div>
-        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak!=null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id==LEAGUE_ID_ARG ? ` (${home_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG ? ` (${home_streak})` : ""}</span>}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
         {status.short == SHORT_CODE_NOT_STARTED
@@ -88,7 +88,7 @@ export default function MatchCard({
             alt="away-logo"
           />
         </div>
-        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak!=null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id==LEAGUE_ID_ARG? ` (${away_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak != null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG ? ` (${away_streak})` : ""}</span>}</p>
       </Link>
       {(league_id == LEAGUE_ID_NBA && (status.short != SHORT_CODE_NOT_STARTED)) && <div className="flex justify-center items-center w-14">
         <Link to={`/game/${id}`}>
