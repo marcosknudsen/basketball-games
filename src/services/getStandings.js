@@ -4,33 +4,27 @@ import { API_BASKETBALL_URL, STANDINGS_LOG_STRING } from "./constants";
 
 export default async function getStandings(league) {
   let response = await fetch(
-    API_BASKETBALL_URL + `standings?league=${league}&season=2023-2024`,
-    {
-      method: "GET",
-      headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
-    }
+    `${API_BASKETBALL_URL}/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
   );
 
   response = await response.json();
-  response = response.response;
+  let season = response.results && response.results[0]?.season;
+  response = response.results && response.results[0].overall.tables;
   logger(STANDINGS_LOG_STRING, league);
-  if (!response.length) {
+  if (!response || !response.length) {
     return null;
   }
-  response = response[0];
-  response.map((pos) => fixClubs(pos.team));
 
-  if (response[0].league.id == 12) {
-    return {
-      type: "season",
-      data: [
-        response.filter((s) => s.group.name == "Western Conference"),
-        response.filter((s) => s.group.name == "Eastern Conference"),
-      ],
-    };
+  response.map((table) => table.rows.map((pos) => fixClubs(pos.team)));
+
+  if (league == 2274) {
+    response[0] = response.filter(
+      (table) => table.name == "Western Conference"
+    )[0];
+    response[1] = response.filter(
+      (table) => table.name == "Eastern Conference"
+    )[0];
   }
-  return {
-    type: "season",
-    data: [response],
-  };
+
+  return { season, tables: response };
 }
