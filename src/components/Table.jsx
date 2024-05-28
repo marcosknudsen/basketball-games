@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import {API_BASKETBALL_URL} from "./constants.js"
 export default function Table({
   standing,
   className,
@@ -10,7 +11,7 @@ export default function Table({
   const [liveMatches, setLiveMatches] = useState([])
 
   useEffect(() => {
-    fetch("https://api.b365api.com/v3/events/inplay?token=189736-dtQQcLe1ptKtbs&sport_id=18&skip_esports=true&league_id=" + leagueId)
+    fetch(`${API_BASKETBALL_URL}/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${leagueId}`)
       .then((response) => response.json())
       .then((response) => setLiveMatches(response.results))
   }, [])
