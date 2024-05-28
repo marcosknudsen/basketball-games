@@ -1,6 +1,9 @@
-export const SHORT_CODE_FINISHED="FT"
-export const SHORT_CODE_AFTER_OVERTIME="AOT"
-export const SHORT_CODE_NOT_STARTED="NS"
-export const SHORT_CODE_CANCELED="CANC"
-export const LEAGUE_ID_NBA=12
-export const LEAGUE_ID_ARG=18
+export const SHORT_CODE_FINISHED=3
+export const SHORT_CODE_NOT_STARTED=0
+export const SHORT_CODE_CANCELED=5
+export const LEAGUE_ID_NBA=2274
+export const LEAGUE_ID_ARG_1=1304
+export const LEAGUE_ID_ARG_2=7592
+export const API_BASKETBALL_URL = "https://api.b365api.com";
+export const PLAYOFF_START_ARG_1="2024-05-25"
+export const PLAYOFF_START_ARG_2="2024-04-16"
