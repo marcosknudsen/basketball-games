@@ -15,7 +15,7 @@
     "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@table-library/react-table-library": "^4.1.7",
-    "axios": "^1.7.2",
+    "axios": "^1.6.8",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -12,7 +12,7 @@ export default function log(action, params) {
   let config = {
     method: "post",
     maxBodyLength: Infinity,
-    url: `${import.meta.env.VITE_LOG_API_URL}/api/requests`,
+    url: "https://promiedos-basquet-logger20240511205053.azurewebsites.net/api/requests",
     headers: {
       "Content-Type": "application/json",
     },

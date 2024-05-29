@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG_1, API_BASKETBALL_URL, PLAYOFF_START_ARG_1, LEAGUE_ID_ARG_2,PLAYOFF_START_ARG_2 } from "./constants";
+import { SHORT_CODE_AFTER_OVERTIME, SHORT_CODE_CANCELED, SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG } from "./constants";
 
 export default function MatchCard({
   date,
@@ -14,38 +14,32 @@ export default function MatchCard({
   away_logo,
   home_score,
   away_score,
-  home_image_id,
-  away_image_id,
   home_team_id,
   away_team_id,
-  timer,
-  round
+  week
 }) {
 
   const [home_streak, setHomeStreak] = useState(null)
   const [away_streak, setAwayStreak] = useState(null)
-
-  let matchDate = new Date(date * 1000)
+  
+  let matchDate=new Date(date)
 
   useEffect(() => {
     async function fetchMatch() {
-      if (((league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) && round != null)) {
-        let matches = await fetch(`${API_BASKETBALL_URL}/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
+      if ((league_id == LEAGUE_ID_NBA && week != null) || (league_id == LEAGUE_ID_ARG && new Date(matchDate) > new Date("2024-05-25"))) {
+        let matches = await fetch(`https://v1.basketball.api-sports.io/games?h2h=${home_team_id}-${away_team_id}&season=2023-2024`, {
+          headers: { "x-apisports-key": import.meta.env.VITE_TOKEN }
+        })
         matches = await matches.json()
-        matches = matches.results
-        matches = matches.filter((m) => m.away.id == away_team_id || m.home.id == away_team_id)
+        matches = matches.response
         if (league_id == LEAGUE_ID_NBA) {
-          matches = matches.filter(m => m.round == round && m.time_status == SHORT_CODE_FINISHED)
+          matches = matches.filter(m => m.week == week && (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_CODE_AFTER_OVERTIME))
         }
-        if (league_id == LEAGUE_ID_ARG_1) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_1))
+        else {
+          matches = matches.filter(m => new Date(m.date) > new Date("2024-05-25") && (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_CODE_AFTER_OVERTIME))
         }
-        if (league_id == LEAGUE_ID_ARG_2){
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_2))
-        }
-
-        setHomeStreak(matches.filter(m => (home_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (home_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
-        setAwayStreak(matches.filter(m => (away_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (away_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
+        setHomeStreak(matches.filter(m => (home_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (home_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
+        setAwayStreak(matches.filter(m => (away_team_id == m.teams.home.id && m.scores.home.total > m.scores.away.total) || (away_team_id == m.teams.away.id && m.scores.away.total > m.scores.home.total)).length)
       }
     }
     fetchMatch()
@@ -55,14 +49,17 @@ export default function MatchCard({
     <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == SHORT_CODE_NOT_STARTED && "upcoming") ||
-          ((status == SHORT_CODE_FINISHED || status == 2) && "finished") ||
-          ((status == SHORT_CODE_NOT_STARTED) && "upcoming") ||
+          ((status.short == SHORT_CODE_FINISHED || status.short == SHORT_CODE_AFTER_OVERTIME) && "finished") ||
           "playing"
           }`}
       >
-        {status == 1 && `Q${timer.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
-        {status == 0 && formatDate(matchDate)}
-        {(status == 3 || status == 2 || status == 4 || status == 5) && "Finished"}
+        {(status.short == SHORT_CODE_NOT_STARTED && matchDate.getHours().toString().padStart(2, "0") +
+          ":" +
+          matchDate.getMinutes().toString().padStart(2, "0")) ||
+          ((status.short == SHORT_CODE_FINISHED || status.short == SHORT_CODE_AFTER_OVERTIME) && "Finished") ||
+          (status.short == SHORT_CODE_CANCELED && "Canceled") ||
+          status.short +
+          (status.timer && status.timer > 0 ? " " + status.timer + "'" : "")}
       </div>
       <Link
         to={`/team/${home_team_id}`}
@@ -70,34 +67,34 @@ export default function MatchCard({
       >
         <div className="max-h-3/5">
           <img
-            src={home_logo ?? `https://assets.b365api.com/images/team/b/${home_image_id}.png`}
+            src={home_logo}
             className="max-h-20 max-w-32 text-xs md:max-h-10 md:max-w-20"
             alt="home-logo"
           />
         </div>
-        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{round != null && (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) ? ` (${home_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG ? ` (${home_streak})` : ""}</span>}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status == SHORT_CODE_NOT_STARTED
+        {status.short == SHORT_CODE_NOT_STARTED
           ? "-"
           : home_score}
       </div>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
-        {status == SHORT_CODE_NOT_STARTED
+        {status.short == SHORT_CODE_NOT_STARTED
           ? "-"
           : away_score}
       </div>
       <Link to={`/team/${away_team_id}`} className="flex flex-col justify-center items-center w-1/4 team_logo min-w-20 hover:bg-green-700 transition-colors hover:rounded-xl hover:my-1">
         <div className="max-h-3/5">
           <img
-            src={away_logo ?? `https://assets.b365api.com/images/team/b/${away_image_id}.png`}
+            src={away_logo}
             className="max-h-20 max-w-32 text-xs md:max-h-10 md:max-w-20"
             alt="away-logo"
           />
         </div>
-        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak != null && <span className="text-lg font-semibold md:text-sm">{round != null && (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) ? ` (${away_streak})` : ""}</span>}</p>
+        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak != null && <span className="text-lg font-semibold md:text-sm">{week != null && league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG ? ` (${away_streak})` : ""}</span>}</p>
       </Link>
-      {(league_id == LEAGUE_ID_NBA && (status != SHORT_CODE_NOT_STARTED)) && <div className="flex justify-center items-center w-14">
+      {(league_id == LEAGUE_ID_NBA && (status.short != SHORT_CODE_NOT_STARTED)) && <div className="flex justify-center items-center w-14">
         <Link to={`/game/${id}`}>
           <FaSquarePlus className="text-2xl" />
         </Link>
@@ -105,12 +102,3 @@ export default function MatchCard({
     </div>
   );
 }
-
-
-function formatDate(date) {
-  return (
-    date.getHours().toString().padStart(2, "0") + ":" +
-    date.getMinutes().toString().padStart(2, "0")
-  );
-}
-

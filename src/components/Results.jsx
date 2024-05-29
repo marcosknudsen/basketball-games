@@ -14,6 +14,6 @@ export default function Results({ matches }) {
 }
 
 function getOrder(id){
-  const value=order.order.indexOf(parseInt(id))
+  const value=order.order.indexOf(id)
   return value!=-1?value:9999
 }

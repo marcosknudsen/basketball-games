@@ -1,41 +1,39 @@
-import { useLoaderData, useParams, useNavigate } from "react-router-dom";
+import { useLoaderData, useParams,useNavigate } from "react-router-dom";
 import TwoTables from "@components/TwoTables";
 import OneTable from "@components/OneTable";
 import standingDivisions from "@/standingDivisions.json"
-import { STANDING_SEASON_TYPE } from "./constants.js"
+import {STANDING_SEASON_TYPE} from "./constants.js"
 
 export default function Standing() {
-  const response = useLoaderData();
+  const standing = useLoaderData();
   const { leagueId } = useParams()
   const navigate = useNavigate();
 
-  let season = response && response.season
-  let tables = response && response.tables
-
   return (
     <>
-      {<p className="text-yellow-400 text-3xl font-bold uppercase">{season?.name??"La tabla seleccionada aún no está disponible"}</p>}
-      <div>
-        <button
-          className="bg-green-800 p-3 rounded-md text-yellow-400 w-28 uppercase font-semibold hover:bg-green-700 transition-colors"
-          onClick={() => navigate("/")}
-        >
-          HOME
-        </button>
-      </div>
-      <div className="min-h-[740px] flex gap-[150px] items-center w-full justify-center">
-        {
-          response ? (<>
-
-            {tables.length > 1 ? (
+      {<p className="text-yellow-400 text-3xl font-bold">{standing.data[0][0].league.name}</p>}
+      {standing.type == STANDING_SEASON_TYPE ? (
+        <>
+          <div>
+            <button
+              className="bg-green-800 p-3 rounded-md text-yellow-400 w-28 uppercase font-semibold hover:bg-green-700 transition-colors"
+              onClick={() => navigate("/")}
+            >
+              HOME
+            </button>
+          </div>
+          <div className="min-h-[740px] flex gap-[150px] items-center w-full justify-center">
+            {standing.data.length > 1 ? (
               <>
-                <TwoTables standing1={tables[0]} standing2={tables[1]} qualifyArray={standingDivisions[leagueId]} leagueId={leagueId} />
+                <TwoTables standing1={standing.data[0]} standing2={standing.data[1]} qualifyArray={standingDivisions[leagueId]} />
               </>
             ) : (
-              <OneTable standing={tables[0]} qualifyArray={standingDivisions[leagueId]} leagueId={leagueId} />
+              <OneTable standing={standing.data[0]} qualifyArray={standingDivisions[leagueId]} />
             )}
-          </>):null}
-      </div>
+          </div>
+        </>
+      ) : <p className="uppercase text-white text-2xl font-bold mb-20">No se ha encontrado la informacion solicitada</p>
+      }
     </>
   );
 }
