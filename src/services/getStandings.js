@@ -4,7 +4,7 @@ import { STANDINGS_LOG_STRING } from "./constants";
 
 export default async function getStandings(league) {
   let response = await fetch(
-    `http://localhost:5173/api/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
+    `/api/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
   );
 
   response = await response.json();
