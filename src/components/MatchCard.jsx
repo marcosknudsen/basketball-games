@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
+import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA,PLAYOFF_START_SPA,LEAGUE_ID_SPA,LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
 
 export default function MatchCard({
   date,
@@ -29,7 +29,7 @@ export default function MatchCard({
 
   useEffect(() => {
     async function fetchMatch() {
-      if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2) {
+      if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2||league_id==LEAGUE_ID_SPA) {
         let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
         matches = matches.results
@@ -42,6 +42,9 @@ export default function MatchCard({
         }
         if (league_id == LEAGUE_ID_ARG_2) {
           matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_2) && m.time_status == SHORT_CODE_FINISHED)
+        }
+        if (league_id == LEAGUE_ID_SPA) {
+          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_SPA) && m.time_status == SHORT_CODE_FINISHED)
         }
 
         setHomeStreak(matches.filter(m => (home_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (home_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
