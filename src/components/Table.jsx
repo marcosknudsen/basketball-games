@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {API_BASKETBALL_URL} from "./constants.js"
 export default function Table({
   standing,
   className,
@@ -11,7 +10,7 @@ export default function Table({
   const [liveMatches, setLiveMatches] = useState([])
 
   useEffect(() => {
-    fetch(`${API_BASKETBALL_URL}/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${leagueId}`)
+    fetch(`http://localhost:5173/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${leagueId}`)
       .then((response) => response.json())
       .then((response) => setLiveMatches(response.results))
   }, [])
