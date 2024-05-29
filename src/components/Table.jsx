@@ -10,7 +10,7 @@ export default function Table({
   const [liveMatches, setLiveMatches] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5173/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${leagueId}`)
+    fetch(`/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${leagueId}`)
       .then((response) => response.json())
       .then((response) => setLiveMatches(response.results))
   }, [])

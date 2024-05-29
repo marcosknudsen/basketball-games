@@ -30,7 +30,7 @@ export default function MatchCard({
   useEffect(() => {
     async function fetchMatch() {
       if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2) {
-        let matches = await fetch(`http://localhost:5173/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
+        let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
         matches = matches.results
         matches = matches.filter((m) => m.away.id == away_team_id || m.home.id == away_team_id)

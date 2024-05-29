@@ -10,14 +10,14 @@ export default async function getMatchesbyTeam(team) {
   logger(TEAM_MATCHES_LOG_STRING, team)
 
   let responseInPlay = await fetch(
-    `http://localhost:5173/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
+    `/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
   );
   responseInPlay = await responseInPlay.json();
   responseInPlay = await responseInPlay.results;
   responseInPlay.map((m) => response.push(m));
 
   let responseUpcoming = await fetch(
-    `http://localhost:5173/api/v3/events/upcoming?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
+    `/api/v3/events/upcoming?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
   );
   responseUpcoming = await responseUpcoming.json();
   responseUpcoming = await responseUpcoming.results;
@@ -26,7 +26,7 @@ export default async function getMatchesbyTeam(team) {
 
 
   let responseFinished = await fetch(
-    `http://localhost:5173/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
+    `/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
   );
   responseFinished = await responseFinished.json();
   responseFinished = await responseFinished.results;
