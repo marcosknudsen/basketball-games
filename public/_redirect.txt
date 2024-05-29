@@ -1,2 +1,0 @@
-/api/* https://yourapi.domain.com/:splat 200
-/* /index.html 200
