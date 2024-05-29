@@ -97,7 +97,6 @@ import gironaLogo from "@/images/team_logos/girona.png";
 export const SHORT_CODE_POSTPONED = "POST";
 export const SHORT_CODE_ABD = "ABD";
 export const SHORT_CODE_CANCELED = "CANC";
-export const API_BASKETBALL_URL = "https://api.b365api.com";
 export const API_STATS_URL = "https://api.balldontlie.io/v1/";
 export const GAMES_ENDPOINT = "games";
 export const MATCHES_LOG_STRING = "Matches by date";
