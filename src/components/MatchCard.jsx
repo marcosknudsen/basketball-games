@@ -63,7 +63,7 @@ export default function MatchCard({
           "playing"
           }`}
       >
-        {status == 1 && `Q${timer.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
+        {status == 1 && `Q${timer?.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
         {status == 0 && formatDate(matchDate)}
         {(status == 3 || status == 2 || status == 4 || status == 5) && "Finished"}
       </div>
