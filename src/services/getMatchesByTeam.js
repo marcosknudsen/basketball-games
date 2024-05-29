@@ -1,27 +1,49 @@
-import logger from "@/services/logger.js"
-import { TEAM_MATCHES_LOG_STRING,TEAM_ID_PEÑAROL,LEAGUE_ID_URY, SHORT_CODE_POSTPONED,SHORT_CODE_ABD } from "./constants"
-import { fixClubs } from "./constants"
+import logger from "@/services/logger.js";
+import {
+  TEAM_MATCHES_LOG_STRING,
+  API_BASKETBALL_URL,
+} from "./constants";
+import { fixClubs } from "./constants";
 
 export default async function getMatchesbyTeam(team) {
-  let response = await fetch(
-    `https://v1.basketball.api-sports.io/games?team=${team}&timezone=America/Argentina/Buenos_Aires&season=2023-2024`,
-    {
-      method: "GET",
-      headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
-    }
+  let response = [];
+
+  logger(TEAM_MATCHES_LOG_STRING, team)
+
+  let responseInPlay = await fetch(
+    `${API_BASKETBALL_URL}/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
   );
-  response = await response.json();
-  response = response.response;
-  logger(TEAM_MATCHES_LOG_STRING,team)
+  responseInPlay = await responseInPlay.json();
+  responseInPlay = await responseInPlay.results;
+  responseInPlay.map((m) => response.push(m));
 
-  if (team==TEAM_ID_PEÑAROL){
-    response=response.filter((m)=>m.league.id!=LEAGUE_ID_URY)
-  }
+  let responseUpcoming = await fetch(
+    `${API_BASKETBALL_URL}/v3/events/upcoming?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
+  );
+  responseUpcoming = await responseUpcoming.json();
+  responseUpcoming = await responseUpcoming.results;
+  responseUpcoming=responseUpcoming.filter((m) => m.round >= responseUpcoming[0].round);
+  responseUpcoming.map((m) => response.push(m));
 
-  response.map((m)=>{
-    fixClubs(m.teams.home)
-    fixClubs(m.teams.away)
-  })
 
-  return response.filter((m)=>m.status.short!=SHORT_CODE_POSTPONED&&m.status.short!=SHORT_CODE_ABD);
+  let responseFinished = await fetch(
+    `${API_BASKETBALL_URL}/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${team}`
+  );
+  responseFinished = await responseFinished.json();
+  responseFinished = await responseFinished.results;
+  responseFinished.map((m) => response.push(m));
+
+  response = [...new Set([...response])];
+  response = response.sort((a, b) => a.time - b.time);
+
+  response.map((m) => {
+    fixClubs(m.home);
+    fixClubs(m.away);
+  });
+
+  response=response.filter(m=>m.scores?.["7"]||m.time_status==0)
+
+  return response.filter(
+    (m) => !["2", "4", "5", "99", "10", "11"].includes(m.time_status)
+  );
 }
