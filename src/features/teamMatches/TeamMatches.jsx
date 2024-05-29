@@ -7,7 +7,7 @@ export default function TeamMatches() {
   const matches = useLoaderData();
   const { teamId } = useParams()
   const navigate = useNavigate()
-  const teamName = matches[0].teams.home.id === parseInt(teamId) ? matches[0].teams.home.name : matches[0].teams.away.name
+  const teamName = matches[0].home.id === teamId ? matches[0].home.name : matches[0].away.name
 
   useEffect(() => {
     window.scrollTo(SCROLL_INITIAL_POSITION.x, SCROLL_INITIAL_POSITION.y)
@@ -31,44 +31,44 @@ export default function TeamMatches() {
             {matches.map((m) => {
               let result = NOT_PLAYED_RESULT
               let live = false
-              if (m.status.short == SHORT_CODE_FINISHED || m.status.short == SHORT_AFTER_OVERTIME) {
-                if (m.teams.home.id === parseInt(teamId)) {
-                  result = m.scores.home.total > m.scores.away.total ? WIN_RESULT : LOSE_RESULT
+              if (m.time_status == 3) {
+                if (m.home.id === teamId) {
+                  result = parseInt(m.scores["7"]?.home) > parseInt(m.scores["7"]?.away) ? WIN_RESULT : LOSE_RESULT
                 }
                 else {
-                  result = m.scores.home.total > m.scores.away.total ? LOSE_RESULT : WIN_RESULT
+                  result = parseInt(m.scores["7"]?.home) > parseInt(m.scores["7"]?.away) ? LOSE_RESULT : WIN_RESULT
                 }
               }
-              else if (m.status.short != SHORT_CODE_NOT_STARTED) {
+              else if (m.time_status != 0) {
                 live = true
               }
 
-              let fecha = new Date(m.date)
+              let fecha = new Date(parseInt(m.time)*1000)
               fecha = fecha.getDate().toString() + "/" + (fecha.getMonth() + 1).toString()
 
               return (
                 <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == WIN_RESULT && "bg-green-600"} ${result == LOSE_RESULT && "bg-red-600"} text-white h-10 border items-center ${result == NOT_PLAYED_RESULT && "bg-gray-600"}`}>
                   <td className={`font-bold w-[10%] sm:text-xs ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
                   <td className="w-[10%] flex justify-center">
-                    <Link to={"/team/" + m.teams.home.id} className="justify-center items-center flex">
-                      <img src={m.teams.home.logo} className="max-h-10"></img>
+                    <Link to={"/team/" + m.home.id} className="justify-center items-center flex">
+                      <img src={m.home.logo??`https://assets.b365api.com/images/team/b/${m.home.image_id}.png`} className="max-h-10"></img>
                     </Link>
                   </td>
                   <td className={`w-[20%] text-center font-bold sm:text-xs sm:leading-none ${live && "text-red-500"}`}>
-                    <Link to={"/team/" + m.teams.home.id}>
-                      {m.teams.home.name}
+                    <Link to={"/team/" + m.home.id}>
+                      {m.home.name}
                     </Link>
                   </td>
-                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs mr-1 text-xl ${live && "text-red-500"}`}>{m.scores.home.total}</td>
-                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs ml-1 text-xl ${live && "text-red-500"}`}>{m.scores.away.total}</td>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs mr-1 text-xl ${live && "text-red-500"}`}>{m.scores&& m.scores["7"]?.home}</td>
+                  <td className={`w-[5%] min-w-6 text-center font-bold sm:text-xs ml-1 text-xl ${live && "text-red-500"}`}>{m.scores&& m.scores["7"]?.away}</td>
                   <td className={`w-[20%] text-center font-bold sm:text-xs sm:leading-none ${live && "text-red-500"}`}>
-                    <Link to={"/team/" + m.teams.away.id}>
-                      {m.teams.away.name}
+                    <Link to={"/team/" + m.away.id}>
+                      {m.away.name}
                     </Link>
                   </td>
                   <td className="w-[10%] flex justify-center">
-                    <Link to={"/team/" + m.teams.away.id} className="justify-center items-center flex">
-                      <img src={m.teams.away.logo} className="max-h-10"></img>
+                    <Link to={"/team/" + m.away.id} className="justify-center items-center flex">
+                      <img src={m.away.logo??`https://assets.b365api.com/images/team/b/${m.away.image_id}.png`} className="max-h-10"></img>
                     </Link>
                   </td>
                 </tr>)

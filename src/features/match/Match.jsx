@@ -18,8 +18,8 @@ export default function Match() {
             </button>
             {stats && stats.length ? (
                 <div className="flex flex-col justify-center items-center gap-10 w-full pb-14">
-                    <TeamStats players={players[0]} key={gameId + "_h"} logo={teamsLogos.home} />
-                    <TeamStats players={players[1]} key={gameId + "_a"} logo={teamsLogos.away} />
+                    <TeamStats players={players[0]} key={gameId + "_h"} logo={`https://assets.b365api.com/images/team/b/${teamsLogos.away}.png`} />
+                    <TeamStats players={players[1]} key={gameId + "_a"} logo={`https://assets.b365api.com/images/team/b/${teamsLogos.home}.png`} />
                 </div>
             ) : (
                 <p className="uppercase text-2xl font-bold text-white">Las estadisticas estarán disponibles cuando comience el partido</p>
