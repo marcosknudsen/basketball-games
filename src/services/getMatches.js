@@ -1,7 +1,6 @@
 import logger from "@/services/logger.js";
 import { fixClubs, fixMatches } from "./constants";
 import {
-  API_BASKETBALL_URL,
   SHORT_CODE_CANCELED,
   SHORT_CODE_POSTPONED,
   MATCHES_LOG_STRING,
@@ -19,7 +18,7 @@ export default async function getMatches(date) {
   let responseUpcomingTomorrow;
 
   responseInPlay = await fetch(
-    `${API_BASKETBALL_URL}/v3/events/inplay?token=${
+    `http://localhost:5173/api/v3/events/inplay?token=${
       import.meta.env.VITE_TOKEN
     }&sport_id=18&skip_esports=true&per_page=100`
   );
@@ -28,7 +27,7 @@ export default async function getMatches(date) {
   responseInPlay.map((m) => response.push(m));
 
   responseUpcoming = await fetch(
-    `${API_BASKETBALL_URL}/v3/events/upcoming?token=${
+    `http://localhost:5173/api/v3/events/upcoming?token=${
       import.meta.env.VITE_TOKEN
     }&sport_id=18&skip_esports=true&day=${dateApiFormat(date)}&per_page=100`
   );
@@ -42,7 +41,7 @@ export default async function getMatches(date) {
   dateYesterday.setDate(dateYesterday.getDate() - 1);
 
   responseUpcomingTomorrow = await fetch(
-    `${API_BASKETBALL_URL}/v3/events/upcoming?token=${
+    `http://localhost:5173/api/v3/events/upcoming?token=${
       import.meta.env.VITE_TOKEN
     }&sport_id=18&skip_esports=true&day=${dateApiFormat(
       dateTomorrow
@@ -53,7 +52,7 @@ export default async function getMatches(date) {
   responseUpcomingTomorrow.map((m) => response.push(m));
 
   responseEnded = await fetch(
-    `${API_BASKETBALL_URL}/v3/events/ended?token=${
+    `http://localhost:5173/api/v3/events/ended?token=${
       import.meta.env.VITE_TOKEN
     }&sport_id=18&skip_esports=true&day=${dateApiFormat(date)}&per_page=100`
   );
@@ -62,7 +61,7 @@ export default async function getMatches(date) {
   responseEnded.map((m) => response.push(m));
 
   responseEndedTomorrow = await fetch(
-    `${API_BASKETBALL_URL}/v3/events/ended?token=${
+    `http://localhost:5173/api/v3/events/ended?token=${
       import.meta.env.VITE_TOKEN
     }&sport_id=18&skip_esports=true&day=${dateApiFormat(dateTomorrow)}&per_page=100`
   );

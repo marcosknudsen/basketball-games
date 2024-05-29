@@ -1,10 +1,10 @@
 import { fixClubs } from "@/services/constants.js";
 import logger from "@/services/logger.js";
-import { API_BASKETBALL_URL, STANDINGS_LOG_STRING } from "./constants";
+import { STANDINGS_LOG_STRING } from "./constants";
 
 export default async function getStandings(league) {
   let response = await fetch(
-    `${API_BASKETBALL_URL}/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
+    `http://localhost:5173/api/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
   );
 
   response = await response.json();
