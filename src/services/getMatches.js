@@ -1,11 +1,9 @@
 import logger from "@/services/logger.js";
-import { fixClubs, fixMatches } from "./constants";
+import fixMatches from "./fixMatches";
+import fixClubs from "./fixClubs";
 import {
-  SHORT_CODE_CANCELED,
-  SHORT_CODE_POSTPONED,
-  MATCHES_LOG_STRING,
+  MATCHES_LOG_STRING
 } from "./constants";
-import { data } from "autoprefixer";
 
 export default async function getMatches(date) {
   //TODO fix complete logos load

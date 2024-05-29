@@ -1,4 +1,4 @@
-import { fixClubs } from "@/services/constants.js";
+import fixClubs from "./fixClubs";
 import logger from "@/services/logger.js";
 import { STANDINGS_LOG_STRING } from "./constants";
 

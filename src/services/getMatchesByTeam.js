@@ -2,7 +2,7 @@ import logger from "@/services/logger.js";
 import {
   TEAM_MATCHES_LOG_STRING,
 } from "./constants";
-import { fixClubs } from "./constants";
+import fixClubs from "./fixClubs";
 
 export default async function getMatchesbyTeam(team) {
   let response = [];
