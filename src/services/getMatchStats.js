@@ -1,11 +1,11 @@
 import logger from "@/services/logger.js"
-import { API_STATS_URL, MATCH_STATS_LOG_API, STATS_ENDPOINT, fixClubs } from "./constants";
+import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, MATCH_STATS_LOG_API, STATS_ENDPOINT, fixClubs } from "./constants";
 
 export default async function getMatchStats(id) {
 
   logger(MATCH_STATS_LOG_API, id);
   
-  let responseBasketballApi = await fetch(`http://localhost:5173/api/v1/event/view?token=${import.meta.env.VITE_TOKEN}&event_id=${id}`);
+  let responseBasketballApi = await fetch(`${API_BASKETBALL_URL}/v1/event/view?token=${import.meta.env.VITE_TOKEN}&event_id=${id}`);
   responseBasketballApi = await responseBasketballApi.json();
   responseBasketballApi = responseBasketballApi.results[0];
   let date = new Date(responseBasketballApi.time*1000);

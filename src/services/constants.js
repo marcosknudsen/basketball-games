@@ -57,46 +57,18 @@ import indiosMorenoLogo from "@/images/team_logos/indios_moreno.png";
 import riverPlateLogo from "@/images/team_logos/river_plate.png";
 import claridadLogo from "@/images/team_logos/claridad.png";
 import talarLogo from "@/images/team_logos/talar.png";
-import allBoysLogo from "@/images/team_logos/all_boys.png";
-import nauticoHacoajLogo from "@/images/team_logos/nautico_hacoaj.png";
-import independienteAvellanedaLogo from "@/images/team_logos/independiente_avellaneda.png";
-import italianoLogo from "@/images/team_logos/italiano.png";
-import gevpLogo from "@/images/team_logos/gevp.png";
-import tresFebreroLogo from "@/images/team_logos/tres_febrero.png";
-import temperleyLogo from "@/images/team_logos/temperley.png";
-import sanAndresLogo from "@/images/team_logos/san_andres.png";
-import ateneoPopularVersallesLogo from "@/images/team_logos/ateneo_popular_versalles.png";
-import ceiboLogo from "@/images/team_logos/ceibo.png";
-import atleticoBellLogo from "@/images/team_logos/atletico_bell.png";
-import olayonLogo from "@/images/team_logos/olayon.png";
-import unionOncativoLogo from "@/images/team_logos/union_oncativo.png";
-import wildeSportingLogo from "@/images/team_logos/wilde_sporting.png";
-import midlandLogo from "@/images/team_logos/midland.png";
-import argentinoCastelarLogo from "@/images/team_logos/argentino_castelar.png";
-import huracanSanJustoLogo from "@/images/team_logos/huracan_san_justo.png";
-import casaPaduaLogo from "@/images/team_logos/casa_padua.png";
-import atleticoEzeizaLogo from "@/images/team_logos/atletico_ezeiza.png";
-import unitariosMarcosPazLogo from "@/images/team_logos/unitarios_marcos_paz.png";
-import gimnasiaItuzaingoLogo from "@/images/team_logos/gimnasia_ituzaingo.png";
-import atenasLpLogo from "@/images/team_logos/atenas_lp.png";
-import montegrandeLogo from "@/images/team_logos/montegrande.png";
-import regatasSanNicolasLogo from "@/images/team_logos/regatas_san_nicolas.png";
-import belgranoSanNicolasLogo from "@/images/team_logos/belgrano_san_nicolas.png";
-import colonChivilcoyLogo from "@/images/team_logos/colon_chivilcoy.png";
-import allBoysSantaRosaLogo from "@/images/team_logos/all_boys_santa_rosa.png";
-import centenarioNeuquenLogo from "@/images/team_logos/centenario_neuquen.png";
-import independienteTandilLogo from "@/images/team_logos/independiente_tandil.png";
-import independienteNeuquenLogo from "@/images/team_logos/independiente_neuquen.png";
-import ferroGpLogo from "@/images/team_logos/ferro_gp.png";
-import racingOlavarriaLogo from "@/images/team_logos/racing_olavarria.png";
-import estudiantesOlavarriaLogo from "@/images/team_logos/estudiantes_olavarria.png";
-import kimberleyLogo from "@/images/team_logos/kimberley.png";
-import atleticoVillegasLogo from "@/images/team_logos/atletico_villegas.png";
-import gironaLogo from "@/images/team_logos/girona.png";
+import allBoysLogo from "@/images/team_logos/all_boys.png"
+import nauticoHacoajLogo from "@/images/team_logos/nautico_hacoaj.png"
+import independienteAvellanedaLogo from "@/images/team_logos/independiente_avellaneda.png"
+import italianoLogo from "@/images/team_logos/italiano.png"
+import gevpLogo from "@/images/team_logos/gevp.png"
+import tresFebreroLogo from "@/images/team_logos/tres_febrero.png"
+import temperleyLogo from "@/images/team_logos/temperley.png"
 
 export const SHORT_CODE_POSTPONED = "POST";
 export const SHORT_CODE_ABD = "ABD";
 export const SHORT_CODE_CANCELED = "CANC";
+export const API_BASKETBALL_URL = "https://api.b365api.com";
 export const API_STATS_URL = "https://api.balldontlie.io/v1/";
 export const GAMES_ENDPOINT = "games";
 export const MATCHES_LOG_STRING = "Matches by date";
@@ -402,93 +374,6 @@ export function fixClubs(team) {
       break;
     case 85432:
       team.logo = temperleyLogo;
-      break;
-    case 183131:
-      team.logo = sanAndresLogo;
-      break;
-    case 828102:
-      team.logo = ateneoPopularVersallesLogo;
-      break;
-    case 673108:
-      team.logo = ceiboLogo;
-      break;
-    case 68527:
-      team.logo = atleticoBellLogo;
-      break;
-    case 68532:
-      team.logo = olayonLogo;
-      break;
-    case 68834:
-      team.logo = unionOncativoLogo;
-      break;
-    case 184091:
-      team.logo = wildeSportingLogo;
-      break;
-    case 803631:
-      team.logo = midlandLogo;
-      break;
-    case 183128:
-      team.logo = argentinoCastelarLogo;
-      break;
-    case 56453:
-      team.logo = huracanSanJustoLogo;
-      break;
-    case 973276:
-      team.logo = casaPaduaLogo;
-      break;
-    case 972915:
-      team.logo = atleticoEzeizaLogo;
-      break;
-    case 894248:
-      team.logo = unitariosMarcosPazLogo;
-      break;
-    case 61975:
-      team.logo = gimnasiaItuzaingoLogo;
-      break;
-    case 62201:
-      team.logo = atenasLpLogo;
-      break;
-    case 167979:
-      team.logo = montegrandeLogo;
-      break;
-    case 61993:
-      team.logo = regatasSanNicolasLogo;
-      break;
-    case 56925:
-      team.logo = belgranoSanNicolasLogo;
-      break;
-    case 309115:
-      team.logo = colonChivilcoyLogo;
-      break;
-    case 197288:
-      team.logo = allBoysSantaRosaLogo;
-      break;
-    case 317651:
-      team.logo = centenarioNeuquenLogo;
-      break;
-    case 61997:
-      team.logo = independienteTandilLogo;
-      break;
-    case 56486:
-      team.logo = independienteNeuquenLogo;
-      break;
-    case 193148:
-      team.logo = ferroGpLogo;
-      break;
-    case 62344:
-      team.logo = racingOlavarriaLogo;
-      break;
-    case 833009:
-      team.logo = estudiantesOlavarriaLogo;
-      break;
-    case 826946:
-      team.logo = kimberleyLogo;
-      break;
-    case 826947:
-      team.logo = atleticoVillegasLogo;
-      break;
-    case 240467:
-      team.logo = gironaLogo;
       break;
     default:
       break;
