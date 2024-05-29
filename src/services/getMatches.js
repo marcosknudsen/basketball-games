@@ -1,5 +1,6 @@
 import logger from "@/services/logger.js";
-import { fixClubs, fixMatches } from "./constants";
+import fixMatches from "./fixMatches";
+import fixClubs from "./fixClubs";
 import {
   SHORT_CODE_CANCELED,
   SHORT_CODE_POSTPONED,
