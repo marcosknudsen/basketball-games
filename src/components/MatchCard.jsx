@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
+import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, LEAGUE_ID_ARG_2,PLAYOFF_START_ARG_2 } from "./constants";
 
 export default function MatchCard({
   date,
@@ -29,19 +29,19 @@ export default function MatchCard({
 
   useEffect(() => {
     async function fetchMatch() {
-      if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2) {
+      if (((league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) && round != null)) {
         let matches = await fetch(`http://localhost:5173/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
         matches = matches.results
         matches = matches.filter((m) => m.away.id == away_team_id || m.home.id == away_team_id)
         if (league_id == LEAGUE_ID_NBA) {
-          matches = matches.filter(m => new Date(m.time * 1000) > new Date(PLAYOFF_START_NBA) && m.time_status == SHORT_CODE_FINISHED)
+          matches = matches.filter(m => m.round == round && m.time_status == SHORT_CODE_FINISHED)
         }
         if (league_id == LEAGUE_ID_ARG_1) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_1) && m.time_status == SHORT_CODE_FINISHED)
+          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_1))
         }
-        if (league_id == LEAGUE_ID_ARG_2) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_2) && m.time_status == SHORT_CODE_FINISHED)
+        if (league_id == LEAGUE_ID_ARG_2){
+          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_2))
         }
 
         setHomeStreak(matches.filter(m => (home_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (home_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
@@ -75,7 +75,7 @@ export default function MatchCard({
             alt="home-logo"
           />
         </div>
-        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{`(${home_streak})`}</span>}</p>
+        <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{round != null && (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) ? ` (${home_streak})` : ""}</span>}</p>
       </Link>
       <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
         {status == SHORT_CODE_NOT_STARTED
@@ -95,7 +95,7 @@ export default function MatchCard({
             alt="away-logo"
           />
         </div>
-        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak != null && <span className="text-lg font-semibold md:text-sm">{`(${away_streak})`}</span>}</p>
+        <p className="text-[15px]">{away_name} {window.innerWidth <= 767 && <br />} {away_streak != null && <span className="text-lg font-semibold md:text-sm">{round != null && (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1||league_id==LEAGUE_ID_ARG_2) ? ` (${away_streak})` : ""}</span>}</p>
       </Link>
       {(league_id == LEAGUE_ID_NBA && (status != SHORT_CODE_NOT_STARTED)) && <div className="flex justify-center items-center w-14">
         <Link to={`/game/${id}`}>

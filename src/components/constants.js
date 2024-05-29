@@ -6,4 +6,3 @@ export const LEAGUE_ID_ARG_1=1304
 export const LEAGUE_ID_ARG_2=7592
 export const PLAYOFF_START_ARG_1="2024-05-25"
 export const PLAYOFF_START_ARG_2="2024-04-16"
-export const PLAYOFF_START_NBA="2024-04-13"
