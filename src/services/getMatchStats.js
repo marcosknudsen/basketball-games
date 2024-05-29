@@ -1,14 +1,20 @@
 import logger from "@/services/logger.js"
-import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, MATCH_STATS_LOG_API, STATS_ENDPOINT, fixClubs } from "./constants";
+import { API_BASKETBALL_URL, API_STATS_URL, GAMES_ENDPOINT, MATCH_STATS_LOG_API, STATS_ENDPOINT } from "./constants";
 
 export default async function getMatchStats(id) {
 
   logger(MATCH_STATS_LOG_API, id);
   
-  let responseBasketballApi = await fetch(`${API_BASKETBALL_URL}/v1/event/view?token=${import.meta.env.VITE_TOKEN}&event_id=${id}`);
+  let responseBasketballApi = await fetch(
+    API_BASKETBALL_URL+GAMES_ENDPOINT+"?id=" + id,
+    {
+      method: "GET",
+      headers: { "x-apisports-key": import.meta.env.VITE_TOKEN },
+    }
+  );
   responseBasketballApi = await responseBasketballApi.json();
-  responseBasketballApi = responseBasketballApi.results[0];
-  let date = new Date(responseBasketballApi.time*1000);
+  responseBasketballApi = responseBasketballApi.response[0];
+  let date = new Date(responseBasketballApi.date);
 
   let ballDontLieTeam = await fetch(API_STATS_URL+STATS_ENDPOINT, {
     method: "GET",
@@ -17,26 +23,20 @@ export default async function getMatchStats(id) {
   ballDontLieTeam = await ballDontLieTeam.json();
   ballDontLieTeam = ballDontLieTeam.data;
 
-  if (responseBasketballApi.home.name == "Los Angeles Clippers") {
-    responseBasketballApi.home.name = "LA Clippers";
-  } else if (responseBasketballApi.away.name == "Los Angeles Clippers") {
-    responseBasketballApi.away.name = "LA Clippers";
+  if (responseBasketballApi.teams.home.name == "Los Angeles Clippers") {
+    responseBasketballApi.teams.home.name = "LA Clippers";
+  } else if (responseBasketballApi.teams.away.name == "Los Angeles Clippers") {
+    responseBasketballApi.teams.away.name = "LA Clippers";
   }
 
-  fixClubs(responseBasketballApi.home);
-  fixClubs(responseBasketballApi.away);
-
-  
   let teamids = ballDontLieTeam
-  .filter(
-    (t) =>
-      t.full_name == responseBasketballApi.home.name ||
-    t.full_name == responseBasketballApi.away.name
-  )
-  .map((t) => t.id);
+    .filter(
+      (t) =>
+        t.full_name == responseBasketballApi.teams.home.name ||
+        t.full_name == responseBasketballApi.teams.away.name
+    )
+    .map((t) => t.id);
 
-  console.log(teamids)
-  
   let ballDontLieGame = await fetch(
     API_STATS_URL+"games?team_ids[]=" +
       teamids[0] +
@@ -78,8 +78,8 @@ export default async function getMatchStats(id) {
   return {
     stats: ballDontLieStats.data,
     teamsLogos: {
-      home: responseBasketballApi.home.image_id,
-      away: responseBasketballApi.away.image_id,
+      home: responseBasketballApi.teams.home.logo,
+      away: responseBasketballApi.teams.away.logo,
     },
   };
 }
