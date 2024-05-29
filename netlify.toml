@@ -12,7 +12,6 @@ to = '/index.html'
 [build]
 command = 'npm run build'
 environment = {NODE_VERSION = '14'}
-publish = 'dist'
 
 [dev]
 autoLaunch = false
