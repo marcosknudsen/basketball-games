@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, LEAGUE_ID_NBA,PLAYOFF_START_SPA,LEAGUE_ID_SPA,LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
+import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED,SHORT_CODE_TO_BE_FIXED,SHORT_CODE_PLAYING,SHORT_CODE_POSTPONED, LEAGUE_ID_NBA,PLAYOFF_START_SPA,LEAGUE_ID_SPA,LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2, SHORT_CODE_CANCELED } from "./constants";
 
-export default function MatchCard({
+export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
   date,
   id,
   league_id,
@@ -28,7 +28,7 @@ export default function MatchCard({
   let matchDate = new Date(date * 1000)
 
   useEffect(() => {
-    async function fetchMatch() {
+    async function fetchMatch() {//TODO use new helper
       if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2||league_id==LEAGUE_ID_SPA) {
         let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
@@ -58,14 +58,14 @@ export default function MatchCard({
     <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == SHORT_CODE_NOT_STARTED && "upcoming") ||
-          ((status == SHORT_CODE_FINISHED || status == 2) && "finished") ||
+          ((status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "finished") ||
           ((status == SHORT_CODE_NOT_STARTED) && "upcoming") ||
           "playing"
           }`}
       >
         {status == 1 && `Q${timer?.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
         {status == 0 && formatDate(matchDate)}
-        {(status == 3 || status == 2 || status == 4 || status == 5) && "Finished"}
+        {(status == 3 || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED || status == SHORT_CODE_CANCELED) && "Finished"}
       </div>
       <Link
         to={`/team/${home_team_id}`}

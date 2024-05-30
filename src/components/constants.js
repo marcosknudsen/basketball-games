@@ -1,5 +1,8 @@
-export const SHORT_CODE_FINISHED=3
 export const SHORT_CODE_NOT_STARTED=0
+export const SHORT_CODE_PLAYING=1
+export const SHORT_CODE_TO_BE_FIXED=2
+export const SHORT_CODE_FINISHED=3
+export const SHORT_CODE_POSTPONED=4
 export const SHORT_CODE_CANCELED=5
 export const LEAGUE_ID_NBA=2274
 export const LEAGUE_ID_ARG_1=1304
