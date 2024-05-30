@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLoaderData,useParams,useNavigate,Link } from "react-router-dom";
 import { SCROLL_INITIAL_POSITION } from "@/features/constants.js";
-import { LOSE_RESULT, NOT_PLAYED_RESULT, WIN_RESULT,SHORT_CODE_FINISHED,SHORT_AFTER_OVERTIME,SHORT_CODE_NOT_STARTED } from "./constant";
+import { LOSE_RESULT, NOT_PLAYED_RESULT, WIN_RESULT,SHORT_CODE_FINISHED,SHORT_CODE_PLAYING } from "./constant";
 
 export default function TeamMatches() {
   const matches = useLoaderData();
@@ -31,7 +31,7 @@ export default function TeamMatches() {
             {matches.map((m) => {
               let result = NOT_PLAYED_RESULT
               let live = false
-              if (m.time_status == 3) {
+              if (m.time_status == SHORT_CODE_FINISHED) {
                 if (m.home.id === teamId) {
                   result = parseInt(m.scores["7"]?.home) > parseInt(m.scores["7"]?.away) ? WIN_RESULT : LOSE_RESULT
                 }
@@ -39,7 +39,7 @@ export default function TeamMatches() {
                   result = parseInt(m.scores["7"]?.home) > parseInt(m.scores["7"]?.away) ? LOSE_RESULT : WIN_RESULT
                 }
               }
-              else if (m.time_status != 0) {
+              else if (m.time_status == SHORT_CODE_PLAYING) {
                 live = true
               }
 
