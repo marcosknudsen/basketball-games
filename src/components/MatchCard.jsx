@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA, PLAYOFF_START_SPA, LEAGUE_ID_SPA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2, SHORT_CODE_CANCELED } from "./constants";
+import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA, PLAYOFF_START_SPA, LEAGUE_ID_SPA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
 
 export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
   date,
@@ -58,7 +58,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
     <div className="flex items-stretch justify-between mb-1 bg-green-600 md:h-[90px] desktop:h-28">
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == SHORT_CODE_NOT_STARTED && "upcoming") ||
-          ((status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_CANCELED) && "finished") ||
+          ((status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "finished") ||
           ((status == SHORT_CODE_NOT_STARTED) && "upcoming") ||
           "playing"
           }`}
@@ -66,7 +66,6 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
         {status == SHORT_CODE_PLAYING && `Q${timer?.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
         {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
-        {status == SHORT_CODE_CANCELED && "Canceled"}
       </div>
       <Link
         to={`/team/${home_team_id}`}

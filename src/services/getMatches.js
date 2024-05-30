@@ -2,7 +2,7 @@ import logger from "@/services/logger.js";
 import fixMatches from "./fixMatches";
 import fixClubs from "./fixClubs";
 import {
-  MATCHES_LOG_STRING
+  MATCHES_LOG_STRING,SHORT_CODE_CANCELED,SHORT_CODE_REMOVED
 } from "./constants";
 
 export default async function getMatches(date) {
@@ -67,7 +67,8 @@ export default async function getMatches(date) {
   responseEndedTomorrow = await responseEndedTomorrow.results;
   responseEndedTomorrow.map((m) => response.push(m));
 
-  response = response.filter((m) => m.time_status != 99);
+  response = response.filter((m) => m.time_status != SHORT_CODE_REMOVED);
+  response = response.filter((m) => m.time_status != SHORT_CODE_CANCELED);
   response = response.filter((m) =>
     sameDay(new Date(parseInt(m.time) * 1000), date)
   ); //TODO use timezone logic
