@@ -46,9 +46,8 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
         if (league_id == LEAGUE_ID_SPA) {
           matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_SPA) && m.time_status == SHORT_CODE_FINISHED)
         }
-
-        setHomeStreak(matches.filter(m => (home_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (home_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
-        setAwayStreak(matches.filter(m => (away_team_id == m.home.id && m.scores["7"].home > m.scores["7"].away) || (away_team_id == m.away.id && m.scores["7"].away > m.scores["7"].home)).length)
+        setHomeStreak(matches.filter(m => (home_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (home_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
+        setAwayStreak(matches.filter(m => (away_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (away_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
       }
     }
     fetchMatch()
