@@ -85,6 +85,8 @@ export default async function getMatches(date) {
       round: m.round,
     };
   });
+  
+  response = [...new Set(response.map((m)=>m.date+m.league+m.home.id+m.away.id))];
   logger(MATCHES_LOG_STRING);
 
   response.map((m) => {
