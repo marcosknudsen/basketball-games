@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, HALFTIME_STRING, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA, PLAYOFF_START_SPA, LEAGUE_ID_SPA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
+import playoffStart from "../utils/playoffStart";
+import { SHORT_CODE_FINISHED, HALFTIME_STRING, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA } from "./constants";
 
 export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
   date,
@@ -29,23 +30,13 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
 
   useEffect(() => {
     async function fetchMatch() {//TODO use new helper
-      if (league_id == LEAGUE_ID_NBA || league_id == LEAGUE_ID_ARG_1 || league_id == LEAGUE_ID_ARG_2 || league_id == LEAGUE_ID_SPA) {
+      let playoffStartDate = playoffStart(league_id)
+      if (playoffStartDate) {
         let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
         matches = matches.results
-        matches = matches.filter((m) => m.away.id == away_team_id || m.home.id == away_team_id)
-        if (league_id == LEAGUE_ID_NBA) {
-          matches = matches.filter(m => new Date(m.time * 1000) > new Date(PLAYOFF_START_NBA) && m.time_status == SHORT_CODE_FINISHED)
-        }
-        if (league_id == LEAGUE_ID_ARG_1) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_1) && m.time_status == SHORT_CODE_FINISHED)
-        }
-        if (league_id == LEAGUE_ID_ARG_2) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_ARG_2) && m.time_status == SHORT_CODE_FINISHED)
-        }
-        if (league_id == LEAGUE_ID_SPA) {
-          matches = matches.filter((m) => new Date(m.time * 1000) > new Date(PLAYOFF_START_SPA) && m.time_status == SHORT_CODE_FINISHED)
-        }
+        matches = matches.filter((m) => (m.away.id == away_team_id || m.home.id == away_team_id) && new Date(m.time*1000) >new Date(playoffStartDate))
+
         setHomeStreak(matches.filter(m => (home_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (home_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
         setAwayStreak(matches.filter(m => (away_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (away_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
       }

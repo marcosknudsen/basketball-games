@@ -8,7 +8,3 @@ export const LEAGUE_ID_NBA=2274
 export const LEAGUE_ID_ARG_1=1304
 export const LEAGUE_ID_ARG_2=7592
 export const LEAGUE_ID_SPA=1525
-export const PLAYOFF_START_ARG_1="2024-05-25"
-export const PLAYOFF_START_ARG_2="2024-04-16"
-export const PLAYOFF_START_NBA="2024-04-13"
-export const PLAYOFF_START_SPA="2024-05-15"
