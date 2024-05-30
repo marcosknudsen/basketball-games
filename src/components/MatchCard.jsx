@@ -63,7 +63,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
           "playing"
           }`}
       >
-        {status == SHORT_CODE_PLAYING && `Q${timer?.q} ${timer.tm}:${timer.ts.toString().padStart(2, "0")}`}
+        {status == SHORT_CODE_PLAYING && `Q${timer?.q} ${timer?.tm}:${timer?.ts.toString().padStart(2, "0")}`}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
         {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
       </div>
