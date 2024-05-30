@@ -1,5 +1,6 @@
 export const SHORT_CODE_NOT_STARTED=0
 export const SHORT_CODE_PLAYING=1
+export const HALFTIME_STRING="HT"
 export const SHORT_CODE_TO_BE_FIXED=2
 export const SHORT_CODE_FINISHED=3
 export const SHORT_CODE_POSTPONED=4

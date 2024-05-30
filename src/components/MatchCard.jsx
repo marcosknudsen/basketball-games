@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaSquarePlus } from "react-icons/fa6";
-import { SHORT_CODE_FINISHED, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA, PLAYOFF_START_SPA, LEAGUE_ID_SPA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
+import { SHORT_CODE_FINISHED, HALFTIME_STRING, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA, PLAYOFF_START_SPA, LEAGUE_ID_SPA, LEAGUE_ID_ARG_1, PLAYOFF_START_ARG_1, PLAYOFF_START_NBA, LEAGUE_ID_ARG_2, PLAYOFF_START_ARG_2 } from "./constants";
 
 export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
   date,
@@ -63,7 +63,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
           "playing"
           }`}
       >
-        {status == SHORT_CODE_PLAYING && `Q${timer?.q} ${timer?.tm}:${timer?.ts.toString().padStart(2, "0")}`}
+        {status == SHORT_CODE_PLAYING && (timer.q != HALFTIME_STRING ? `Q${timer?.q} ${timer?.tm ?? ""}:${timer?.ts?.toString().padStart(2, "0")}` : timer.q)}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
         {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
       </div>
