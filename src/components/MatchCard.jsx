@@ -29,7 +29,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
   let matchDate = new Date(date * 1000)
 
   useEffect(() => {
-    async function fetchMatch() {//TODO use new helper
+    async function fetchMatch() {
       let playoffStartDate = playoffStart(league_id)
       if (playoffStartDate) {
         let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
