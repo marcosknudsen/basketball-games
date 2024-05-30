@@ -85,6 +85,8 @@ export default async function getMatches(date) {
       round: m.round,
     };
   });
+
+  response = [...new Set([...response])];
   logger(MATCHES_LOG_STRING);
 
   response.map((m) => {

@@ -1,7 +1,7 @@
 import { useLoaderData, useParams, useNavigate } from "react-router-dom";
 import TwoTables from "@components/TwoTables";
 import OneTable from "@components/OneTable";
-import standingDivisions from "@/standingDivisions.json"
+import standingDivisions from "@/settings/standingDivisions.json"
 import { STANDING_SEASON_TYPE } from "./constants.js"
 
 export default function Standing() {

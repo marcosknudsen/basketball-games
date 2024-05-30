@@ -1,5 +1,5 @@
 import League from "@components/League";
-import order from "@/order.json";
+import order from "@/settings/order.json";
 
 export default function Results({ matches }) {
   return (
