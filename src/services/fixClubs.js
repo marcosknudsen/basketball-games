@@ -219,7 +219,8 @@ const teamData = {
     833009: { logo: estudiantesOlavarriaLogo },
     826946: { logo: kimberleyLogo },
     826947: { logo: atleticoVillegasLogo },
-    240467: { logo: gironaLogo }
+    240467: { logo: gironaLogo },
+    767372:{name:"Coruña"}
 }
 
 export default function(team){
