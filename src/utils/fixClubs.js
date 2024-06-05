@@ -103,6 +103,9 @@ import belgranoTucuman from "@/images/team_logos/belgrano_tucuman.png";
 import bochasSportClub from "@/images/team_logos/bochas_sport_club.png";
 import sarmientoFormosa from "@/images/team_logos/sarmiento_formosa.png";
 import facundoLaRioja from "@/images/team_logos/facundo_larioja.png";
+import beliceLogo from "@/images/team_logos/belice.png";
+import venezuelaLogo from "@/images/team_logos/venezuela.png";
+import repubicaDominicanaLogo from "@/images/team_logos/republica_dominicana.png";
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -240,6 +243,9 @@ const teamData = {
   829050: { logo: bochasSportClub },
   250404: { logo: sarmientoFormosa, name: "Sarmiento de Formosa" },
   690331: { logo: facundoLaRioja },
+  1008092: { logo: beliceLogo },
+  1008031: { logo: venezuelaLogo },
+  217804: { logo: repubicaDominicanaLogo },
 };
 
 export default function (team) {
