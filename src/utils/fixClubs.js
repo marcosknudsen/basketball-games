@@ -246,6 +246,7 @@ const teamData = {
   1008092: { logo: beliceLogo },
   1008031: { logo: venezuelaLogo },
   217804: { logo: repubicaDominicanaLogo },
+  285069: { name: "Peñarol" },
 };
 
 export default function (team) {
