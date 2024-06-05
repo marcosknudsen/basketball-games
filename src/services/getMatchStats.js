@@ -1,6 +1,6 @@
 import logger from "@/services/logger.js"
 import { API_STATS_URL, MATCH_STATS_LOG_API, STATS_ENDPOINT } from "./constants";
-import fixClubs from "./fixClubs.js";
+import fixClubs from "../utils/fixClubs.js";
 
 export default async function getMatchStats(id) {
 

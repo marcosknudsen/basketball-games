@@ -1,6 +1,6 @@
 import logger from "@/services/logger.js";
-import fixMatches from "./fixMatches";
-import fixClubs from "./fixClubs";
+import fixMatches from "../utils/fixMatches";
+import fixClubs from "../utils/fixClubs";
 import {
   MATCHES_LOG_STRING,SHORT_CODE_CANCELED,SHORT_CODE_REMOVED
 } from "./constants";
