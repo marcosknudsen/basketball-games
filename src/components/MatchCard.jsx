@@ -35,7 +35,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
         let matches = await fetch(`/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&team_id=${home_team_id}`)
         matches = await matches.json()
         matches = matches.results
-        matches = matches.filter((m) => (m.away.id == away_team_id || m.home.id == away_team_id) && new Date(m.time*1000) >new Date(playoffStartDate))
+        matches = matches.filter((m) => (m.away.id == away_team_id || m.home.id == away_team_id) && new Date(m.time * 1000) > new Date(playoffStartDate))
 
         setHomeStreak(matches.filter(m => (home_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (home_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
         setAwayStreak(matches.filter(m => (away_team_id == m.home.id && parseInt(m.scores["7"].home) > parseInt(m.scores["7"].away)) || (away_team_id == m.away.id && parseInt(m.scores["7"].away) > parseInt(m.scores["7"].home))).length)
@@ -53,7 +53,7 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
           "playing"
           }`}
       >
-        {status == SHORT_CODE_PLAYING && (timer.q != HALFTIME_STRING ? `Q${timer?.q} ${timer?.tm ?? ""}:${timer?.ts?.toString().padStart(2, "0")}` : timer.q)}
+        {status == SHORT_CODE_PLAYING && (timer?.q != HALFTIME_STRING ? (timer ? `Q${timer?.q} ${timer?.tm ?? ""}:${timer?.ts?.toString().padStart(2, "0")}` : "") : timer?.q ?? "a")}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
         {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
       </div>
