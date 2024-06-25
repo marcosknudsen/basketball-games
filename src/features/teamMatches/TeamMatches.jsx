@@ -47,7 +47,7 @@ export default function TeamMatches() {
               fecha = fecha.getDate().toString() + "/" + (fecha.getMonth() + 1).toString()
 
               return (
-                <tr key={m.id} className={`flex justify-between p-5 sm:p-1 ${result == WIN_RESULT && "bg-green-600"} ${result == LOSE_RESULT && "bg-red-600"} text-white h-10 border items-center ${result == NOT_PLAYED_RESULT && "bg-gray-600"}`}>
+                <tr key={m.id} id={m.id} className={`flex justify-between p-5 sm:p-1 ${result == WIN_RESULT && "bg-green-600"} ${result == LOSE_RESULT && "bg-red-600"} text-white h-10 border items-center ${result == NOT_PLAYED_RESULT && "bg-gray-600"}`}>
                   <td className={`font-bold w-[10%] sm:text-xs ${live && "text-red-500"}`}>{live ? "Live" : fecha}</td>
                   <td className="w-[10%] flex justify-center">
                     <Link to={"/team/" + m.home.id} className="justify-center items-center flex">
