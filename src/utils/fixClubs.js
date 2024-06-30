@@ -106,6 +106,8 @@ import facundoLaRioja from "@/images/team_logos/facundo_larioja.png";
 import beliceLogo from "@/images/team_logos/belice.png";
 import venezuelaLogo from "@/images/team_logos/venezuela.png";
 import repubicaDominicanaLogo from "@/images/team_logos/republica_dominicana.png";
+import tokioLogo from "@/images/team_logos/tokio.png";
+import centenarioVenadoTuernoLogo from "@/images/team_logos/centenario_venado_tuerto.png";
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -247,6 +249,8 @@ const teamData = {
   1008031: { logo: venezuelaLogo },
   217804: { logo: repubicaDominicanaLogo },
   285069: { name: "Peñarol" },
+  696671: { logo: tokioLogo },
+  828103: { logo: centenarioVenadoTuernoLogo },
 };
 
 export default function (team) {
