@@ -9,7 +9,7 @@ export default function League({ matches }) {
           {
             <img
               src={
-                `https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
+                matches[0].league.logo??`https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
               }
               className="w-10"
             />
@@ -18,7 +18,7 @@ export default function League({ matches }) {
           {
             <img
               src={
-                `https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
+                matches[0].league.logo??`https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
               }
               className="w-10"
             />
