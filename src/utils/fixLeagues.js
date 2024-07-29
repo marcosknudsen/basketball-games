@@ -7,8 +7,11 @@ const leaguesData={
 }
 
 export default function(league){
-    let {name}=leaguesData[league.id]??{}
+    let {name,logo}=leaguesData[league.id]??{}
     if (name){
         league.name=name
+    }
+    if (logo){
+        league.logo=logo
     }
 }
