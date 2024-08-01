@@ -8,6 +8,8 @@ const leaguesData={
     1583:{name:"Lega 1"},
     37671:{logo:OlympicsLogo},
     37729:{logo:OlympicsLogo},
+    37733:{logo:OlympicsLogo},
+    37731:{logo:OlympicsLogo},
 }
 
 export default function(league){
