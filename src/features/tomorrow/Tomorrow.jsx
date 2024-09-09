@@ -1,6 +1,6 @@
 import { useLoaderData,useNavigate } from "react-router-dom";
 import ListadoLigas from "@components/Results";
-
+import Maintenance from "../maintenance/Maintenance";
 
 export default function Tomorrow() {
   const matches = useLoaderData();
@@ -13,7 +13,7 @@ export default function Tomorrow() {
       >
         Hoy
       </button>
-      <ListadoLigas matches={matches} />
+      {matches && matches.length ? <ListadoLigas matches={matches} /> : <Maintenance />}
     </>
   );
 }
