@@ -22,7 +22,7 @@ export default async function getMatches(date) {
   );
   responseInPlay = await responseInPlay.json();
   responseInPlay = await responseInPlay.results;
-  responseInPlay.map((m) => response.push(m));
+  responseInPlay?.map((m) => response.push(m));
 
   responseUpcoming = await fetch(
     `/api/v3/events/upcoming?token=${
@@ -31,7 +31,7 @@ export default async function getMatches(date) {
   );
   responseUpcoming = await responseUpcoming.json();
   responseUpcoming = await responseUpcoming.results;
-  responseUpcoming.map((m) => response.push(m));
+  responseUpcoming?.map((m) => response.push(m));
 
   let dateTomorrow = new Date(date);
   let dateYesterday = new Date(date);
@@ -47,7 +47,7 @@ export default async function getMatches(date) {
   );
   responseUpcomingTomorrow = await responseUpcomingTomorrow.json();
   responseUpcomingTomorrow = await responseUpcomingTomorrow.results;
-  responseUpcomingTomorrow.map((m) => response.push(m));
+  responseUpcomingTomorrow?.map((m) => response.push(m));
 
   responseEnded = await fetch(
     `/api/v3/events/ended?token=${
@@ -56,7 +56,7 @@ export default async function getMatches(date) {
   );
   responseEnded = await responseEnded.json();
   responseEnded = await responseEnded.results;
-  responseEnded.map((m) => response.push(m));
+  responseEnded?.map((m) => response.push(m));
 
   responseEndedTomorrow = await fetch(
     `/api/v3/events/ended?token=${
@@ -65,7 +65,7 @@ export default async function getMatches(date) {
   );
   responseEndedTomorrow = await responseEndedTomorrow.json();
   responseEndedTomorrow = await responseEndedTomorrow.results;
-  responseEndedTomorrow.map((m) => response.push(m));
+  responseEndedTomorrow?.map((m) => response.push(m));
 
   response = response.filter((m) => m.time_status != SHORT_CODE_REMOVED);
   response = response.filter((m) => m.time_status != SHORT_CODE_CANCELED);
