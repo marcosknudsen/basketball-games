@@ -1,6 +1,7 @@
 import Results from "@components/Results";
 import Maintenance from "../maintenance/Maintenance";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import NoMatches from "../noMatches/NoMatches";
 
 export default function Index() {
   const matches = useLoaderData();
@@ -21,7 +22,7 @@ export default function Index() {
           Mañana
         </button>
       </div>
-      {matches && matches.length ? <Results matches={matches} /> : <Maintenance />}
+      {matches && matches.length ? <Results matches={matches} /> : <NoMatches />}
     </>
   );
 }
