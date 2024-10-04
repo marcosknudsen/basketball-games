@@ -1,3 +1,17 @@
 {
-  "order": [37315,34642,1327,1321]
+  "order": [
+    { "league_name": "LNB", "id": 1304 },
+    { "league_name": "NBA", "id": 2274 },
+    { "league_name": "NBA Pre-Season", "id": 27488 },
+    { "league_name": "EuroLiga", "id": 1923 },
+    { "league_name": "Liga ACB", "id": 37315 },
+    { "league_name": "France Pro A", "id": 1327 },
+    { "league_name": "Italy Lega A", "id": 1583 },
+    { "league_name": "Germany Budnesliga", "id": 1321 },
+    { "league_name": "WNBA", "id": 244 },
+    { "league_name": "Spain Primera FEB", "id": 38374 },
+    { "league_name": "NCAAB", "id": 2638 },
+    { "league_name": "Serbia A1 League", "id": 2330 },
+    { "league_name": "Amistosos de clubes", "id": 14 }
+  ]
 }
