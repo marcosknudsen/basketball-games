@@ -1,6 +1,6 @@
 import olympicsLogo from "@/images/league_logos/Olympics.png";
 import interligasLogo from "@/images/league_logos/Interligas.png";
-import euroLeagueLogo from "@/images/league_logos/EuroLeague.png";
+import euroLeagueLogo from "@/images/league_logos/Euroleague.png";
 import clubsFriendlyLogo from "@/images/league_logos/ClubsFriendly.png";
 
 const leaguesData = {
