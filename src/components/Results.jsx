@@ -1,5 +1,5 @@
 import League from "@components/League";
-import order from "@/settings/order.json";
+import leagues from "@/settings/leagues.json";
 
 export default function Results({ matches }) {
   return (
@@ -14,6 +14,6 @@ export default function Results({ matches }) {
 }
 
 function getOrder(id){
-  const value=order.order.indexOf(parseInt(id))
+  const value=leagues.order.indexOf(parseInt(id))
   return value!=-1?value:9999
 }
