@@ -41,74 +41,43 @@ function dateApiFormat(date) {
   );
 }
 
-async function getMatchesByLeague(league,date){
+async function getMatchesByLeague(league, date) {
   let response = [];
-  let responseInPlay;
-  let responseEnded;
-  let responseUpcoming;
-  let responseEndedTomorrow;
-  let responseUpcomingTomorrow;
-
-  responseInPlay = await fetch(
-    `/api/v3/events/inplay?token=${
-      import.meta.env.VITE_TOKEN
-    }&sport_id=18&skip_esports=true&league_id=${league}`
-  );
-  responseInPlay = await responseInPlay.json();
-  responseInPlay = await responseInPlay.results;
-  responseInPlay?.map((m) => response.push(m));
-
-  responseUpcoming = await fetch(
-    `/api/v3/events/upcoming?token=${
-      import.meta.env.VITE_TOKEN
-    }&sport_id=18&skip_esports=true&day=${dateApiFormat(date)}&league_id=${league}`
-  );
-  responseUpcoming = await responseUpcoming.json();
-  responseUpcoming = await responseUpcoming.results;
-  responseUpcoming?.map((m) => response.push(m));
 
   let dateTomorrow = new Date(date);
-  let dateYesterday = new Date(date);
   dateTomorrow.setDate(dateTomorrow.getDate() + 1);
-  dateYesterday.setDate(dateYesterday.getDate() - 1);
 
-  responseUpcomingTomorrow = await fetch(
-    `/api/v3/events/upcoming?token=${
-      import.meta.env.VITE_TOKEN
-    }&sport_id=18&skip_esports=true&day=${dateApiFormat(
-      dateTomorrow
-    )}&league_id=${league}`
+  const formattedDate = dateApiFormat(date);
+  const formattedDateTomorrow = dateApiFormat(dateTomorrow);
+
+  const urls = [
+    `/api/v3/events/inplay?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&league_id=${league}`,
+    `/api/v3/events/upcoming?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&day=${formattedDate}&league_id=${league}`,
+    `/api/v3/events/upcoming?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&day=${formattedDateTomorrow}&league_id=${league}`,
+    `/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&day=${formattedDate}&league_id=${league}`,
+    `/api/v3/events/ended?token=${import.meta.env.VITE_TOKEN}&sport_id=18&skip_esports=true&day=${formattedDateTomorrow}&league_id=${league}`,
+  ];
+
+  const fetchPromises = urls.map((url) =>
+    fetch(url).then((res) => res.json())
   );
-  responseUpcomingTomorrow = await responseUpcomingTomorrow.json();
-  responseUpcomingTomorrow = await responseUpcomingTomorrow.results;
-  responseUpcomingTomorrow?.map((m) => response.push(m));
 
-  responseEnded = await fetch(
-    `/api/v3/events/ended?token=${
-      import.meta.env.VITE_TOKEN
-    }&sport_id=18&skip_esports=true&day=${dateApiFormat(date)}&league_id=${league}`
-  );
-  responseEnded = await responseEnded.json();
-  responseEnded = await responseEnded.results;
-  responseEnded?.map((m) => response.push(m));
+  const results = await Promise.all(fetchPromises);
 
-  responseEndedTomorrow = await fetch(
-    `/api/v3/events/ended?token=${
-      import.meta.env.VITE_TOKEN
-    }&sport_id=18&skip_esports=true&day=${dateApiFormat(dateTomorrow)}&league_id=${league}`
-  );
-  responseEndedTomorrow = await responseEndedTomorrow.json();
-  responseEndedTomorrow = await responseEndedTomorrow.results;
-  responseEndedTomorrow?.map((m) => response.push(m));
+  results.forEach((data) => {
+    if (data.results) {
+      response.push(...data.results);
+    }
+  });
 
-  response = response.filter((m) => m.time_status != SHORT_CODE_REMOVED);
-  response = response.filter((m) => m.time_status != SHORT_CODE_CANCELED);
-  response = response.filter((m) =>
-    sameDay(new Date(parseInt(m.time) * 1000), date)
-  ); //TODO use timezone logic
-
-  response = response.map(function (m) {
-    return {
+  response = response
+    .filter(
+      (m) =>
+        m.time_status !== SHORT_CODE_REMOVED &&
+        m.time_status !== SHORT_CODE_CANCELED
+    )
+    .filter((m) => sameDay(new Date(parseInt(m.time) * 1000), date)) // TODO: usar lógica de zona horaria
+    .map((m) => ({
       id: m.id,
       date: m.time,
       status: m.time_status,
@@ -118,8 +87,7 @@ async function getMatchesByLeague(league,date){
       scores: m.ss,
       timer: m.timer,
       round: m.round,
-    };
-  });
+    }));
 
   return response;
 }
