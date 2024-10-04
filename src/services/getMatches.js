@@ -7,19 +7,25 @@ import {
 import leagues from "@/settings/leagues.json";
 
 export default async function getMatches(date) {
-  let response = [];
+  const matchesPromises = leagues.order.map((league) =>
+    getMatchesByLeague(league.id, date)
+  );
 
-  for (let i of leagues.order) {
-    response = [...response, ...await getMatchesByLeague(i,date)];
-  }
+  const results = await Promise.all(matchesPromises);
 
-  response = [...new Set([...response])];
+  let response = results.flat();
+
+  response = [
+    ...new Map(response.map((item) => [item.id, item])).values(),
+  ];
+
   logger(MATCHES_LOG_STRING);
 
-  response.map((m) => {
+  response.forEach((m) => {
     fixClubs(m.home);
     fixClubs(m.away);
   });
+
   response = fixMatches(response);
 
   return response;
