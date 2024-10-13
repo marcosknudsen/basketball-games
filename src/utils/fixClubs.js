@@ -108,6 +108,7 @@ import venezuelaLogo from "@/images/team_logos/venezuela.png";
 import repubicaDominicanaLogo from "@/images/team_logos/republica_dominicana.png";
 import tokioLogo from "@/images/team_logos/tokio.png";
 import centenarioVenadoTuernoLogo from "@/images/team_logos/centenario_venado_tuerto.png";
+import jujuyLogo from "@/images/team_logos/jujuy.png";
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -186,7 +187,7 @@ const teamData = {
   56489: { logo: amancayLogo },
   65189: { logo: rivadaviaMendozaLogo },
   55024: { logo: barrioParqueLogo },
-  479644: { logo: independienteSdeLogo },
+  479644: { logo: independienteSdeLogo, name: "Independiente (SdE)" },
   49916: { logo: echagueLogo },
   780507: { logo: jachalLogo },
   250403: { logo: sarmientoResistenciaLogo },
@@ -251,6 +252,7 @@ const teamData = {
   285069: { name: "Peñarol" },
   696671: { logo: tokioLogo },
   828103: { logo: centenarioVenadoTuernoLogo },
+  679535: { logo: jujuyLogo },
 };
 
 export default function (team) {
