@@ -186,7 +186,7 @@ const teamData = {
   56489: { logo: amancayLogo },
   65189: { logo: rivadaviaMendozaLogo },
   55024: { logo: barrioParqueLogo },
-  479644: { logo: independienteSdeLogo },
+  479644: { logo: independienteSdeLogo, name: "Independiente (SdE)" },
   49916: { logo: echagueLogo },
   780507: { logo: jachalLogo },
   250403: { logo: sarmientoResistenciaLogo },
