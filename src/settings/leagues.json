@@ -1,8 +1,8 @@
 {
   "order": [
+    { "league_name": "NBA", "id": 2274 },
     { "league_name": "LNB", "id": 1304 },
     { "league_name": "TNA", "id": 7592 },
-    { "league_name": "NBA", "id": -1 },
     { "league_name": "NBA Pre-Season", "id": 27488 },
     { "league_name": "EuroLiga", "id": 1923 },
     { "league_name": "Liga ACB", "id": 37315 },
