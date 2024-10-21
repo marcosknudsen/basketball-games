@@ -109,6 +109,7 @@ import repubicaDominicanaLogo from "@/images/team_logos/republica_dominicana.png
 import tokioLogo from "@/images/team_logos/tokio.png";
 import centenarioVenadoTuernoLogo from "@/images/team_logos/centenario_venado_tuerto.png";
 import jujuyLogo from "@/images/team_logos/jujuy.png";
+import estudiantesTucumanLogo from "@/images/team_logos/estudiantes_tucuman.png";
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -253,6 +254,7 @@ const teamData = {
   696671: { logo: tokioLogo },
   828103: { logo: centenarioVenadoTuernoLogo },
   679535: { logo: jujuyLogo },
+  309167: { logo: estudiantesTucumanLogo, name: "Estudiantes de Tucumán" },
 };
 
 export default function (team) {
