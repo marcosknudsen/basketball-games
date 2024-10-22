@@ -2,10 +2,12 @@ import React from 'react'
 
 export default function NoMatches() {
   return (
-    <div className='bg-green-800 p-[45px] mx-16 h-40 rounded-3xl'>
-        <p className='uppercase text-yellow-400 text-3xl font-bold h-screen text-center'>
-            No hay partidos en el dia seleccionado
-        </p>
+    <div className='bg-green-800 mx-16 h-40 rounded-3xl flex'>
+      <div className='uppercase m-auto text-yellow-400 text-lg font-bold text-center'>
+        ¡Wow, qué emoción por los partidos!
+        Estamos recibiendo más solicitudes de lo esperado.
+        Nuestros servidores están jugando su propio partido ahora mismo, pero pronto estarán de vuelta. ¡Inténtalo de nuevo en unos minutos!
+      </div>
     </div>
   )
 }
