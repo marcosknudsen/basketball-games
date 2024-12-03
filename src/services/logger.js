@@ -8,7 +8,6 @@ export default function log({ action, team, league }) {
       url: "https://promiedos-basquet-api.onrender.com/api/logs",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       data: JSON.stringify({
         Action: action,
