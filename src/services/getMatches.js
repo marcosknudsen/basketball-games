@@ -19,7 +19,7 @@ export default async function getMatches(date) {
     ...new Map(response.map((item) => [item.id, item])).values(),
   ];
 
-  logger(MATCHES_LOG_STRING);
+  logger({action:"Get today matches"});
 
   response.forEach((m) => {
     fixClubs(m.home);

@@ -1,26 +1,24 @@
 import axios from "axios";
 
-export default function log(action, params) {
-  let data = JSON.stringify({
-    id: 0,
-    ip: "string",
-    endpoint: action,
-    parameters: params??null,
-    date: new Date(),
-  });
-
-  let config = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: `${import.meta.env.VITE_LOG_API_URL}/api/requests`,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    data: data,
-  };
-
+export default function log({ action, team, league }) {
   axios
-    .request(config)
+    .request({
+      method: "post",
+      maxBodyLength: Infinity,
+      url: "https://promiedos-basquet-api.onrender.com/api/logs",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      data: JSON.stringify({
+        Action: action,
+        League: league,
+        Team: team,
+      }),
+    })
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
     .catch((error) => {
       console.log(error);
     });
