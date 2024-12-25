@@ -1,30 +1,36 @@
 import fixClubs from "../utils/fixClubs";
 import logger from "@/services/logger.js";
 import { STANDINGS_LOG_STRING } from "./constants";
+import fixLeaguesStanding from "../utils/fixLeaguesStanding";
 
 export default async function getStandings(league) {
   let response = await fetch(
     `/api/v3/league/table?token=${import.meta.env.VITE_TOKEN}&sport_id=18&league_id=${league}`
   );
-
+  
   response = await response.json();
-  let season = response.results && response.results[0]?.season;
-  response = response.results && response.results[0].overall.tables;
+  response = response.results
+  let season = getSeason(response)
+  let tables = season.overall.tables
   logger(STANDINGS_LOG_STRING, league);
   if (!response || !response.length) {
     return null;
   }
+  
+  let tablesNames = fixLeaguesStanding(league);
 
-  response.map((table) => table.rows.map((pos) => fixClubs(pos.team)));
-
-  if (league == 2274) {
-    response[0] = response.filter(
-      (table) => table.name == "Western Conference"
-    )[0];
-    response[1] = response.filter(
-      (table) => table.name == "Eastern Conference"
-    )[0];
+  for (let i in tablesNames) {
+    tables[i] = tables.filter(t=> t.name == tablesNames[i])[0];
   }
 
-  return { season, tables: response };
+  tables.map((table) => table.rows.map((pos) => fixClubs(pos.team)));
+  
+  return { season: season.season, tables };
+}
+
+function getSeason(seasons) {
+  let date = Date.now()
+  let response = seasons.filter(s=> date >= new Date(parseInt(s.season.start_time)*1000) && date <= new Date(parseInt(s.season.end_time)*1000))[0]
+  
+  return response
 }
