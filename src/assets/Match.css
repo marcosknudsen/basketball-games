@@ -34,6 +34,15 @@
   }
 }
 
+.postponed{
+  font-size: 12px;
+  background-color: black;
+  @media screen and (max-width: 768px) {
+    font-size: 9px;
+    min-width: 46px;
+  }
+}
+
 .team_logo img {
   @media screen and (max-width: 450px) {
     height: 90%;

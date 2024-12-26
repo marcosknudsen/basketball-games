@@ -49,13 +49,15 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == SHORT_CODE_NOT_STARTED && "upcoming") ||
           ((status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "finished") ||
+          ((status == SHORT_CODE_POSTPONED) && "postponed") ||
           ((status == SHORT_CODE_NOT_STARTED) && "upcoming") ||
           "playing"
           }`}
       >
         {status == SHORT_CODE_PLAYING && (timer?.q != HALFTIME_STRING ? (timer ? `Q${timer?.q} ${timer?.tm ?? ""}:${timer?.ts?.toString().padStart(2, "0")}` : "") : timer?.q ?? "a")}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
-        {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
+        {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "Finished"}
+        { status == SHORT_CODE_POSTPONED && "Postponed"}
       </div>
       <Link
         to={`/team/${home_team_id}`}
