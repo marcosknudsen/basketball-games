@@ -49,13 +49,15 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
       <div
         className={`w-1/12 justify-center items-center flex text-base font-semibold ${(status.short == SHORT_CODE_NOT_STARTED && "upcoming") ||
           ((status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "finished") ||
+          ((status == SHORT_CODE_POSTPONED) && "postponed") ||
           ((status == SHORT_CODE_NOT_STARTED) && "upcoming") ||
           "playing"
           }`}
       >
         {status == SHORT_CODE_PLAYING && (timer?.q != HALFTIME_STRING ? (timer ? `Q${timer?.q} ${timer?.tm ?? ""}:${timer?.ts?.toString().padStart(2, "0")}` : "") : timer?.q ?? "a")}
         {status == SHORT_CODE_NOT_STARTED && formatDate(matchDate)}
-        {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED || status == SHORT_CODE_POSTPONED) && "Finished"}
+        {(status == SHORT_CODE_FINISHED || status == SHORT_CODE_TO_BE_FIXED) && "Finished"}
+        { status == SHORT_CODE_POSTPONED && "Postponed"}
       </div>
       <Link
         to={`/team/${home_team_id}`}
@@ -70,12 +72,12 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
         </div>
         <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{`(${home_streak})`}</span>}</p>
       </Link>
-      <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
+      <div className="w-1/6 items-center justify-center flex text-4xl md:text-xl lg:text-2xl sm:text-lg">
         {status == SHORT_CODE_NOT_STARTED
           ? "-"
           : home_score}
       </div>
-      <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
+      <div className="w-1/6 items-center justify-center flex text-4xl md:text-xl lg:text-2xl sm:text-lg">
         {status == SHORT_CODE_NOT_STARTED
           ? "-"
           : away_score}
