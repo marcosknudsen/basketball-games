@@ -72,12 +72,12 @@ export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
         </div>
         <p className="text-[15px]">{home_name} {window.innerWidth <= 767 && <br />} {home_streak != null && <span className="text-lg font-semibold md:text-sm">{`(${home_streak})`}</span>}</p>
       </Link>
-      <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
+      <div className="w-1/6 items-center justify-center flex text-4xl md:text-xl lg:text-2xl sm:text-lg">
         {status == SHORT_CODE_NOT_STARTED
           ? "-"
           : home_score}
       </div>
-      <div className="w-1/6 items-center justify-center flex text-4xl md:text-2xl">
+      <div className="w-1/6 items-center justify-center flex text-4xl md:text-xl lg:text-2xl sm:text-lg">
         {status == SHORT_CODE_NOT_STARTED
           ? "-"
           : away_score}
