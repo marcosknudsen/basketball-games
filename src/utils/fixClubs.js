@@ -171,7 +171,7 @@ const teamData = {
   193111: { logo: lanusLogo },
   250787: { logo: picoLogo },
   61774: { logo: deportivoViedmaLogo },
-  385321: { logo: pergaminoLogo },
+  1066805: { logo: pergaminoLogo },
   56282: { logo: racingAvellanedaLogo },
   49621: { logo: quilmesLogo },
   190292: { logo: ameghinoLogo },
