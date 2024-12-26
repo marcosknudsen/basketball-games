@@ -19,8 +19,8 @@ export default async function getStandings(league) {
   
   let tablesNames = fixLeaguesStanding(league);
 
-  for (let i in tablesNames) {
-    tables[i] = tables.filter(t=> t.name == tablesNames[i])[0];
+  if (tablesNames.length){
+    tables = tables.filter(t=> tablesNames.includes(t.name));
   }
 
   tables.map((table) => table.rows.map((pos) => fixClubs(pos.team)));
