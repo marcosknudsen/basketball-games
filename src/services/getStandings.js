@@ -10,6 +10,8 @@ export default async function getStandings(league) {
   
   response = await response.json();
   response = response.results
+  if (!response)
+    return {season: null, tables: []};
   let season = getSeason(response)
   let tables = season.overall.tables
   logger(STANDINGS_LOG_STRING, league);
