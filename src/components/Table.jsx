@@ -47,7 +47,7 @@ export default function Table({
                 </div>
                 <div className="flex justify-between items-center w-9/12">
                   <td className="text-center font-bold w-10/12">{s.team.name}</td>
-                  <td className="font-bold w-2/12">{`${s.win}-${s.loss}`}</td>
+                  <td className="font-bold w-3/12">{`${s.win}-${s.loss}`}</td>
                 </div>
               </tr>
             </Link>
