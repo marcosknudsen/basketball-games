@@ -1,8 +1,6 @@
 import logger from "@/services/logger.js";
 import fixMatches from "../utils/fixMatches";
-import {
-  TEAM_MATCHES_LOG_STRING,
-} from "./constants";
+import { TEAM_MATCHES_LOG_STRING } from "./constants";
 import fixClubs from "../utils/fixClubs";
 
 export default async function getMatchesbyTeam(team) {
