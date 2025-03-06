@@ -22,7 +22,7 @@ export default async function getMatchesbyTeam(team) {
   );
   responseUpcoming = await responseUpcoming.json();
   responseUpcoming = await responseUpcoming.results;
-  responseUpcoming=responseUpcoming.filter((m) => m.round >= responseUpcoming[0].round);
+  responseUpcoming = responseUpcoming.filter((m) => m.round >= responseUpcoming[0].round);
   responseUpcoming.map((m) => response.push(m));
 
 
@@ -35,14 +35,14 @@ export default async function getMatchesbyTeam(team) {
 
   response = [...new Set([...response])];
   response = response.sort((a, b) => a.time - b.time);
-  response=fixMatches(response)
+  response = fixMatches(response)
 
   response.map((m) => {
     fixClubs(m.home);
     fixClubs(m.away);
   });
 
-  response=response.filter(m=>m.scores?.["7"]||m.time_status==0)
+  response = response.filter(m => m.scores?.["7"] || m.time_status == 0)
 
   return response.filter(
     (m) => !["2", "4", "5", "99", "10", "11"].includes(m.time_status)
