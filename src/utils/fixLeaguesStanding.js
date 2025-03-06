@@ -2,10 +2,10 @@ const leaguesConfig = {
   2274: { standings: ["Western Conference", "Eastern Conference"] },
   7592: {
     standings: [
-      "Liga Argentina 24/25, Apertura, Group South B",
-      "Apertura, Group South A",
-      "Liga Argentina 24/25, Apertura, Group North B",
-      "Liga Argentina 24/25, Apertura, Group North A",
+      "Liga Argentina 24/25, Clausura, Group South A",
+      "Liga Argentina 24/25, Clausura, Group South B",
+      "Liga Argentina 24/25, Clausura, Group North A",
+      "Liga Argentina 24/25, Clausura, Group North B",
     ],
   },
 };
