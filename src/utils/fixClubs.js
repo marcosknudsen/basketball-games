@@ -111,7 +111,7 @@ import centenarioVenadoTuernoLogo from "@/images/team_logos/centenario_venado_tu
 import jujuyLogo from "@/images/team_logos/jujuy.png";
 import estudiantesTucumanLogo from "@/images/team_logos/estudiantes_tucuman.png";
 import colonSantaFeLogo from "@/images/team_logos/colon_sf.png";
-import uwashingtonLogo from "@/images/team_logos/Uwashington.png"
+import uwashingtonLogo from "@/images/team_logos/uWashington.png"
 import lincolnmemorialLogo from "@/images/team_logos/lincolnMemorial.png"
 import carsonNewmanLogo from "@/images/team_logos/carsonNewman.png"
 import washburnLogo from "@/images/team_logos/washburn.png"
