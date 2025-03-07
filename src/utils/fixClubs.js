@@ -111,6 +111,29 @@ import centenarioVenadoTuernoLogo from "@/images/team_logos/centenario_venado_tu
 import jujuyLogo from "@/images/team_logos/jujuy.png";
 import estudiantesTucumanLogo from "@/images/team_logos/estudiantes_tucuman.png";
 import colonSantaFeLogo from "@/images/team_logos/colon_sf.png";
+import uwashingtonLogo from "@/images/team_logos/UWashington.png"
+import lincolnmemorialLogo from "@/images/team_logos/lincolnMemorial.png"
+import carsonNewmanLogo from "@/images/team_logos/carsonNewman.png"
+import washburnLogo from "@/images/team_logos/washburn.png"
+import centralOklahomaLogo from "@/images/team_logos/centralOklahoma.png"
+import indianaStateLogo from "@/images/team_logos/indianastate.png"
+import southernIllinoisLogo from "@/images/team_logos/southernIllinois.png"
+import missouriLogo from "@/images/team_logos/missouri.png"
+import mckendreeLogo from "@/images/team_logos/mckendree.png"
+import lenoirLogo from "@/images/team_logos/lenoir.png"
+import catawbaLogo from "@/images/team_logos/catawba.png"
+import calStateLALogo from "@/images/team_logos/calStateLA.png"
+import calStateSBLogo from "@/images/team_logos/calStateSB.png"
+import seattleLogo from "@/images/team_logos/seattle.png"
+import alaskaLogo from "@/images/team_logos/alaska.png"
+import fortHaysLogo from "@/images/team_logos/fortHays.png"
+import centralMissouriLogo from "@/images/team_logos/centralMissouri.png"
+import ouachitaLogo from "@/images/team_logos/ouachita.png"
+import oklahomaRangersLogo from "@/images/team_logos/oklahomaRangers.png"
+import missouriStLouisLogo from "@/images/team_logos/missouriStLouis.png"
+import rockhurstLogo from "@/images/team_logos/rockhurst.png"
+import missouriStateLogo from "@/images/team_logos/missouriState.png"
+import illinoisStateLogo from "@/images/team_logos/illinoisState.png"
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -256,7 +279,30 @@ const teamData = {
   828103: { logo: centenarioVenadoTuernoLogo },
   679535: { logo: jujuyLogo },
   309167: { logo: estudiantesTucumanLogo, name: "Estudiantes de Tucumán" },
-  380127: {logo: colonSantaFeLogo, name: "Colón de Santa Fe"}
+  380127: { logo: colonSantaFeLogo, name: "Colón de Santa Fe" },
+  64014: { logo: uwashingtonLogo },
+  253061: { logo: lincolnmemorialLogo },
+  251893: { logo: carsonNewmanLogo },
+  672401: { logo: washburnLogo },
+  259060: { logo: centralOklahomaLogo },
+  373521: { logo: indianaStateLogo },
+  63522: { logo: southernIllinoisLogo },
+  263657: { logo: missouriLogo },
+  64608: { logo: mckendreeLogo },
+  246518: { logo: lenoirLogo },
+  260067: { logo: catawbaLogo },
+  258131: { logo: calStateLALogo },
+  258130: { logo: calStateSBLogo },
+  260222: { logo: seattleLogo },
+  260223: { logo: alaskaLogo },
+  370799: { logo: fortHaysLogo },
+  264464: { logo: centralMissouriLogo },
+  314116: { logo: ouachitaLogo },
+  247455: { logo: oklahomaRangersLogo, name: "Oklahoma State Rangers" },
+  252921: { logo: missouriStLouisLogo },
+  189554: { logo: rockhurstLogo },
+  374286: { logo: missouriStateLogo },
+  63573: { logo: illinoisStateLogo }
 };
 
 export default function (team) {
