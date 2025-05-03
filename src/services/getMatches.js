@@ -79,8 +79,8 @@ async function getMatchesByLeague(league, date) {
   response = response
     .filter(
       (m) =>
-        m.time_status !== SHORT_CODE_REMOVED &&
-        m.time_status !== SHORT_CODE_CANCELED
+        parseInt(m.time_status) !== SHORT_CODE_REMOVED &&
+        parseInt(m.time_status) !== SHORT_CODE_CANCELED
     )
     .filter((m) => sameDay(new Date(parseInt(m.time) * 1000), date)) // TODO: usar lógica de zona horaria
     .map((m) => ({
