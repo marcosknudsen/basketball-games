@@ -22,7 +22,7 @@ export default function Index() {
           Mañana
         </button>
       </div>
-      {<NoMatches />}
+      {matches && matches.length ? <Results matches={matches} /> : <NoMatches />}
     </>
   );
 }
