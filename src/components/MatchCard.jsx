@@ -4,7 +4,9 @@ import { FaSquarePlus } from "react-icons/fa6";
 import playoffStart from "../utils/playoffStart";
 import { SHORT_CODE_FINISHED, HALFTIME_STRING, SHORT_CODE_NOT_STARTED, SHORT_CODE_TO_BE_FIXED, SHORT_CODE_PLAYING, SHORT_CODE_POSTPONED, LEAGUE_ID_NBA } from "./constants";
 
-export default function MatchCard({//TODO fix Q3 START OF QUARTER DIFF HALFTIME
+//TODO fix Q3 START OF QUARTER DIFF HALFTIME
+//TODO Refactor styles
+export default function MatchCard({
   date,
   id,
   league_id,
