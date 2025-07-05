@@ -1,0 +1,35 @@
+.league-container {
+  margin: 0.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.league-header {
+  color: #facc15;
+  font-weight: 600;
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  background-color: #22543d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.league-header:hover {
+  background-color: #276749;
+  gap: 6rem;
+  font-weight: 700;
+}
+
+.league-logo {
+  width: 2.5rem;
+}
+
+.league-body {
+  color: white;
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+  background-color: #4b5563;
+}

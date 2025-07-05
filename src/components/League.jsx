@@ -1,31 +1,22 @@
 import { Link } from "react-router-dom";
 import MatchCard from "@components/MatchCard";
+import "../styles/components/League.css";
 
 export default function League({ matches }) {
+  const league = matches[0].league;
+  const logo =
+    league.logo ?? `https://media.api-sports.io/flags/${league.cc}.svg`;
+
   return (
-    <div className="m-3 text-center text-2xl ">
-      <Link to={"/league/" + matches[0].league.id} >
-        <div className=" text-yellow-400 font-semibold rounded-t-md bg-green-800 flex items-center justify-center gap-5 hover:bg-green-700 transition-all hover:gap-24 hover:font-bold">
-          {
-            <img
-              src={
-                matches[0].league.logo??`https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
-              }
-              className="w-10"
-            />
-          }
-          {matches[0].league.name}
-          {
-            <img
-              src={
-                matches[0].league.logo??`https://media.api-sports.io/flags/${matches[0].league.cc}.svg`
-              }
-              className="w-10"
-            />
-          }
+    <div className="league-container">
+      <Link to={`/league/${league.id}`}>
+        <div className="league-header">
+          <img src={logo} className="league-logo" />
+          {league.name}
+          <img src={logo} className="league-logo" />
         </div>
       </Link>
-      <div className="text-white rounded-b-md bg-gray-600">
+      <div className="league-body">
         {matches.map((m) => (
           <MatchCard
             key={m.id}
