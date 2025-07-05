@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+//TODO refactor styles
 export default function Table({
   standing,
   className,
