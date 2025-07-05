@@ -1,0 +1,19 @@
+.button-group {
+  display: flex;
+  gap: 1.25rem; 
+}
+
+.nav-button {
+  background-color: #22543d;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  color: #facc15;
+  width: 8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+  background-color: #276749;
+}
