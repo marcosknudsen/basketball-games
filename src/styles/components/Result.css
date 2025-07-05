@@ -1,0 +1,10 @@
+.results-container {
+  width: 75%;
+  max-width: 800px;
+}
+
+@media (max-width: 1024px) {
+  .results-container {
+    width: 100%;
+  }
+}
