@@ -134,6 +134,7 @@ import missouriStLouisLogo from "@/images/team_logos/missouriStLouis.png"
 import rockhurstLogo from "@/images/team_logos/rockhurst.png"
 import missouriStateLogo from "@/images/team_logos/missouriState.png"
 import illinoisStateLogo from "@/images/team_logos/illinoisState.png"
+import chicagoBullsLogo from "@/images/team_logos/chicagoBulls.png"
 
 const teamData = {
   50183: { logo: argentinoJuninLogo },
@@ -184,7 +185,7 @@ const teamData = {
   56088: { name: "Orlando Magic" },
   53954: { name: "Philadelphia 76ers" },
   57721: { name: "Miami Heat" },
-  52914: { name: "Chicago Bulls" },
+  52914: { name: "Chicago Bulls", logo: chicagoBullsLogo },
   55278: { name: "Atlanta Hawks" },
   54759: { name: "Brooklyn Nets" },
   53768: { name: "Toronto Raptors" },
